@@ -15,4 +15,13 @@ package ru.job4j.calculate;
   public static void main(String[] args) {
   System.out.println("Hello world");
 }
+/**
+* Method echo.
+* @param name vovk alexander.
+* @return Echo plus vovk alexander.
+*/
+public String echo(String name) {
+    return "Echo, echo, echo : " + name;
+}
+
 }
