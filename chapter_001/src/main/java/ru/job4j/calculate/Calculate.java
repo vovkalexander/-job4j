@@ -1,6 +1,6 @@
 package ru.job4j.calculate;
 /**
-* Класс,вывод строки в консоль.
+* Calculate.
 * @author vovk  vovk.ag747@gmail.com
 * @since 15.01.2019
 * @version 1
@@ -8,8 +8,8 @@ package ru.job4j.calculate;
 
  public class Calculate{
 /**
-*Main-Отправная точка запуска программы.
-*@param args - args.
+* Main.
+* @param args - args.
 */
 
   public static void main(String[] args) {
