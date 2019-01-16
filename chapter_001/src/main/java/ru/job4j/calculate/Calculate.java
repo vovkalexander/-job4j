@@ -6,7 +6,7 @@ package ru.job4j.calculate;
 * @version 1
 */
 
- public class Calculate{
+ public class Calculate {
 /**
 * Main.
 * @param args - args.
@@ -20,7 +20,7 @@ package ru.job4j.calculate;
 * @param name vovk alexander.
 * @return Echo plus vovk alexander.
 */
-public String echo(String name) {
+ public String echo(String name) {
     return "Echo, echo, echo : " + name;
 }
 
