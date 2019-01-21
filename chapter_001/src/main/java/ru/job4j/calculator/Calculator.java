@@ -2,7 +2,7 @@ package ru.job4j.calculator;
 
 /**
 * Calculator.
-* @author vovk  vovk.ag747@gmail.com
+* @author Vovk Alexander  vovk.ag747@gmail.com
 * @since 19.01.2019
 * @version 1
 */
