@@ -1,8 +1,10 @@
 package ru.job4j.condition;
 
+
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+
 
 /**
  * Test.
@@ -11,7 +13,6 @@ import static org.junit.Assert.assertThat;
  * @version $Id$
  * @since 0.1
  */
-
 
 public class DummyBotTest {
     @Test
