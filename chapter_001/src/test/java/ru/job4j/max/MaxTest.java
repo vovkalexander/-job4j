@@ -24,7 +24,7 @@ public class MaxTest {
     @Test
     public void whenThirdMoreFirstAndSecond() {
         Max maxim = new Max();
-        int result =maxim.max(5,maxim.max(1,2));
+        int result = maxim.max(5, maxim.max(1, 2));
         assertThat(result, is(5));
     }
 
