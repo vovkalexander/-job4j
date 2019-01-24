@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
         public class TriangleTest {
         @Test
-        public void whenAreaSetThreePointsThenTriangleArea() {
+            public void whenAreaSetThreePointsThenTriangleArea() {
             // создаем три объекта класса Point.
             Point a = new Point(0, 0);
             Point b = new Point(0, 2);
