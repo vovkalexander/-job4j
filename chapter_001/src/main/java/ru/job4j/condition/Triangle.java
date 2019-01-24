@@ -73,12 +73,8 @@ public class Triangle {
      */
     private boolean exist(double ab, double ac, double bc) {
 
-        if(ab > this.period(ab, ac, bc)){
-            return false;
-        } else if(ac > this.period(ab, ac, bc )) {
-            return false;
-        } else if(bc > this.period(ab, ac, bc )){
-            return false;
-        }   return true;
+        return ab + bc > ac && ab + ac > bc && ac + bc > ab;
+
+
     }
 }
