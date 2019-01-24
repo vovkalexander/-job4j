@@ -9,6 +9,7 @@ package ru.job4j.max;
 
 
 public class Max {
+
     /**
      * Method max.
      * @param first integer.
