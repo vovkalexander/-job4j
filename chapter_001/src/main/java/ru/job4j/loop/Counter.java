@@ -20,11 +20,8 @@ public class Counter {
 
             if (start % 2 == 0) {
                 sum = sum + start;
-
             }
-
         }     return sum;
-
     }
 }
 
