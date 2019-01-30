@@ -12,13 +12,13 @@ public class Check {
      * @return boolean.
      */
     public boolean mono(boolean[] data) {
-        boolean result = false;
+        boolean result = true;
         for (int i = 0; i < data.length; i++) {
             if (data[i] != data[0]) {
-                return result;
+                result  = false;
+                break;
             }
         }
-        result = true;
         return result;
     }
 }
