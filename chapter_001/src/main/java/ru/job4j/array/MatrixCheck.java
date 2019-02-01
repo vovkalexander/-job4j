@@ -15,8 +15,15 @@ public class MatrixCheck {
         boolean result = true;
         int x = data.length;
         for (int i = 0; i < x; i++) {
-            if (data[0][0] != data[i][i] && data[0][x - 1] != data[0][x - 1 - i]) {
+            if (data[0][0] != data[i][i]) {
                 result = false;
+                break;
+            }
+        }
+        for (int i = 0; i < x; i++) {
+            if (data[0][x - 1] != data[i][x - 1 - i]) {
+                result = false;
+                break;
             }
         }
         return result;
