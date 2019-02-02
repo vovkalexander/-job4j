@@ -18,10 +18,7 @@ public class MatrixCheck {
             if (data[0][0] != data[i][i]) {
                 result = false;
                 break;
-            }
-        }
-        for (int i = 0; i < x; i++) {
-            if (data[0][x - 1] != data[i][x - 1 - i]) {
+            } else if (data[0][x - 1] != data[i][x - 1 - i]) {
                 result = false;
                 break;
             }
