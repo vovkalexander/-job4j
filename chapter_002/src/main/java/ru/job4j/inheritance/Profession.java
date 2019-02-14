@@ -18,13 +18,14 @@ public class Profession {
     /**
      * constructor profession empty.
      */
-    public Profession(){}
+    public Profession() {
+    }
     /**
      * constructor profession for initializing.
      * @param name for initializing.
      * @param profession for initializing.
      */
-    public Profession (String name, String profession) {
+    public Profession(String name, String profession) {
         this.name = name;
         this.profession = profession;
     }
@@ -34,16 +35,14 @@ public class Profession {
      * @return  initialized name .
      */
 
-    public String getName(String name)
-    {
+    public String getName(String name) {
         return name;
     }
     /**
      * method getProfession.
      * @return  initialized profession.
      */
-    public String getProfession(String profession)
-    {
+    public String getProfession(String profession) {
         return profession;
     }
 }

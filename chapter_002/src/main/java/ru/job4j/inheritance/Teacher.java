@@ -7,12 +7,14 @@ import ru.job4j.models.*;
  * @since 0.1
  */
 
-public class Teacher extends Profession{
+public class Teacher extends Profession {
     /**
      * Method teach.
      * @param  student - object.
      * @return homework.
      */
-    public Homework teach(Student student){
+    public Homework teach(Student student) {
+        Homework homework = null;
+        return  homework;
     }
 }

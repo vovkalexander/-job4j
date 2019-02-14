@@ -13,7 +13,8 @@ public class Doctor extends Profession {
     * @param  patient - object.
     * @return diagnose.
     */
-   public Diagnose treat(Patient patient){
-
+   public Diagnose treat(Patient patient) {
+      Diagnose diagnose = null;
+     return diagnose;
    }
 }
