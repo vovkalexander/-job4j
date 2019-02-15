@@ -7,7 +7,7 @@ import java.util.*;
  * @since 0.1
  */
 
-public class Tracker {
+public class    Tracker {
     /**
      * Массив для хранение заявок.
      */
@@ -76,7 +76,7 @@ public class Tracker {
         for (int index = 0; index != this.position; index++) {
             result[index] = this.items[index];
         }
-        return result;
+        return Arrays.copyOf(result, result.length);
     }
     /**
      * Находит заявку по имени.
@@ -88,12 +88,10 @@ public class Tracker {
         int bound = 0;
         for (int index = 0; index != position; index++) {
             if (items[index].getName().equals(key)) {
-                result[bound++] = items[index];
+                result[bound++] =this.items[index];
             }
         }
-        Item[] items = new Item[bound];
-        System.arraycopy(result, 0, items, 0, bound);
-        return items;
+        return Arrays.copyOf(result, bound);
     }
     /**
      * Находит заявку по ID.
