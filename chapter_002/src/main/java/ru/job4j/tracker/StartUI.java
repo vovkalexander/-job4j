@@ -56,31 +56,13 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        boolean exit = false;
-        while (!exit) {
-            this.showMenu();
-            String answer = this.input.ask("Введите пункт меню : ");
-            switch (answer) {
-                case ADD: this.createItem();
-                    break;
-                case SHOW: this.showAllItems();
-                    break;
-                case EDIT: this.editItem();
-                    break;
-                case DELETE: this.removeItem();
-                    break;
-                case FINDBYID: this.findById();
-                    break;
-                case FINDBYNAME: this.findByName();
-                    break;
-                case EXIT: exit = true;
-                    break;
-                default :
-                    System.out.println("Пункт в меню отсуствует");
-            }
-        }
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        menu.fillActions();
+        do {
+            menu.show();
+            menu.select(Integer.valueOf(input.ask("select:")));
+        } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
-
     /**
      * Метод реализует добавление новый заявки в хранилище.
      */
@@ -170,6 +152,7 @@ public class StartUI {
         System.out.println("5-нахождение заявки по имени");
         System.out.println("6-выход из меню");
     }
+
     /**
      * Запускт программы.
      * @param args
