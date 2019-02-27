@@ -36,6 +36,11 @@ public class StartUI {
      */
     private static final String EXIT = "6";
     /**
+     * Флажок для выхода.
+     * Программа работает до тех пор, пока значение истинно.
+     */
+    private boolean working = true;
+    /**
      * Получение данных от пользователя.
      */
     private final Input input;
@@ -57,11 +62,17 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
+        menu.fillActions(this);
         do {
             menu.show();
             menu.select(Integer.valueOf(input.ask("select:")));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (this.working);
+    }
+    /**
+     * Метод инкапсуляции переменной working.
+     */
+    public void stop() {
+        this.working = false;
     }
     /**
      * Метод реализует добавление новый заявки в хранилище.

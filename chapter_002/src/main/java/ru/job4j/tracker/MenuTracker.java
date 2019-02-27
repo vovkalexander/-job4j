@@ -43,14 +43,14 @@ public class MenuTracker {
     /**
      * Метод заполняет массив.
      */
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add(new AddItem(0, "Add program"));
         this.actions.add(new ShowItems(1, "Show all items"));
         this.actions.add(new UpdateItem(2, "Edit item"));
         this.actions.add(new DeleteItem(3, "Delete item"));
         this.actions.add(new FindItemById(4, "Find item by Id"));
         this.actions.add(new FindItemsByName(5, "Find items by name"));
-        this.actions.add(new ExitProgram(6, "Exit Program"));
+        this.actions.add(new ExitProgram(6, "Exit Program", ui));
     }
 
     /**
@@ -328,14 +328,17 @@ public class MenuTracker {
          * @param хранит название пункта меню .
          */
         String name;
+        private  StartUI ui;
         /**
          * Конструтор инициализирующий поля.
          * @param key номер пункта меню.
          * @param name название пункта меню.
+         * @param ui ссылка на объект StartUI.
          */
-        public ExitProgram(int key, String name) {
+        public ExitProgram(int key, String name, StartUI ui) {
             this.key = key;
             this.name = name;
+            this.ui = ui;
         }
         @Override
         public int key() {
@@ -343,6 +346,8 @@ public class MenuTracker {
         }
         @Override
         public void execute(Input input, Tracker tracker) {
+            System.out.println("---------Exit from programme. See you soon -------");
+           this.ui.stop();
         }
         @Override
         public String info() {
