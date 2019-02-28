@@ -1,4 +1,8 @@
 package ru.job4j.tracker;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * StartUI.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -7,6 +11,10 @@ package ru.job4j.tracker;
  */
 
 public class StartUI {
+    /**
+     * Массив -  массив соответствующий кол-во пунктов меню.
+     */
+    private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6 };
     /**
      * Константа меню для добавления новой заявки.
      */
@@ -62,10 +70,14 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        List<Integer> range = new ArrayList<>();
         menu.fillActions(this);
+        for (int i = 0; i < menu.getActionsLength(); i++) {
+            range.add(i);
+        }
         do {
             menu.show();
-            menu.select(Integer.valueOf(input.ask("select:")));
+            menu.select(input.ask("select:", this.range));
         } while (this.working);
     }
     /**
@@ -169,7 +181,7 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
 

@@ -19,4 +19,24 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return scanner.nextLine();
     }
+    /**
+     * Метод реализаущий запрос параметров пользователя, c учетом диапозона меню.
+     * @param question - запрос пользователю.
+     * @param range - массив соответствующий кол-во пунктов меню.
+     */
+    public int ask(String question, int[] range)  {
+        int key = Integer.valueOf(this.ask(question));
+        boolean exist = false;
+        for (int value : range) {
+            if (value == key) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            return key;
+        } else {
+            throw new MenuOutException("Out of menu range.");
+        }
+    }
 }

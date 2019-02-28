@@ -11,4 +11,10 @@ public interface Input {
      * @param question - запрос.
      */
     String ask(String question);
+    /**
+     * Метод абстрактный ask.
+     * @param question - запрос.
+     * @param range - массив соответствующий кол-во пунктов меню.
+     */
+    int ask(String question, int[] range);
 }
