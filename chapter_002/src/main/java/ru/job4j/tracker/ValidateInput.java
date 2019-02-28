@@ -5,14 +5,29 @@ package ru.job4j.tracker;
  * @version $Id$
  * @since 0.1
  */
-public class ValidateInput extends  ConsoleInput  {
+public class ValidateInput implements  Input {
+    /**
+     * Хранит переменную итерфейса.
+     */
+    private final Input input;
+    /**
+     * Конструтор инициализирующий поля.
+     * @param input ввод данных.
+     */
+    public ValidateInput(final Input input) {
+        this.input = input;
+    }
+    @Override
+    public String ask(String question) {
+        return this.input.ask(question);
+    }
     @Override
     public int ask(String question, int[] range) {
        boolean invalid = true;
        int value = -1;
         do {
             try {
-                value = super.ask(question, range);
+                value = this.input.ask(question, range);
                 invalid = false;
             } catch (MenuOutException  moe) {
                 System.out.println("please select key from menu.");
