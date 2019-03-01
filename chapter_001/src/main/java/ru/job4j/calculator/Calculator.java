@@ -20,7 +20,7 @@ private double result;
 * @param second 1.
 */
 
-public void add(double first, double second) {
+public void add(double first, double second)     {
 this.result = first + second;
 }
 
