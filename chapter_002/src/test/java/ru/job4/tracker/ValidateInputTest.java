@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.tracker.StubInput;
 import ru.job4j.tracker.ValidateInput;
-import ru.job4j.tracker.ConsoleInput;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -39,5 +38,17 @@ public class ValidateInputTest {
                 )
         );
     }
-}
-
+    @Test
+    public void whenExceedInput() {
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[]{"invalid", "1"})
+        );
+        input.ask("10", new int[]{1});
+        assertThat(
+                this.mem.toString(),
+                is(
+                        String.format("Out of menu range.%n")
+                )
+        );
+    }
+    }
