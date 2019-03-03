@@ -2,6 +2,7 @@ package ru.job4.tracker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.job4j.tracker.ConsoleInput;
 import ru.job4j.tracker.StubInput;
 import ru.job4j.tracker.ValidateInput;
 import java.io.ByteArrayOutputStream;
@@ -34,21 +35,21 @@ public class ValidateInputTest {
         assertThat(
                 this.mem.toString(),
                 is(
-                        String.format("Please enter validate data again.%n")
+                        String.format("please enter validate data again.%n")
                 )
         );
     }
     @Test
     public void whenExceedInput() {
         ValidateInput input = new ValidateInput(
-                new StubInput(new String[]{"invalid", "1"})
+                new StubInput(new String[]{"5", "1"})
         );
         input.ask("10", new int[]{1});
         assertThat(
                 this.mem.toString(),
                 is(
-                        String.format("Out of menu range.%n")
+                        String.format("please select key from menu.%n")
                 )
         );
     }
-    }
+}
