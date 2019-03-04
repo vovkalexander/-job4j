@@ -37,14 +37,14 @@ public class MenuTracker {
      *
      * @return длину массива
      */
-    public int getActionsLentgh() {
+    public int getActionsLength() {
         return this.actions.size();
     }
     /**
      * Метод заполняет массив.
      */
     public void fillActions(StartUI ui) {
-        this.actions.add(new AddItem(0, "Add program"));
+        this.actions.add(new AddItem(0, "Add the new item."));
         this.actions.add(new ShowItems(1, "Show all items"));
         this.actions.add(new UpdateItem(2, "Edit item"));
         this.actions.add(new DeleteItem(3, "Delete item"));
@@ -73,28 +73,16 @@ public class MenuTracker {
     /**
      *  Класс - пункт подменю добавление заявки
      */
-    private class AddItem implements UserAction {
-        /**
-         * @param хранит номер пункта меню .
-         */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
+    private class AddItem extends BaseAction  {
         /**
          * Конструтор инициализирующий поля.
          * @param key номер пункта меню.
          * @param name название пункта меню.
          */
-        public AddItem(int key, String name) {
-            this.key = key;
-            this.name = name;
+        protected AddItem(int key, String name) {
+            super(key, name);
         }
-        @Override
-        public int key() {
-            return 0;
-        }
+
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Adding new item --------------");
@@ -106,31 +94,19 @@ public class MenuTracker {
             System.out.println("------------ New Item with Name : " + item.getName());
             System.out.println("------------ New Item with Description : " + item.getDescription());
         }
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add the new item.");
-        }
+
     }
     /**
      *  Класс - пункт подменю показ всех заявок
      */
-    private class ShowItems implements UserAction {
-        /**
-         * @param хранит номер пункта меню .
-         */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
+    private class ShowItems  extends BaseAction  {
         /**
          * Конструтор инициализирующий поля.
          * @param key номер пункта меню.
          * @param name название пункта меню.
          */
-        public ShowItems(int key, String name) {
-            this.key = key;
-            this.name = name;
+        protected ShowItems(int key, String name) {
+            super(key, name);
         }
         @Override
         public int key() {
@@ -153,27 +129,15 @@ public class MenuTracker {
     /**
      *  Класс - пункт подменю редактирование заявки
      */
-    private class UpdateItem implements UserAction {
-        /**
-         * @param хранит номер пункта меню .
-         */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
+    private class UpdateItem extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
          * @param key номер пункта меню.
          * @param name название пункта меню.
          */
-        public UpdateItem(int key, String name) {
-            this.key = key;
-            this.name = name;
-        }
-        @Override
-        public int key() {
-            return 2;
+        protected UpdateItem(int key, String name) {
+            super(key, name);
+
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -190,35 +154,19 @@ public class MenuTracker {
                 System.out.println("Item by Id" + id + "not found");
             }
         }
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Edit item");
-        }
     }
     /**
      *  Класс - пункт подменю удаление заявки
      */
-    private class DeleteItem implements UserAction {
-        /**
-         * @param хранит номер пункта меню .
-         */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
+    private class DeleteItem extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
-         * @param key номер пункта меню.
+         *
+         * @param key  номер пункта меню.
          * @param name название пункта меню.
          */
-        public DeleteItem(int key, String name) {
-            this.key = key;
-            this.name = name;
-        }
-        @Override
-        public int key() {
-            return 3;
+        protected DeleteItem(int key, String name) {
+            super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -230,35 +178,19 @@ public class MenuTracker {
                 System.out.println("Item by Id" + id + "not found");
             }
         }
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete item");
-        }
     }
     /**
      *  Класс - пункт подменю поиск заявки по Id
      */
-    private class FindItemById implements UserAction {
-        /**
-         * @param хранит номер пункта меню .
-         */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
+    private class FindItemById extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
-         * @param key номер пункта меню.
+         *
+         * @param key  номер пункта меню.
          * @param name название пункта меню.
          */
         public FindItemById(int key, String name) {
-            this.key = key;
-            this.name = name;
-        }
-        @Override
-        public int key() {
-            return 4;
+            super(key, name);
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -271,37 +203,23 @@ public class MenuTracker {
                 System.out.println("Item by Id" + id + "not found");
             }
         }
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by Id");
-        }
     }
+
     /**
      *  Класс - пункт подменю поиск заявки по имени
      */
-    private class FindItemsByName implements UserAction {
-        /**
-         * @param хранит номер пункта меню .
-         */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
+    private class FindItemsByName extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
-         * @param key номер пункта меню.
+         *
+         * @param key  номер пункта меню.
          * @param name название пункта меню.
          */
 
         public FindItemsByName(int key, String name) {
-            this.key = key;
-            this.name = name;
+            super(key, name);
         }
-        @Override
-        public int key() {
-            return 5;
-        }
+
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("---------Finding item by Name -------");
@@ -311,24 +229,16 @@ public class MenuTracker {
                 System.out.println("Item's name :" + item.getName() + " " + "ID :" + item.getId());
             }
         }
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find items by name");
-        }
     }
     /**
      *  Класс - пункт подменю выход из главного меню
      */
-    private class ExitProgram implements UserAction {
+    class ExitProgram extends BaseAction {
         /**
-         * @param хранит номер пункта меню .
+         * @param хранит ссылку.
          */
-        int key;
-        /**
-         * @param хранит название пункта меню .
-         */
-        String name;
-        private  StartUI ui;
+        private StartUI ui;
+
         /**
          * Конструтор инициализирующий поля.
          * @param key номер пункта меню.
@@ -336,22 +246,19 @@ public class MenuTracker {
          * @param ui ссылка на объект StartUI.
          */
         public ExitProgram(int key, String name, StartUI ui) {
-            this.key = key;
-            this.name = name;
+            super(key, name);
             this.ui = ui;
         }
+
         @Override
         public int key() {
             return 6;
         }
+
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("---------Exit from programme. See you soon -------");
-           this.ui.stop();
-        }
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Exit Program");
+            this.ui.stop();
         }
     }
 }
