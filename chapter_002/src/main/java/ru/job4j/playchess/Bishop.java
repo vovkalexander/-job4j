@@ -10,10 +10,10 @@ import static ru.job4j.playchess.Cell.findCell;
 public class Bishop extends Figure {
     /**
      * Конструтор инициализирующий поля.
-     * @param dest позиция фигуры.
+     * @param position позиция фигуры.
      */
-    public Bishop(Cell dest) {
-        super(dest);
+    public Bishop(Cell position) {
+        super(position);
     }
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {

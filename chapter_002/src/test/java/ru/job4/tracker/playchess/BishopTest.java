@@ -1,9 +1,11 @@
 package ru.job4.tracker.playchess;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.core.Is.is;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 import ru.job4j.playchess.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * Test.
  * @author Vovk Alexander (vovk.ag747@gmail.com)
@@ -12,51 +14,28 @@ import ru.job4j.playchess.*;
  */
 public class BishopTest {
     private Board board;
-    boolean result = false;
+    private Bishop bishop;
     @Before
     public void startUp() {
         board = new Board();
         board.add(new Bishop(Cell.A1));
     }
     @Test
-    public void whenFigureNotFound() {
-        try {
-            result = board.move(Cell.B3, Cell.D4);
-        } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
-        } catch (OccupiedWayException e) {
-            e.printStackTrace();
-        } catch (FigureNotFoundException e) {
-            e.printStackTrace();
-        }
-        assertThat(result, is(false));
+    public void whenFigureNotFound() throws FigureNotFoundException {
+        Throwable exception = assertThrows(FigureNotFoundException.class, () -> board.move(Cell.B3, Cell.D4));
+        assertEquals("На клетке отсутсвует фигура", exception.getMessage());
     }
     @Test
     public void whenBishopCanMove() {
-        try {
-            result = board.move(Cell.A1, Cell.C3);
-        } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
-        } catch (OccupiedWayException e) {
-            e.printStackTrace();
-        } catch (FigureNotFoundException e) {
-            e.printStackTrace();
-        }
-        assertThat(result, is(true));
+        bishop = new Bishop(Cell.A1);
+        Cell[] result = bishop.way(bishop.position, Cell.D4);
+        Cell[] expected = {Cell.B2, Cell.C3, Cell.D4};
+        assertThat(result, is(expected));
     }
     @Test
-    public void whenBishopMoveWrong() {
-        try {
-            result = board.move(Cell.A1, Cell.B4);
-        } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
-        } catch (OccupiedWayException e) {
-            e.printStackTrace();
-        } catch (FigureNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            assertThat(result, is(false));
-        }
+    public void whenBishopMoveWrong() throws ImpossibleMoveException {
+        Throwable exception = assertThrows(ImpossibleMoveException.class, () -> board.move(Cell.A1, Cell.B4));
+        assertEquals("Фигура не может так ходить!", exception.getMessage());
     }
 }
 

@@ -9,18 +9,18 @@ public class Board {
     /**
      * хранит кол-во фигур.
      */
-    private int placeOffigure;
+    private int place;
     /**
      * массив хранит все фигуры на доске.
      */
-    Figure[] figures = new Figure[32];
+   private Figure[] figures = new Figure[32];
     /**
      * Метод - добавляет фигуру на доску.
      * @param figure- шахматная фигура.
      * @return - возвращает фигуру.
      */
     public Figure add(Figure figure) {
-        this.figures[placeOffigure++] = figure;
+        this.figures[place++] = figure;
         return figure;
     }
     /**
