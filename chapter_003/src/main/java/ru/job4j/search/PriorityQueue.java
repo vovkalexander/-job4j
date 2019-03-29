@@ -20,7 +20,7 @@ public class PriorityQueue {
         while (index < tasks.size()) {
             if (tasks.get(index).getPriority() > task.getPriority()) {
                 tasks.add(index, task);
-                break;
+                return;
             }
             index++;
         }
