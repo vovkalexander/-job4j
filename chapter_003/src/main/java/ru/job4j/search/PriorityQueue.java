@@ -16,15 +16,17 @@ public class PriorityQueue {
      * @param task задача.
      */
     public void put(Task task) {
-        int index = 0;
+        int i = tasks.size() ;
+        int index =0;
         while (index < tasks.size()) {
             if (tasks.get(index).getPriority() > task.getPriority()) {
-                tasks.add(index, task);
-                return;
+                i= index;
+                break;
+
             }
             index++;
         }
-        tasks.add(task);
+        tasks.add(index, task);
     }
     /**
      * Метод возвращает задачу с головы массива .
