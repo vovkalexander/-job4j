@@ -1,4 +1,7 @@
 package ru.job4j.tracker;
+
+import java.util.List;
+
 /**
  * Input.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -16,5 +19,5 @@ public interface Input {
      * @param question - запрос.
      * @param range - массив соответствующий кол-во пунктов меню.
      */
-    int ask(String question, int[] range);
+    int ask(String question, List<Integer> range);
 }

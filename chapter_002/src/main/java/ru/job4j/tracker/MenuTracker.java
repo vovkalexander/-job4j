@@ -8,7 +8,7 @@ import java.util.List;
  * @since 0.1
  */
 
-public class MenuTracker {
+    public class MenuTracker {
     /**
      * @param хранит ссылку на объект .
      */
@@ -143,7 +143,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Edit item --------------");
             String id = input.ask("Initiate Item's id :");
-            Item item = tracker.findById(id);
+            Item item = (Item) tracker.findById(id);
             if (item != null) {
                 String newName = input.ask("Initiate new name :");
                 item.setName(newName);
@@ -196,7 +196,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("---------Finding item by ID -------");
             String id = input.ask("Initiate item's id :");
-            Item item = tracker.findById(id);
+            Item item = (Item) tracker.findById(id);
             if (item != null) {
                 System.out.println("Item's name :" + item.getName());
             } else {
@@ -224,7 +224,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("---------Finding item by Name -------");
             String name = input.ask("Initiate item's name :");
-            Item[] items = tracker.findByName(name);
+            List<Item> items = tracker.findByName(name);
             for (Item item : items) {
                 System.out.println("Item's name :" + item.getName() + " " + "ID :" + item.getId());
             }

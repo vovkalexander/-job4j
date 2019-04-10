@@ -1,12 +1,15 @@
 package ru.job4.tracker;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.tracker.ConsoleInput;
 import ru.job4j.tracker.StubInput;
 import ru.job4j.tracker.ValidateInput;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 /**
@@ -29,9 +32,9 @@ public class ValidateInputTest {
     @Test
     public void whenInvalidInput() {
         ValidateInput input = new ValidateInput(
-                new StubInput(new String[]{"invalid", "1"})
+                new StubInput(Arrays.asList("invalid", "1"))
         );
-        input.ask("Enter", new int[]{1});
+        input.ask("Enter", Arrays.asList((Integer) 1));
         assertThat(
                 this.mem.toString(),
                 is(
@@ -42,9 +45,9 @@ public class ValidateInputTest {
     @Test
     public void whenExceedInput() {
         ValidateInput input = new ValidateInput(
-                new StubInput(new String[]{"5", "1"})
+                new StubInput(Arrays.asList("5", "1"))
         );
-        input.ask("10", new int[]{1});
+        input.ask("10", Arrays.asList((Integer) 1));
         assertThat(
                 this.mem.toString(),
                 is(
@@ -53,3 +56,4 @@ public class ValidateInputTest {
         );
     }
 }
+

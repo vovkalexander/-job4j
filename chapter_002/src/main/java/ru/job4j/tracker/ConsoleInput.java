@@ -24,7 +24,7 @@ public class ConsoleInput implements Input {
      * @param question - запрос пользователю.
      * @param range - массив соответствующий кол-во пунктов меню.
      */
-    public int ask(String question, int[] range)  {
+    public int ask(String question, List<Integer> range)  {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {

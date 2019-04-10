@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class StartUI {
     /**
      * Массив -  массив соответствующий кол-во пунктов меню.
      */
-    private int[] range = new int[] {0, 1, 2, 3, 4, 5, 6 };
+    List<Integer> range = Arrays.asList(0, 1, 2, 3, 4, 5, 6 );
     /**
      * Константа меню для добавления новой заявки.
      */
@@ -114,7 +115,7 @@ public class StartUI {
     private void editItem() {
         System.out.println("---------Редактирование по ID -------");
         String id = this.input.ask("Введите id заявки :");
-        Item item = this.tracker.findById(id);
+        Item item = (Item) this.tracker.findById(id);
         if (item != null) {
             String newName = this.input.ask("Введите новое имя :");
             item.setName(newName);
@@ -144,7 +145,7 @@ public class StartUI {
     private void findById()  {
         System.out.println("---------Нахождение заявки по ID -------");
         String id = this.input.ask("Введите id заявки :");
-        Item item = this.tracker.findById(id);
+        Item item = (Item) this.tracker.findById(id);
         if (item != null) {
             System.out.println("Имя заявки :" + item.getName());
         } else {
@@ -157,7 +158,7 @@ public class StartUI {
     private void findByName() {
         System.out.println("---------Нахождение заявки по Имени -------");
         String name = this.input.ask("Введите имя заявки :");
-        Item[] items = this.tracker.findByName(name);
+       List<Item> items = this.tracker.findByName(name);
         for (Item item : items) {
             System.out.println("Имя заявки :" + item.getName() + " " + "ID :" + item.getId());
         }

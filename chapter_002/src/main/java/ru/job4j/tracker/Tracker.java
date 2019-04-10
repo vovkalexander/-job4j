@@ -7,25 +7,27 @@ import java.util.*;
  * @since 0.1
  */
 
-public class    Tracker {
+public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private Item[] items = new Item[100];
+    List<Item> items = new ArrayList<>();
     /**
      * Указатель ячейки для новой заявки.
      */
-    private int position = 0;
     private static final Random RN = new Random();
+
     /**
      * Метод реализаущий добавление заявки в хранилище
      * @param item новая заявка
+     *
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[position++] = item;
+        this.items.add(item);
         return item;
     }
+
     /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
@@ -34,18 +36,19 @@ public class    Tracker {
     String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
+
     /**
      * Удаляет заменяет заявку.
      * @param item заявка.
-     * @param id заявки.
+     * @param id   заявки.
      * return логическое значение.
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        for (int index = 0; index != this.position; index++) {
-            if (this.items[index].getId().equals(id)) {
+        for (int index = 0; index < items.size(); index++) {
+            if (this.items.get(index).getId().equals(id)) {
                 result = true;
-                this.items[index] = item;
+                items.set(index, item);
                 break;
             }
         }
@@ -58,11 +61,10 @@ public class    Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int index = 0; index != position; index++) {
-            if (this.items[index].getId().equals(id)) {
+        for (int index = 0; index < items.size(); index++) {
+            if (this.items.get(index).getId().equals(id)) {
                 result = true;
-                System.arraycopy(this.items, index + 1, this.items, index, this.items.length - 1 - index);
-                break;
+                items.remove(index);
             }
         }
         return result;
@@ -71,39 +73,38 @@ public class    Tracker {
      * Находит все заявки .
      * return список заявок(массив).
      */
-    public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
+    public List<Item> findAll() {
+        List<Item> result = new ArrayList<>();
+        for (Item item: items){
+            result.add(item);
         }
-        return Arrays.copyOf(result, result.length);
+        return result;
     }
     /**
      * Находит заявку по имени.
      * @param key-имя заявки.
      * return список заявок(массив) с именим key.
      */
-    public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
-        int bound = 0;
-        for (int index = 0; index != position; index++) {
-            if (items[index].getName().equals(key)) {
-                result[bound++] =this.items[index];
+    public List<Item> findByName(String key) {
+        List<Item> result =  new ArrayList<>();
+        for(Item item : items ) {
+            if(item.getName().contains(key)){
+                result.add(item);
             }
         }
-        return Arrays.copyOf(result, bound);
+        return result;
     }
+
     /**
      * Находит заявку по ID.
-     * @param  id заявки.
+     * @param id заявки.
      * return заявку.
      */
-    public Item findById(String id) {
-        Item result = null;
-        for (Item item: items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
-                break;
+    public List<Item> findById(String id) {
+        List<Item> result =  new ArrayList<>();
+        for (Item item : items) {
+            if(item.getId().contains(id)){
+                result.add(item);
             }
         }
         return result;

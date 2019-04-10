@@ -1,4 +1,7 @@
 package ru.job4j.tracker;
+
+import java.util.List;
+
 /**
  * ValidateInput.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -22,7 +25,7 @@ public class ValidateInput implements  Input {
         return this.input.ask(question);
     }
     @Override
-    public int ask(String question, int[] range) {
+    public int ask(String question, List<Integer> range) {
        boolean invalid = true;
        int value = -1;
         do {
