@@ -115,7 +115,7 @@ public class StartUI {
     private void editItem() {
         System.out.println("---------Редактирование по ID -------");
         String id = this.input.ask("Введите id заявки :");
-        Item item = (Item) this.tracker.findById(id);
+        Item item = this.tracker.findById(id);
         if (item != null) {
             String newName = this.input.ask("Введите новое имя :");
             item.setName(newName);
@@ -145,7 +145,7 @@ public class StartUI {
     private void findById()  {
         System.out.println("---------Нахождение заявки по ID -------");
         String id = this.input.ask("Введите id заявки :");
-        Item item = (Item) this.tracker.findById(id);
+        Item item = this.tracker.findById(id);
         if (item != null) {
             System.out.println("Имя заявки :" + item.getName());
         } else {

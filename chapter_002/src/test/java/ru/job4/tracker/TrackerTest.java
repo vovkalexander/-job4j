@@ -25,7 +25,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.findAll(), is(item));
+        assertThat(tracker.findAll().get(0), is(item));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -36,7 +36,7 @@ public class TrackerTest {
         tracker.add(next);
         next.setId(previous.getId());
         tracker.replace(previous.getId(), next);
-        assertThat(tracker.findByName(previous.getName()), is("test2"));
+        assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
     @Test
     public void whenDeleteItemThenTreckerDeleteItem() {

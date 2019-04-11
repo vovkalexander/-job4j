@@ -100,11 +100,12 @@ public class Tracker {
      * @param id заявки.
      * return заявку.
      */
-    public List<Item> findById(String id) {
-        List<Item> result =  new ArrayList<>();
+    public Item findById(String id) {
+        Item result = null;
         for (Item item : items) {
-            if(item.getId().contains(id)){
-                result.add(item);
+            if (item != null && item.getId().equals(id)) {
+                result = item;
+                break;
             }
         }
         return result;

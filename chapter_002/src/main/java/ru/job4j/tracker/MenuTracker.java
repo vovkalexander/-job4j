@@ -143,7 +143,7 @@ import java.util.List;
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Edit item --------------");
             String id = input.ask("Initiate Item's id :");
-            Item item = (Item) tracker.findById(id);
+            Item item = tracker.findById(id);
             if (item != null) {
                 String newName = input.ask("Initiate new name :");
                 item.setName(newName);
@@ -196,7 +196,7 @@ import java.util.List;
         public void execute(Input input, Tracker tracker) {
             System.out.println("---------Finding item by ID -------");
             String id = input.ask("Initiate item's id :");
-            Item item = (Item) tracker.findById(id);
+            Item item = tracker.findById(id);
             if (item != null) {
                 System.out.println("Item's name :" + item.getName());
             } else {
