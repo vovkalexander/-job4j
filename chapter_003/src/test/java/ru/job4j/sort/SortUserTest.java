@@ -17,7 +17,7 @@ public class SortUserTest {
         List<User> users = new ArrayList<>();
         users.add(new User("Tramp", 72));
         users.add(new User("Obama", 57));
-        users.add(new User("Bush", 92));
+        users.add(new User("Bush", 72));
         SortUser sorter = new SortUser();
         Set<User> result = sorter.sort(users);
         assertThat(result.iterator().next().getName(), is("Obama"));

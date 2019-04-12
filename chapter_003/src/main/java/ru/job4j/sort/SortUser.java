@@ -15,10 +15,6 @@ public class SortUser {
      * @return список пользователелей.
      */
     public Set<User> sort (List<User> users) {
-     Set<User> set = new TreeSet<>(new UserCompare());
-     for(User user : users) {
-         set.add(user);
-     }
-         return set;
+        return new TreeSet<User>(users);
     }
 }
