@@ -22,4 +22,25 @@ public class SortUserTest {
         Set<User> result = sorter.sort(users);
         assertThat(result.iterator().next().getName(), is("Obama"));
     }
+    @Test
+    public void whenOneNameLengthLessTwoThenSortFirst() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("Tramp", 72));
+        users.add(new User("Obama", 57));
+        users.add(new User("Bush", 72));
+        SortUser sorter = new SortUser();
+        List<User> result = sorter.sortNameLength(users);
+        assertThat(result.iterator().next().getName(), is("Bush"));
+    }
+    @Test
+    public void whenOneNameEqualsTwoThenSortByAge() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("Tramp", 72));
+        users.add(new User("Obama", 57));
+        users.add(new User("Bush", 72));
+        users.add(new User("Bush", 37));
+        SortUser sorter = new SortUser();
+        List<User> result = sorter.sortByAllFields(users);
+        assertThat(result.iterator().next().getName(), is("Bush"));
+    }
 }
