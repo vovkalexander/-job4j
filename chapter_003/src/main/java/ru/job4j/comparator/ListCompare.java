@@ -21,15 +21,13 @@ public class ListCompare implements Comparator<String> {
         while (index < Math.min(left.length(), right.length())) {
             letter = Character.compare(left.charAt(index), right.charAt(index));
             if (letter != 0) {
-                break;
+                return letter;
             }
-            if (letter == 0) {
 
-                letter = Integer.compare(left.length(), right.length());
-            }
             index++;
         }
-        return letter;
+
+        return Integer.compare(left.length(), right.length());
     }
 }
 

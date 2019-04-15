@@ -20,7 +20,6 @@ public class Сomparator {
         );
         assertThat(rst, is(0));
     }
-
     @Test
     public void whenLeftLessThanRightResultShouldBeNegative() {
         ListCompare compare = new ListCompare();
@@ -40,7 +39,6 @@ public class Сomparator {
         );
         assertThat(rst, greaterThan(0));
     }
-
     @Test
     public void secondCharOfLeftGreaterThanRightShouldBePositive() {
         ListCompare compare = new ListCompare();
@@ -50,7 +48,6 @@ public class Сomparator {
         );
         assertThat(rst, greaterThan(0));
     }
-
     @Test
     public void secondCharOfLeftLessThanRightShouldBeNegative() {
         ListCompare compare = new ListCompare();
