@@ -257,7 +257,6 @@ import java.util.List;
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("---------Exit from programme. See you soon -------");
             this.ui.stop();
         }
     }

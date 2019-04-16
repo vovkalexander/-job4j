@@ -7,7 +7,7 @@ package ru.job4j.condition;
  * @version 1
  */
 
-public class Point {
+public class    Point {
     /**
      * Contains X coordinate.
      */

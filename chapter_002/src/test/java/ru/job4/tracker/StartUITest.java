@@ -37,7 +37,8 @@ public class StartUITest {
             .append(System.lineSeparator())
             .append("6. Exit Program")
             .append(System.lineSeparator())
-            .append("---------Exit from programme. See you soon -------")
+
+
             .toString();
 
     @Before
@@ -66,7 +67,7 @@ public class StartUITest {
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        assertThat(tracker.findByName(item.getName()), is("test replace"));
+        assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
     @Test
     public void whenDeleteThenTrackerHasDeletedValue() {
@@ -77,9 +78,9 @@ public class StartUITest {
         //// проверяем, что нулевой элемент массива в трекере удален, введённое при эмуляции.
         assertThat(new String(this.out.toByteArray()), is(new StringBuilder()
                 .append(menu)
-                .append("---------Удаление  -------")
+                .append("---------Removing  -------")
                 .append(System.lineSeparator())
-                .append("Заявка удалена")
+                .append("Item removed")
                 .append(System.lineSeparator())
                 .append(menu)
                 .toString()));
@@ -93,9 +94,9 @@ public class StartUITest {
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(new String(this.out.toByteArray()), is(new StringBuilder()
                 .append(menu)
-                .append("---------Нахождение заявки по ID -------")
+                .append("---------Finding item by ID -------")
                 .append(System.lineSeparator())
-                .append("Имя заявки :" + item.getName())
+                .append("Item's name :" + item.getName())
                 .append(System.lineSeparator())
                 .append(menu)
                 .toString()));
@@ -109,9 +110,9 @@ public class StartUITest {
         //// // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(new String(out.toByteArray()), is(new StringBuilder()
                 .append(menu)
-                .append("---------Нахождение заявки по Имени -------")
+                .append("---------Finding item by Name -------")
                 .append(System.lineSeparator())
-                .append("Имя заявки :" + item.getName() + " " + "ID :" + item.getId())
+                .append("Item's name :" + item.getName() + " " + "ID :" + item.getId())
                 .append(System.lineSeparator())
                 .append(menu)
                 .toString()));
@@ -129,13 +130,13 @@ public class StartUITest {
         //// // проверяем, что заявки находяться в массиве, введённое при эмуляции.
         assertThat(new String(this.out.toByteArray()), is(new StringBuilder()
                 .append(menu)
-                .append("-----------Все заявки------------")
+                .append("------------ All Items --------------")
                 .append(System.lineSeparator())
-                .append("Имя заявки:" + item.getName() + " " + "ID :" + item.getId())
+                .append("Item with name:" + item.getName() + " " + "ID :" + item.getId())
                 .append(System.lineSeparator())
-                .append("Имя заявки:" + item1.getName() + " " + "ID :" + item1.getId())
+                .append("Item with name:" + item1.getName() + " " + "ID :" + item1.getId())
                 .append(System.lineSeparator())
-                .append("Имя заявки:" + item2.getName() + " " + "ID :" + item2.getId())
+                .append("Item with name:" + item2.getName() + " " + "ID :" + item2.getId())
                 .append(System.lineSeparator())
                 .append(menu)
                 .toString()));
