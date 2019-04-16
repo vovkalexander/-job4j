@@ -10,7 +10,7 @@ import static org.hamcrest.core.Is.is;
  * @version $Id$
  * @since 0.1
  */
-public class Сomparator {
+public class Contrast {
     @Test
     public void whenStringsAreEqualThenZero() {
         ListCompare compare = new ListCompare();

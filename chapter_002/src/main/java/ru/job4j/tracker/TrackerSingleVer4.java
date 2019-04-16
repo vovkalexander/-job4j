@@ -21,12 +21,12 @@ public class TrackerSingleVer4 {
      * @return ourInstance-статическую ссылку на объект типа внешнего класса.
      */
     public static TrackerSingleVer4 getInstance() {
-        return Holder.ourInstance;
+        return Holder.OUREXAMPLE;
     }
     /**
      *  Класс(статический)- хранит статическую ссылку на объект типа внешнего класса.
      */
     private static final class Holder {
-        private static final TrackerSingleVer4 ourInstance = new TrackerSingleVer4();
+        private static final TrackerSingleVer4 OUREXAMPLE = new TrackerSingleVer4();
     }
 }

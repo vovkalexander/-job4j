@@ -75,7 +75,7 @@ public class Tracker {
      */
     public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
-        for (Item item: items){
+        for (Item item: items) {
             result.add(item);
         }
         return result;
@@ -87,8 +87,8 @@ public class Tracker {
      */
     public List<Item> findByName(String key) {
         List<Item> result =  new ArrayList<>();
-        for(Item item : items ) {
-            if(item.getName().contains(key)){
+        for (Item item : items) {
+            if (item.getName().contains(key)) {
                 result.add(item);
             }
         }

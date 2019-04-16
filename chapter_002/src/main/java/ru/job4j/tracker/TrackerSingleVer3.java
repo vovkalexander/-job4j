@@ -9,7 +9,7 @@ public class TrackerSingleVer3 {
     /**
      * @param хранит статическую ссылку на объект типа класса .
      */
-    private static final TrackerSingleVer3 instance = new TrackerSingleVer3();
+    private static final TrackerSingleVer3 EXEMPLE = new TrackerSingleVer3();
     /**
      * Конструктор - закрытого доступа.
      */
@@ -20,6 +20,6 @@ public class TrackerSingleVer3 {
      * @return instance-статическую ссылку на объект типа класса
      */
     public static TrackerSingleVer3 getInstance() {
-        return instance;
+        return EXEMPLE;
     }
 }

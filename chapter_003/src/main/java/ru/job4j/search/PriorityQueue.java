@@ -16,11 +16,11 @@ public class PriorityQueue {
      * @param task задача.
      */
     public void put(Task task) {
-        int i = tasks.size() ;
-        int index =0;
+        int i = tasks.size();
+        int index = 0;
         while (index < tasks.size()) {
             if (tasks.get(index).getPriority() > task.getPriority()) {
-                i= index;
+                i = index;
                 break;
 
             }

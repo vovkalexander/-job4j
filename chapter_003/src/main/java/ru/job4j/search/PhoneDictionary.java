@@ -11,7 +11,7 @@ public class PhoneDictionary {
     /**
      * Хранит массив  пользователей .
      */
-    private List<Person> persons = new ArrayList<Person>();
+    private List<Person> persons = new ArrayList<>();
     /**
      * Метод добовляет пользователей в массив.
      *  @param person - пользователь в телефонном справочнике.
@@ -26,9 +26,8 @@ public class PhoneDictionary {
      */
     public List<Person> find(String key) {
         List<Person> result = new ArrayList<>();
-        for(Person person: persons){
-            if(person.getName().contains(key)|| person.getSurname().contains(key)|| person.getPhone().contains(key)||
-                    person.getAddress().contains(key)){
+        for (Person person: persons) {
+            if (person.getName().contains(key) || person.getSurname().contains(key) || person.getPhone().contains(key) || person.getAddress().contains(key)) {
                 result.add(person);
             }
         }
