@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+
 /**
  * MenuTracker.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -8,7 +11,7 @@ import java.util.List;
  * @since 0.1
  */
 
-    public class MenuTracker {
+public class MenuTracker {
     /**
      * @param хранит ссылку на объект .
      */
@@ -21,15 +24,17 @@ import java.util.List;
      * @param хранит ссылку на массив типа UserAction.
      */
     private List<UserAction> actions = new ArrayList<>();
+    private final Consumer<String> output;
 
     /**
      * Конструктор.
      * @param input   объект типа Input
      * @param tracker объект типа Tracker
      */
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
 
     /**
@@ -66,7 +71,7 @@ import java.util.List;
     public void show() {
         for (UserAction action : this.actions) {
             if (action != null) {
-                System.out.println(action.info());
+                output.accept(action.info());
             }
         }
     }
@@ -85,14 +90,14 @@ import java.util.List;
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Adding new item --------------");
+            output.accept("------------ Adding new item --------------");
             String name = input.ask("Please, provide item name:");
             String desc = input.ask("Please, provide item description:");
             Item item = new Item(name, desc);
             tracker.add(item);
-            System.out.println("------------ New Item with Id : " + item.getId());
-            System.out.println("------------ New Item with Name : " + item.getName());
-            System.out.println("------------ New Item with Description : " + item.getDescription());
+            output.accept("------------ New Item with Id : " + item.getId());
+            output.accept("------------ New Item with Name : " + item.getName());
+            output.accept("------------ New Item with Description : " + item.getDescription());
         }
 
     }
@@ -114,10 +119,10 @@ import java.util.List;
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ All Items --------------");
+            output.accept("------------ All Items --------------");
             for (Item item : tracker.findAll()) {
                 if (item != null) {
-                    System.out.println("Item with name:" + item.getName() + " " + "ID :" + item.getId());
+                    output.accept("Item with name:" + item.getName() + " " + "ID :" + item.getId());
                 }
             }
         }
@@ -141,7 +146,7 @@ import java.util.List;
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Edit item --------------");
+            output.accept("------------ Edit item --------------");
             String id = input.ask("Initiate Item's id :");
             Item item = tracker.findById(id);
             if (item != null) {
@@ -149,9 +154,9 @@ import java.util.List;
                 item.setName(newName);
                 String newDesc = input.ask("Initiate new description :");
                 item.setDescription(newDesc);
-                System.out.println("Item with new name" + item.getName() + "Item with new desc" + item.getDescription());
+                output.accept("Item with new name" + item.getName() + "Item with new desc" + item.getDescription());
             } else {
-                System.out.println("Item by Id" + id + "not found");
+                output.accept("Item by Id" + id + "not found");
             }
         }
     }
@@ -170,12 +175,12 @@ import java.util.List;
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("---------Removing  -------");
+            output.accept("---------Removing  -------");
             String id = input.ask("Initiate item's id :");
             if (tracker.delete(id)) {
-                System.out.println("Item removed");
+                output.accept("Item removed");
             } else {
-                System.out.println("Item by Id" + id + "not found");
+                output.accept("Item by Id" + id + "not found");
             }
         }
     }
@@ -194,13 +199,13 @@ import java.util.List;
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("---------Finding item by ID -------");
+            output.accept("---------Finding item by ID -------");
             String id = input.ask("Initiate item's id :");
             Item item = tracker.findById(id);
             if (item != null) {
-                System.out.println("Item's name :" + item.getName());
+                output.accept("Item's name :" + item.getName());
             } else {
-                System.out.println("Item by Id" + id + "not found");
+                output.accept("Item by Id" + id + "not found");
             }
         }
     }
@@ -222,16 +227,16 @@ import java.util.List;
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("---------Finding item by Name -------");
+            output.accept("---------Finding item by Name -------");
             String name = input.ask("Initiate item's name :");
             List<Item> items = tracker.findByName(name);
             for (Item item : items) {
-                System.out.println("Item's name :" + item.getName() + " " + "ID :" + item.getId());
+                output.accept("Item's name :" + item.getName() + " " + "ID :" + item.getId());
             }
         }
     }
     /**
-     *  Класс - пункт подменю выход из главного меню
+     *      Класс - пункт подменю выход из главного меню
      */
     class ExitProgram extends BaseAction {
         /**
