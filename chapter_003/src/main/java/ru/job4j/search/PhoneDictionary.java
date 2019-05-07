@@ -1,6 +1,8 @@
 package ru.job4j.search;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * PhoneDictionary.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -25,12 +27,8 @@ public class PhoneDictionary {
      * @return Список подощедщих пользователей.
      */
     public List<Person> find(String key) {
-        List<Person> result = new ArrayList<>();
-        for (Person person: persons) {
-            if (person.getName().contains(key) || person.getSurname().contains(key) || person.getPhone().contains(key) || person.getAddress().contains(key)) {
-                result.add(person);
-            }
-        }
-        return result;
+         return persons.stream().filter(
+                person -> person.getName().contains(key) || person.getSurname().contains(key) || person.getPhone().contains(key) || person.getAddress().contains(key)
+        ).collect(Collectors.toList());
     }
 }

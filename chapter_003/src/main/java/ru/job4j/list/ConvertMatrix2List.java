@@ -1,6 +1,9 @@
 package ru.job4j.list;
-import java.util.ArrayList;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *  ConvertMatrix2List.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -14,13 +17,7 @@ public class ConvertMatrix2List {
      * @return list - коллекция (список).
      */
     public List<Integer> toList(int[][] array) {
-        List<Integer> list = new ArrayList<>();
-        for (int[] i : array) {
-            for (int j : i) {
-                list.add(j);
-            }
-        }
-        return list;
+        return  Arrays.stream(array).flatMapToInt(Arrays::stream).boxed().collect(Collectors.toList());
     }
 }
 

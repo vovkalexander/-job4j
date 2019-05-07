@@ -1,6 +1,7 @@
 package ru.job4j.list;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * ConvertList2Array.
@@ -35,13 +36,7 @@ public class ConvertList2Array {
      * @return catalogue - список, хранит множество типа Integer.
      */
     public List<Integer> convert(List<int[]> list) {
-        List<Integer> catalogue = new ArrayList<>();
-        for (int[] ints : list) {
-            for (int i : ints) {
-                catalogue.add(i);
-            }
-        }
-        return catalogue;
+        return list.stream().flatMapToInt(Arrays::stream).boxed().collect(Collectors.toList());
     }
 }
 
