@@ -1,5 +1,8 @@
 package ru.job4j.bank;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 /**
  * Bank.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -31,38 +34,28 @@ public class Bank {
      * @param account счет пользователя.
      */
     public void addAccountToUser(String passport, Account account) {
-        for (User user : this.userBank.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                this.userBank.get(user).add(account);
-            }
-        }
+        userBank.keySet().stream().filter(user -> user.getPassport().contains(passport)).forEach(user ->
+                 this.userBank.get(user).add(account));
     }
+
     /**
      * Метод - удаляет значение у пользователя в отображение.
      * @param passport  пользователя.
      * @param account счет пользователя.
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        for (User user : this.userBank.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                this.userBank.get(user).remove(account);
-            }
+        userBank.keySet().stream().filter(user -> user.getPassport().contains(passport)).forEach(user ->
+                this.userBank.get(user).remove(account));
         }
-    }
+
     /**
      * Метод - находит значение по ключу - пользователь в отображение.
      * @param passport  пользователя.
      * @return список счетов пользователя.
      */
     public List<Account> getUserAccounts(String passport) {
-        List<Account> list = new ArrayList<>();
-        for (User user : this.userBank.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                list = this.userBank.get(user);
-                break;
-            }
-        }
-        return list;
+        return this.userBank.keySet().stream().filter(user -> user.getPassport().contains(passport)).map(
+                user -> this.userBank.get(user)).findFirst().orElse(null);
     }
     /**
      * Метод - преводит сумму с счета на счет.
@@ -99,7 +92,8 @@ public class Bank {
                 result = user;
             }
         }
-        return result;
+        return this.userBank.keySet().stream().filter(user -> user.getPassport().contains(passport)
+        ).findFirst().orElse(null);
     }
     /**
      * Метод - находит  значение-счет в отображение.
@@ -108,13 +102,8 @@ public class Bank {
      * @return счет  пользователя по реквизитам.
      */
     public Account getAccount(User user, String requisite) {
-        Account result = null;
-        for (Account account : this.userBank.get(user)) {
-            if (account.getReqs().equals(requisite)) {
-                result = account;
-            }
-        }
-        return result;
+        return this.userBank.get(user).stream().filter(account -> account.getReqs().contains(requisite)).
+                findFirst().orElse(null);
     }
     /**
      * Метод - возвращает отображение.
