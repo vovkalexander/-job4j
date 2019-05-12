@@ -1,12 +1,16 @@
 package ru.job4j.tracker;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
 /**
  * Tracker.
  * @author Vovk Alexander  vovk.ag747@gmail.com
  * @version $Id$
  * @since 0.1
  */
-
 public class Tracker {
     /**
      * Массив для хранение заявок.
@@ -75,9 +79,7 @@ public class Tracker {
      */
     public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
-        for (Item item: items) {
-            result.add(item);
-        }
+        items.stream().forEach(item -> result.add(item));
         return result;
     }
     /**
@@ -86,15 +88,8 @@ public class Tracker {
      * return список заявок(массив) с именим key.
      */
     public List<Item> findByName(String key) {
-        List<Item> result =  new ArrayList<>();
-        for (Item item : items) {
-            if (item.getName().contains(key)) {
-                result.add(item);
-            }
-        }
-        return result;
+        return items.stream().filter(item -> item.getName().contains(key)).collect(Collectors.toList());
     }
-
     /**
      * Находит заявку по ID.
      * @param id заявки.
