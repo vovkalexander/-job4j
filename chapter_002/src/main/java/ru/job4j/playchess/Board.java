@@ -1,4 +1,7 @@
 package ru.job4j.playchess;
+
+import java.util.stream.IntStream;
+
 /**
  * Board - описывает шахматную доску.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -50,17 +53,8 @@ public class Board {
      * @throws FigureNotFoundException Выбрасывает исключение, если в начальной позиции нет фигуры.
      */
     public int findBy(Cell sourse) throws FigureNotFoundException {
-        int rst = -1;
-        for (int index = 0; index < this.figures.length; index++) {
-            if (figures[index] != null && figures[index].position.x == sourse.x && figures[index].position.y == sourse.y) {
-                rst = index;
-                break;
-            }
-        }
-        if (rst == -1) {
-            throw new FigureNotFoundException("На клетке отсутсвует фигура");
-        }
-        return rst;
+        return IntStream.range(0,this.figures.length).filter(index ->figures[index] != null && figures[index].position.x == sourse.x
+                && figures[index].position.y == sourse.y).findFirst().orElseThrow(() -> new  FigureNotFoundException("На клетке отсутсвует фигура"));
     }
     /**
      * Метод проверяет, свободен ли путь движения фигуры.
