@@ -1,7 +1,6 @@
 package ru.job4j.list;
 import org.junit.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -16,7 +15,7 @@ public class ConvertList2ArrayTest {
     @Test
     public void when7ElementsThen9() {
         ConvertList2Array list = new ConvertList2Array();
-        int[][] result = list.toArray(Arrays.asList(1, 2, 3, 4, 5, 6, 7), 3);
+        int[][] result = list.toArray(List.of(1, 2, 3, 4, 5, 6, 7), 3);
         int[][] expect = {
                 {1, 2, 3},
                 {4, 5, 6},
@@ -27,7 +26,7 @@ public class ConvertList2ArrayTest {
     @Test
     public void when9ElementsThen10() {
         ConvertList2Array list = new ConvertList2Array();
-        int[][] result = list.toArray(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9), 5);
+        int[][] result = list.toArray(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9), 5);
         int[][] expect = {
                 {1, 2},
                 {3, 4},
@@ -40,11 +39,11 @@ public class ConvertList2ArrayTest {
     @Test
     public void whenConvert6ElementsThenHave6SequentialElements() {
         ConvertList2Array convertList = new ConvertList2Array();
-        List<int[]> list = new ArrayList<>();
-        list.add(new int[]{1, 2});
-        list.add(new int[]{3, 4, 5, 6});
+        List<int[]> list = List.of(
+        new int[]{1, 2},
+        new int[]{3, 4, 5, 6});
         List<Integer> result = convertList.convert(list);
-        List<Integer> expect = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> expect = List.of(1, 2, 3, 4, 5, 6);
         assertThat(result, is(expect));
     }
 }

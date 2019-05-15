@@ -1,10 +1,11 @@
 package ru.job4j.list;
 import org.junit.Test;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
-import static org.junit.Assert.assertThat;
+
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 /**
  * Test.
  * @author Vovk Alexander (vovk.ag747@gmail.com)
@@ -15,10 +16,10 @@ public class UserConvertTest {
     @Test
     public void whenConvert3elementsOfListThen3ElementsOfHashMap() {
         UserConvert convert = new UserConvert();
-        List<User> list = new ArrayList<>();
-        list.add(new User(3, "Hoolio", "de Pantalones"));
-        list.add(new User(8, "Jkаkashi", "Nagano"));
-        list.add(new User(2, "Kuzmitch", "Herson"));
+        List<User> list = List.of(
+        new User(3, "Hoolio", "de Pantalones"),
+        new User(8, "Jkаkashi", "Nagano"),
+        new User(2, "Kuzmitch", "Herson"));
         HashMap<Integer, User> result = convert.process(list);
         assertThat(result.get(8).getName(), is("Jkаkashi"));
     }
