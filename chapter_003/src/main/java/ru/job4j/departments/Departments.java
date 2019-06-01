@@ -60,9 +60,17 @@ public class Departments {
         Set<String> reverseSort = new TreeSet<> (new Comparator<String>(){
             @Override
             public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
+                int letter = 0;
+                int i = 0;
+                for ( i = 0; i < Math.min(o1.length(), o2.length()); i++) {
+                    letter = Character.compare(o2.charAt(i), o1.charAt(i));
+                    if (letter != 0) {
+                        return letter;
+                    }
+                }
+                return Integer.compare(o1.length(), o2.length());
             }
-        }.reversed());
+        });
         reverseSort.addAll(straightSort);
         return new ArrayList<>(reverseSort);
     }
