@@ -14,11 +14,11 @@ public class MatrixIterator implements Iterator {
     /**
      * Поле - хранит счетчик по строке массива.
      */
-    private int i = 0;
+    private int row = 0;
     /**
      * Поле - хранит счетчик по столбцу массива.
      */
-    private int j = 0;
+    private int cell = 0;
     /**
      * Конструктор для активации поля.
      * @param values двумерный массив.
@@ -31,7 +31,7 @@ public class MatrixIterator implements Iterator {
      * @return логический вывод.
      */
     public boolean hasNext() {
-        return i < values.length && j < values[i].length;
+        return row < values.length && cell < values[row].length;
     }
     /**
      * Метод возращает элемент массива и переводит каретку на одну позицию вперед.
@@ -39,13 +39,13 @@ public class MatrixIterator implements Iterator {
      */
     public Object next() {
         int rst;
-        if (values[i].length == j + 1) {
-            rst = values[i][j];
-            j = 0;
-            i++;
+        if (values[row].length == cell + 1) {
+            rst = values[row][cell];
+            cell = 0;
+            row++;
         } else {
-            rst = values[i][j];
-            j++;
+            rst = values[row][cell];
+            cell++;
         }
         return rst;
     }
