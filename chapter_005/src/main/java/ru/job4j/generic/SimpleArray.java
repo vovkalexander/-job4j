@@ -34,18 +34,18 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param position позиция массива.
      */
     public T get(int position) {
-        if (index >= this.objects.length) {
+        if (position >= index) {
             throw new ArrayIndexOutOfBoundsException();
         }
         return (T) this.objects[position];
     }
     /**
      * Метод - заменяет один элемент массива на другой.
-     * @param index позиция массива.
+     * @param i позиция массива.
      * @param model новое значение.
      */
-    public void  set(int index, T model) {
-        if (index >= this.objects.length) {
+    public void  set(int i, T model) {
+        if (i >= index) {
             throw new ArrayIndexOutOfBoundsException();
         }
         this.objects[index] = model;
@@ -56,8 +56,9 @@ public class SimpleArray<T> implements Iterable<T> {
      */
     public void remove (int i) {
         final int newSize;
-        if ((newSize = objects.length - 1) > i) {
+        if ((newSize = index - 1) > i) {
             System.arraycopy(this.objects, i + 1, objects, i, newSize - i);
+            index--;
         }
     }
     /**
