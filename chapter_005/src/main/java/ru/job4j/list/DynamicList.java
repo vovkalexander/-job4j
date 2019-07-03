@@ -1,5 +1,6 @@
 package ru.job4j.list;
 import java.util.ConcurrentModificationException;
+import java.util.NoSuchElementException;
 import java.util.Iterator;
 /**
  * DynamicList.
@@ -37,6 +38,14 @@ public class DynamicList<E> implements Iterable<E> {
      * @param  value значение.
      */
     public void add(E value) {
+        ensureCapacity();
+        container[index++] = value;
+        modCount++;
+    }
+    /**
+     * Метод - увеличивает размер  массива при заполнении.
+     */
+    private void ensureCapacity(){
         if (index + 1 == size) {
             size *= 2;
             E[] newContainer = (E[])  new Object[size];
@@ -45,8 +54,6 @@ public class DynamicList<E> implements Iterable<E> {
                 container = newContainer;
             }
         }
-        container[index++] = value;
-        modCount++;
     }
     /**
      * Метод - возвращает элемент  массива.
@@ -77,6 +84,9 @@ public class DynamicList<E> implements Iterable<E> {
             }
             @Override
             public E next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
                 return (E) container[position++];
             }
         };
