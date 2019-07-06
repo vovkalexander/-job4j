@@ -14,7 +14,7 @@ public class SimpleStack<E> {
      * Конструктор для активации ссылки.
      * @param link  ссылка на объект.
      */
-    public SimpleStack(DynamicLinkedList<E> link ){
+    public SimpleStack(DynamicLinkedList<E> link) {
         this.link = new DynamicLinkedList<E>();
     }
     /**

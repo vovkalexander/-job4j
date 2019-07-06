@@ -68,19 +68,12 @@ public class DynamicLinkedList<E> implements Iterable<E> {
      * @return возвращает значение.
      */
     public E deleteLast() {
-        E temp = null;
-        if (size > 2) {
-            temp = last.data;
+        E temp = last.data;
+        if (size >= 2) {
+            last.previous.next = null;
             last = last.previous;
-            last.next = null;
-            size--;
-        } else if (size == 2) {
-            temp = last.data;
-            last = last.previous;
-            first = last;
             size--;
         } else if (size == 1) {
-            temp = last.data;
             first = null;
             last = null;
             size--;
