@@ -64,6 +64,21 @@ public class DynamicLinkedList<E> implements Iterable<E> {
         return this.size;
     }
     /**
+     * Метод удаляет первый элемент коллекции.
+     * @return возвращает значение.
+     */
+    public E deleteFirst() {
+        E temp = first.data;
+        if(first.next == null) { // Если только один элемент
+            first = null;
+        } else {
+            first.next.previous = null;
+            first = first.next;
+        }
+        size--;
+        return temp;
+    }
+    /**
      * Метод удаляет элемент коллекции.
      * @return возвращает значение.
      */
@@ -84,7 +99,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
     /**
      * Node<E> Класс предназначен для хранения данных.
      */
-   public static class Node<E> {
+    public static class Node<E> {
         /**
          * Поле - хранит данные.
          */
