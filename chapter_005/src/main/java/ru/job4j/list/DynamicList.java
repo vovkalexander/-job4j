@@ -63,6 +63,19 @@ public class DynamicList<E> implements Iterable<E> {
         return (E) container[index];
     }
     /**
+     * Метод - проверяет наличие элемента в  массиве.
+     * @param value значение.
+     * @return логический вывод.
+     */
+    public boolean contains(E value) {
+        for (int i = 0; i < index; i++) {
+            if(value.equals(container[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
      * Метод - возвращает массив.
      */
     public Object[] get() {
