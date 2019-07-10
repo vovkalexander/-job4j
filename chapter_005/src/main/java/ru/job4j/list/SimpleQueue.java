@@ -7,28 +7,28 @@ package ru.job4j.list;
  */
 public class SimpleQueue<E> {
     /**
-     * Поле - хранит ссылку на  объект.
+     * Поле - хранит объект класса stack
      */
-    SimpleStack<E> stack;
+   private SimpleStack<E> inner = new SimpleStack<E>(new DynamicLinkedList<>());
     /**
-     * Конструктор для активации ссылки.
-     * @param stack ссылка на объект.
+     * Поле - хранит объект класса stack
      */
-    public SimpleQueue(SimpleStack<E> stack) {
-        this.stack = stack;
+   private SimpleStack<E> external = new SimpleStack<E>(new DynamicLinkedList<>());
+    /**
+     * Метод - добавляет элемент в очерьдь.
+     * @param value значение.
+     */
+    public void push(E value) {
+        inner.push(value);
     }
     /**
-     * Метод - добавляет элемент в список.
-     * @param  value значение.
-     */
-    public void push(E value){
-     stack.push(value);
-    }
-    /**
-     * Метод - удаляет элемент из списока и возвращает.
+     * Метод - удаляет элемент из списока и возвращает его.
      * @return значение.
      */
     public E poll() {
-        return stack.link.deleteFirst();
+        while (!inner.isEmpty()) {
+            external.push(inner.poll());
+        }
+        return external.poll();
     }
 }
