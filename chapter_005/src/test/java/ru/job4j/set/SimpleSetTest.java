@@ -33,4 +33,13 @@ public class SimpleSetTest {
         assertThat(it.next(), is(2));
         it.next();
     }
+    @Test
+    public void whenSetContainsNullElementThenOnlyOneNullElement() {
+        SimpleSet set = new SimpleSet();
+        set.add(1);
+        set.add(null);
+        set.add(1);
+        assertThat(set.list.get(0), is(1));
+        assertNull(set.list.get(2));
+    }
 }

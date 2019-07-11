@@ -17,7 +17,14 @@ public class SimpleSet<E> implements Iterable<E> {
      * @param  value значение.
      */
     public void add(E value) {
-        if (!list.contains(value)) {
+        boolean rst = false;
+        for (E elem : this.list) {
+            if (elem.equals(value)) {
+                rst = true;
+                break;
+            }
+        }
+        if (!rst) {
             list.add(value);
         }
     }
