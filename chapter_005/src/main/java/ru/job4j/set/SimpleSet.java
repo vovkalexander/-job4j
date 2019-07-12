@@ -13,18 +13,11 @@ public class SimpleSet<E> implements Iterable<E> {
      */
     DynamicList<E> list = new DynamicList<>(10);
     /**
-     * Метод - уникальный элемент в множества.
+     * Метод - добавляет уникальный элемент в множества.
      * @param  value значение.
      */
     public void add(E value) {
-        boolean rst = false;
-        for (E elem : this.list) {
-            if (elem.equals(value)) {
-                rst = true;
-                break;
-            }
-        }
-        if (!rst) {
+        if (!list.contains(value)) {
             list.add(value);
         }
     }

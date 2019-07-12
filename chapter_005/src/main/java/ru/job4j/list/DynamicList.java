@@ -1,7 +1,6 @@
 package ru.job4j.list;
-import java.util.ConcurrentModificationException;
-import java.util.NoSuchElementException;
-import java.util.Iterator;
+import java.util.*;
+
 /**
  * DynamicList.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -45,7 +44,7 @@ public class DynamicList<E> implements Iterable<E> {
     /**
      * Метод - увеличивает размер  массива при заполнении.
      */
-    private void ensureCapacity(){
+    private void ensureCapacity() {
         if (index + 1 == size) {
             size *= 2;
             E[] newContainer = (E[])  new Object[size];
@@ -69,7 +68,7 @@ public class DynamicList<E> implements Iterable<E> {
      */
     public boolean contains(E value) {
         for (int i = 0; i < index; i++) {
-            if(value.equals(container[i])) {
+            if (Objects.equals(value, container[i])) {
                 return true;
             }
         }

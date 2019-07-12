@@ -38,8 +38,8 @@ public class SimpleSetTest {
         SimpleSet set = new SimpleSet();
         set.add(1);
         set.add(null);
-        set.add(1);
+        set.add(2);
         assertThat(set.list.get(0), is(1));
-        assertNull(set.list.get(2));
+        assertThat(set.list.get(2), is(2));
     }
 }
