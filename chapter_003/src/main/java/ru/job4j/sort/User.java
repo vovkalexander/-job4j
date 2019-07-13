@@ -28,7 +28,6 @@ public class User implements Comparable<User> {
 
     /**
      * Метод возвращает имя пользователя.
-     *
      * @return имя пользователя.
      */
     public String getName() {
@@ -37,7 +36,6 @@ public class User implements Comparable<User> {
 
     /**
      * Метод возвращает возраст пользователя.
-     *
      * @return имя пользователя.
      */
     public int getAge() {
