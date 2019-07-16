@@ -20,7 +20,8 @@ public class UserTest {
         Map<User, Object> map = new HashMap<>();
         map.put(user1,"first");
         map.put(user2,"second");
-        assertThat(user1.hashCode(), is(user2.hashCode()));
-        assertThat(user1.equals(user2), is (false));
+        assertThat(user1.hashCode() == user2.hashCode(), is (false));
+        assertThat(user1.equals(user2), is (true));
+        assertThat(map.size(), is(2));
     }
 }

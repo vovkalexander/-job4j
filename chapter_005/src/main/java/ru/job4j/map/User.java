@@ -52,11 +52,22 @@ public class User {
     public Calendar getBirthday() {
         return birthday;
     }
+    // @Override
+    //public int hashCode() {
+    //int result = name != null ? name.hashCode() : 0;
+    //result = 31 * result + children;
+    //result = 31 * result + (birthday!= null ? birthday.hashCode() : 0);
+    //return result;
+    //}
     @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + children;
-        result = 31 * result + (birthday!= null ? birthday.hashCode() : 0);
-        return result;
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return (this.name.equals(user.name) && this.children == user.children && this.birthday.equals(user.birthday));
     }
 }
