@@ -51,4 +51,10 @@ public class SimpleHashMapTest {
         assertThat(it.next(), is("Jordan"));
         it.next();
     }
+    @Test
+    public void whenElementsHaveTheSameHashCodeThenReplaceValue() {
+        assertThat(map.insert(23,"Jordan"), is(true));
+        assertThat(map.insert(23,"Lebron"), is(false));
+        assertThat(map.get(23), is("Lebron"));
+    }
 }

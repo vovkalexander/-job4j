@@ -12,7 +12,7 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
     /**
      * Поле - хранит массив.
      */
-    private Entry<K,V>[] table;
+    private  Entry<K,V>[] table;
     /**
      * Поле - хранит размер массива.
      */
@@ -58,6 +58,11 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
             count++;
             modCount++;
             return true;
+        } else {
+            if (key.equals(table[index].key)) {
+                V old = element.value;
+                element.value = value;
+            }
         }
         return  false;
     }
@@ -126,21 +131,18 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
                 if (this.expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                boolean result = false;
-                while (position < table.length && table[position] != null) {
+                while (position < table.length && table[position] == null) {
                     position++;
                 }
                 return position < table.length;
             }
             @Override
             public V next() {
-                while (position < table.length && table[position] == null) {
-                    position++;
-                }
-                if (position >= table.length) {
+                if (hasNext()) {
+                    return table[this.position++].value;
+                } else {
                     throw new NoSuchElementException();
                 }
-                return (V) table[position++].value;
             }
         };
     }
@@ -150,7 +152,7 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
      * @version $Id$
      * @since 0.1
      */
-    private class Entry<K,V> {
+   private class Entry<K,V> {
         /**
          * Поле - хранит массив.
          */
