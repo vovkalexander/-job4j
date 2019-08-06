@@ -3,9 +3,25 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.Queue;
-
+/**
+ * Tree.
+ * @author Vovk Alexander  vovk.ag747@gmail.com
+ * @version $Id$
+ * @since 0.1
+ */
 public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
+    /**
+     * Поле - хранит начальный узел дерева.
+     */
     Node<E> root;
+    /**
+     * Поле - хранит количество узлов.
+     */
+    int count = 1;
+    /**
+     * Конструктор для корневого узла с значением.
+     * @param value значение.
+     */
     public Tree(E value) {
         this.root = new Node<>(value);
     }
@@ -14,6 +30,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         Optional<Node<E>> newNode = findBy(parent);
         if (newNode.isPresent()) {
             newNode.get().add(new Node<>(child));
+            count++;
             return true;
         }
         return false;
@@ -38,14 +55,40 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
+            Queue<Node<E>> queue = new LinkedList<>();
+            Queue<Node<E>> line = new LinkedList<>();
+            int currentCount;
             @Override
             public boolean hasNext() {
-                return false;
+                queue.offer(root);
+                while (!queue.isEmpty()) {
+                    Node<E> el = queue.poll();
+                    if (el != null) {
+                        line.offer(el);
+                    }
+                    for (Node<E> child : el.leaves()) {
+                        queue.add(child);
+                    }
+                }
+                currentCount = line.size();
+                System.out.println(currentCount);
+                return currentCount-- != 0;
             }
-
             @Override
             public E next() {
-                return null;
+                queue.offer(root);
+                while (!queue.isEmpty()) {
+                    Node<E> el = queue.poll();
+
+                    if (el != null) {
+                        line.offer(el);
+                    }
+
+                    for (Node<E> child : el.leaves()) {
+                        queue.offer(child);
+                    }
+                }
+                return line.poll().getValue();
             }
         };
     }
