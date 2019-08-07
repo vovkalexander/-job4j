@@ -1,8 +1,6 @@
 package ru.job4j.tree;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.*;
+
 /**
  * Tree.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -55,40 +53,19 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Queue<Node<E>> queue = new LinkedList<>();
-            Queue<Node<E>> line = new LinkedList<>();
-            int currentCount;
+            Queue<Node<E>> queue = new LinkedList<>(Collections.singletonList(root));
             @Override
             public boolean hasNext() {
-                queue.offer(root);
-                while (!queue.isEmpty()) {
-                    Node<E> el = queue.poll();
-                    if (el != null) {
-                        line.offer(el);
-                    }
-                    for (Node<E> child : el.leaves()) {
-                        queue.add(child);
-                    }
-                }
-                currentCount = line.size();
-                System.out.println(currentCount);
-                return currentCount-- != 0;
+                return !queue.isEmpty();
             }
             @Override
             public E next() {
-                queue.offer(root);
-                while (!queue.isEmpty()) {
-                    Node<E> el = queue.poll();
-
-                    if (el != null) {
-                        line.offer(el);
-                    }
-
-                    for (Node<E> child : el.leaves()) {
-                        queue.offer(child);
-                    }
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
                 }
-                return line.poll().getValue();
+                Node<E> poll = queue.poll();
+                queue.addAll(poll.leaves());
+                return poll.getValue();
             }
         };
     }

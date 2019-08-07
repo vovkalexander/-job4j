@@ -34,7 +34,6 @@ public class TreeTest {
         tree.add(1, 4);
         tree.add(4, 5);
         tree.add(5, 6);
-
         assertThat(tree.iterator().hasNext(), is(true));
         assertThat(tree.iterator().next(), is(1));
         assertThat(tree.iterator().hasNext(), is(true));
