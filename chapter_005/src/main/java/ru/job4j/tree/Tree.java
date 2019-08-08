@@ -50,6 +50,20 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         }
         return rsl;
     }
+    /**
+     * Метод - проверяет наличие бинарного дерева.
+     * @return логический вывод.
+     */
+    public boolean isBinary() {
+        NodeItr it = new NodeItr();
+        while (it.hasNext()) {
+            Node<E> node = it.next();
+            if(node.leaves().size() > 2) {
+                return false;
+            }
+        }
+        return true;
+    }
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
@@ -67,6 +81,29 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
                 queue.addAll(poll.leaves());
                 return poll.getValue();
             }
+
         };
+    }
+    /**
+     * NodeItr - внутренний класс (возвращающий узел в next)
+     * @author Vovk Alexander  vovk.ag747@gmail.com
+     * @version $Id$
+     * @since 0.1
+     */
+    private class NodeItr implements Iterator<Node<E>> {
+        Queue<Node<E>> queue = new LinkedList<>(Collections.singletonList(root));
+        @Override
+        public boolean hasNext() {
+            return !queue.isEmpty();
+        }
+        @Override
+        public Node<E> next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            Node<E> poll = queue.poll();
+            queue.addAll(poll.leaves());
+            return poll;
+        }
     }
 }
