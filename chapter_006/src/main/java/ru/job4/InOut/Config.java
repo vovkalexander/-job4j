@@ -11,6 +11,7 @@ import java.util.StringJoiner;
  * @since 0.1
  */
 public class Config {
+
     /**
      * Поле - хранит путь к файлу.
      */
@@ -50,6 +51,7 @@ public class Config {
      * @return  value - значение.
      */
     public String value(String key)  throws ValueNotFoundException {
+
         String value = values.get(key);
         if (value != null) {
             return value;

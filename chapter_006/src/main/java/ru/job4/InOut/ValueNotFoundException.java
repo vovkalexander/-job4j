@@ -9,6 +9,7 @@ public class ValueNotFoundException extends Exception {
     /**
      * Метод реализаущий запрос параметров пользователя.
      * @param msg - сообщение на консоль о наличие исключения.
+
      */
     public ValueNotFoundException(String msg) {
         super(msg);

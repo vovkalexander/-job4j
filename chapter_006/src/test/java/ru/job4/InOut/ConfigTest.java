@@ -9,6 +9,7 @@ import static org.junit.Assert.assertThat;
  * @version $Id$
  * @since 0.1
  */
+
 public class ConfigTest {
     Config config;
     @Before
@@ -26,6 +27,7 @@ public class ConfigTest {
         assertThat(config.value("hibernate.connection.username"), is ("postgres"));
         assertThat(config.value("hibernate.connection.password"), is ("password"));
     }
+
     @Test(expected = ValueNotFoundException.class)
     public void whenKeyOfArrayNotEqualsValueThenException() throws ValueNotFoundException {
         Config config = new Config("C:\\projects\\student\\Vovk Alexander\\-job4j\\app.properties");
