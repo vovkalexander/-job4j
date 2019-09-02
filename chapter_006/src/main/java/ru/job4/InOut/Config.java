@@ -51,12 +51,10 @@ public class Config {
      * @return  value - значение.
      */
     public String value(String key)  throws ValueNotFoundException {
-
-        String value = values.get(key);
-        if (value != null) {
-            return value;
+        if (values.get(key) == null) {
+            throw new ValueNotFoundException("Don't impl this method yet!");
         }
-        throw new ValueNotFoundException("Don't impl this method yet!");
+        return values.get(key);
     }
     /**
      * Метод - возвращает хеш таблицу.
