@@ -1,6 +1,5 @@
 package ru.job4j.tree;
 import java.util.*;
-
 /**
  * Tree.
  * @author Vovk Alexander  vovk.ag747@gmail.com
