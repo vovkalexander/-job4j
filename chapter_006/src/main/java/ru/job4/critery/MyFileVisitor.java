@@ -15,44 +15,58 @@ public class MyFileVisitor extends SimpleFileVisitor<Path> {
     /**
      * Поле - хранит ссылку класса Arg.
      */
-    Arg arg;
-    /**
-     * Поле - хранит начальный путь файла поиска.
-     */
-    String setup;
+    private  Arg arg;
     /**
      * Поле - список файлов результа поиска.
      */
-    List<String> list = new ArrayList<>();
+    private List<String> list = new ArrayList<>();
     /**
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
     public MyFileVisitor(String[] args) throws IOException {
         arg = new Arg(args);
-        setup = arg.directory();
         arg.chooseCategory();
     }
     /**
-     * Метод - возвращает список файлов после выбронной категории пользователя и записывает в файл.
+     * Метод - возвращает путь начального файла поиска.
+     * @return  начальный файл поиска.
+     */
+    public String getSetup() {
+        return arg.getMap().get("direct");
+    }
+    /**
+     * Метод - возвращает список файлов.
+     * @return  список файлов.
+     */
+    public List<String> getList() {
+        return this.list;
+    }
+    /**
+     * Метод - возвращает список файлов после выбронной категории пользователя.
      * @param  path - начальный путь файла поиска
      * @param  attribs - тип атрибута файла no указанному пути.
      * @return   список файлов результата.
      */
     public FileVisitResult visitFile(Path path, BasicFileAttributes attribs) throws IOException {
         String stg;
-        if ((stg = path.toString()).contains(arg.getName())) {
+        if ((stg = path.toString()).contains(arg.getMap().get("name"))) {
             list.add(stg);
         } else {
-            if (Pattern.compile(arg.getName()).matcher(stg).find()) {
+            if (Pattern.compile(arg.getMap().get("name")).matcher(stg).find()) {
                 list.add(stg);
             }
         }
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(arg.getOutput()))) {
-            for (String string : list) {
+        return FileVisitResult.CONTINUE;
+    }
+    /**
+     * Метод - записывает список файлов в удаленный файл.
+     */
+    public void write() throws IOException  {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(arg.getMap().get("output")))) {
+            for (String string : this.list) {
                 out.write(string + System.lineSeparator());
             }
         }
-        return FileVisitResult.CONTINUE;
     }
 }

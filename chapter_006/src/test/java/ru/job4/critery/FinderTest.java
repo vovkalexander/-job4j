@@ -23,7 +23,6 @@ public class FinderTest {
         String str = "-f";
         int size = 1;
         test(str,size);
-
     }
     @Test
     public void whenChoiceOfRegExpThenSearchByRegExp()  throws IOException {
@@ -45,16 +44,16 @@ public class FinderTest {
     public void test(String str, int number) throws IOException {
         ByteArrayInputStream in = new ByteArrayInputStream(str.getBytes());
         System.setIn(in);
-        Finder finder = new Finder();
-        finder.search(args);
+        Finder finder = new Finder(args);
+        finder.search();
         List<String> expect = new ArrayList<>();
         String string;
-        try (BufferedReader read = new BufferedReader(new FileReader(finder.mfv.arg.getOutput()))) {
+        try (BufferedReader read = new BufferedReader(new FileReader(new Arg(args).getMap().get("output")))) {
             while ((string = read.readLine()) != null) {
                 expect.add(string);
             }
-            assertThat(finder.mfv.list.size(), is(number));
-            assertThat(finder.mfv.list.retainAll(expect), is(false));
+            assertThat(finder.getMfv().getList().size(), is(number));
+            assertThat(finder.getMfv().getList().retainAll(expect), is(false));
         }
     }
 }
