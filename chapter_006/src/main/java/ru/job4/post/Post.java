@@ -1,5 +1,8 @@
 package ru.job4.post;
 import java.util.*;
+
+import static java.util.Collections.disjoint;
+
 /**
  * Post.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -18,12 +21,15 @@ public class Post {
             User s = q.poll();
             Iterator<User> it = q.iterator();
             while (it.hasNext()) {
-                s.getEmailAdress().addAll(it.next().getEmailAdress());
+               User itPost = it.next();
+                if (!disjoint(s.getEmailAdress(), itPost.getEmailAdress()))
+                      s.getEmailAdress().addAll(itPost.getEmailAdress());
             }
         }
         return list;
     }
 }
+
 
 
 
