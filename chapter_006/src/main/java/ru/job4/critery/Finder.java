@@ -1,7 +1,9 @@
 package ru.job4.critery;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.util.List;
 /**
  * Finder.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -10,36 +12,50 @@ import java.nio.file.Paths;
  */
 public class Finder {
     /**
-     * Поле - хранит ссылку класса MyFileVisitor.
+     * Поле - хранит список файлов результа поиска.
      */
-    private  MyFileVisitor mfv;
+   private List<Path> result;
+    /**
+     * Поле - хранит ссылку класса Arg.
+     */
+    private Arg arg;
     /**
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
     public Finder (String[] args) throws IOException {
-        mfv = new MyFileVisitor(args);
+        arg = new Arg(args);
+        arg.chooseCategory();
     }
     /**
-     * Метод - возвращает ссылку класса MyFileVisitor.
-     * @return ссылка класса MyFileVisitor.
+     * Метод - поиска  файлов после выбронной категории пользователя и добавление в список.
      */
-    public MyFileVisitor getMfv() {
-        return this.mfv;
+    public void search() throws IOException {
+        PredicateFactory factory = new PredicateFactory();
+        Predicate predicate = factory.createSearch(arg.getMap().get("name"), arg);
+        result = predicate.execute(arg);
     }
     /**
-     * Метод - поиска  файлов после выбронной категории пользователя и записи в файл.
+     * Метод - записывает список файлов в удаленный файл.
      */
-    public void search() {
-        try {
-            Files.walkFileTree(Paths.get(mfv.getSetup()), mfv);
-            this.mfv.write();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void write() throws IOException  {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(arg.getMap().get("output")))) {
+            for (Path path : this.result) {
+                out.write(path + System.lineSeparator());
+            }
         }
     }
+    /**
+     * Метод - возвращает список файлов.
+     * @return  список файлов.
+     */
+    public List<Path> getList() {
+        return this.result;
+    }
+
     public static void main(String[] args) throws IOException {
         Finder find = new Finder(args);
         find.search();
+        find.write();
     }
 }
