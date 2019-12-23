@@ -16,16 +16,17 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     /**
      * Поле - хранит логирование для регистрации сообщений.
      */
-    private static final Logger Log = LoggerFactory.getLogger(TrackerSQL.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TrackerSQL.class);
     /**
      * Поле - хранит ссылку для соединения с баззой данных.
      */
     private Connection connection;
     /**
      * Конструктор для активации подключения к базе данных.
+     * @param connection - ссылка на класс Connection;
      */
-    public TrackerSQL() {
-        init();
+    public TrackerSQL(Connection connection) {
+        this.connection = connection;
     }
     /**
      * Метод реализаущий подключение к базе данных.
@@ -52,7 +53,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      */
     @Override
     public Item add(Item item) {
-        try (PreparedStatement st = this.connection.prepareStatement("insert into item (name, description, created) VALUES (?, ?, ?) ",
+        try (PreparedStatement st = this.connection.prepareStatement("insert into items (names, description, created) VALUES (?, ?, ?) ",
                 Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, item.getName());
             st.setString(2, item.getDescription());
@@ -63,7 +64,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                 item.setId(generatedKeys.getString(1));
             }
         } catch (Exception e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
         return item;
     }
@@ -76,7 +77,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public boolean replace(String id, Item item) {
         boolean rst = false;
-        try (PreparedStatement st = this.connection.prepareStatement("UPDATE item Set name = ?, description = ?, created = ? where id_item = ? ")) {
+        try (PreparedStatement st = this.connection.prepareStatement("UPDATE items Set names = ?, description = ?, created = ? where id_items = ? ")) {
             st.setString(1, item.getName());
             st.setString(2, item.getDescription());
             st.setLong(3, item.getCreated());
@@ -85,7 +86,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                 rst = true;
             }
         } catch (Exception e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
         return rst;
     }
@@ -97,13 +98,13 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public boolean delete(String id) {
         boolean rst = false;
-        try (PreparedStatement st = this.connection.prepareStatement("DElETE from item where id_item = ?")) {
-            st.setInt(1, Integer.parseInt(id) );
+        try (PreparedStatement st = this.connection.prepareStatement("DElETE from items where id_items = ?")) {
+            st.setInt(1, Integer.parseInt(id));
             if (st.executeUpdate() != 0) {
                 rst = true;
             }
         } catch (Exception e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
         return rst;
     }
@@ -114,13 +115,13 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public List<Item> findAll() {
         List<Item> list = new ArrayList<>();
-        try(Statement st = connection.createStatement()) {
-            ResultSet rs = st.executeQuery("SELECT * FROM item");
+        try (Statement st = connection.createStatement()) {
+            ResultSet rs = st.executeQuery("SELECT * FROM items");
             while (rs.next()) {
-                list.add(new Item(rs.getString("id_item"),rs.getString("name"), rs.getString("description"), rs.getLong("created")));
+                list.add(new Item(rs.getString("id_items"), rs.getString("names"), rs.getString("description"), rs.getLong("created")));
             }
         } catch (Exception e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
         return list;
     }
@@ -132,14 +133,14 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public List<Item> findByName(String name) {
         List<Item> list = new ArrayList<>();
-        try (PreparedStatement st = this.connection.prepareStatement("SELECT * from item where name = ?")) {
+        try (PreparedStatement st = this.connection.prepareStatement("SELECT * from items where names = ?")) {
             st.setString(1, (name));
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                list.add(new Item(rs.getString("id_item"),rs.getString("name"), rs.getString("description"), rs.getLong("created")));
+                list.add(new Item(rs.getString("id_items"), rs.getString("names"), rs.getString("description"), rs.getLong("created")));
             }
         } catch (Exception e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
         return list;
     }
@@ -151,14 +152,14 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     @Override
     public Item findById(String id) {
         Item item = null;
-        try (PreparedStatement st = this.connection.prepareStatement("SELECT * from item where id_item = ?")) {
+        try (PreparedStatement st = this.connection.prepareStatement("SELECT * from items where id_items = ?")) {
             st.setInt(1, Integer.parseInt(id));
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                item = new Item(rs.getString("id_item"),rs.getString("name"), rs.getString("description"), rs.getLong("created"));
+                item = new Item(rs.getString("id_items"), rs.getString("names"), rs.getString("description"), rs.getLong("created"));
             }
         } catch (Exception e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
         return item;
     }
@@ -170,7 +171,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         try {
             this.connection.close();
         } catch (SQLException e) {
-            Log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
     }
 }
