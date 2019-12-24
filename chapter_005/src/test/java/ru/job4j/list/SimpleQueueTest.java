@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
  */
 public class SimpleQueueTest {
     @Test
-    public void whenAddElementAtTheEndThenReturnElementFromTheBeginning(){
+    public void whenAddElementAtTheEndThenReturnElementFromTheBeginning() {
         SimpleQueue<Integer> queue = new SimpleQueue();
         queue.push(1);
         queue.push(2);

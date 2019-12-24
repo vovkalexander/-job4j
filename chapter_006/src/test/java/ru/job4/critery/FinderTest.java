@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -22,12 +24,12 @@ public class FinderTest {
     public void whenChoiceOfFullNameThenSearchByFullName()  throws IOException {
         String str = "-f";
         int size = 1;
-        test(str,size);
+        test(str, size);
     }
     @Test
     public void whenChoiceOfRegExpThenSearchByRegExp()  throws IOException {
         String str = "-r";
-        int size = 51;
+        int size = 29;
         test(str, size);
     }
     @Test
@@ -46,14 +48,15 @@ public class FinderTest {
         System.setIn(in);
         Finder finder = new Finder(args);
         finder.search();
-        List<String> expect = new ArrayList<>();
+        finder.write();
+        List<Path> expect = new ArrayList<>();
         String string;
         try (BufferedReader read = new BufferedReader(new FileReader(new Arg(args).getMap().get("output")))) {
             while ((string = read.readLine()) != null) {
-                expect.add(string);
+                expect.add(Paths.get(string));
             }
-            assertThat(finder.getMfv().getList().size(), is(number));
-            assertThat(finder.getMfv().getList().retainAll(expect), is(false));
+            assertThat(finder.getList().size(), is(number));
+            assertThat(finder.getList().retainAll(expect), is(false));
         }
     }
 }

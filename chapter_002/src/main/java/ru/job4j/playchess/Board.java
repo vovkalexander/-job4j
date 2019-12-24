@@ -53,7 +53,7 @@ public class Board {
      * @throws FigureNotFoundException Выбрасывает исключение, если в начальной позиции нет фигуры.
      */
     public int findBy(Cell sourse) throws FigureNotFoundException {
-        return IntStream.range(0,this.figures.length).filter(index ->figures[index] != null && figures[index].position.x == sourse.x
+        return IntStream.range(0, this.figures.length).filter(index ->figures[index] != null && figures[index].position.x == sourse.x
                 && figures[index].position.y == sourse.y).findFirst().orElseThrow(() -> new  FigureNotFoundException("На клетке отсутсвует фигура"));
     }
     /**

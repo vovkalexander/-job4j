@@ -13,7 +13,7 @@ import java.util.Set;
  */
 class PostTest {
     @Test
-    public void TestMerge() {
+    public void testMerge() {
         Set<String> set1 = new LinkedHashSet<>();
         set1.add("xxx@ya.ru");
         set1.add("foo@gmail.com");
@@ -29,13 +29,13 @@ class PostTest {
         set4 .add("aaa@bbb.ru");
         Set<String> set5 = new LinkedHashSet<>();
         set5.add("xyz@pisem.net");
-        List <User> userlist = List.of(new User(set1),new User(set2), new User(set3), new User(set4),new User(set5));
+        List<User> userlist = List.of(new User(set1), new User(set2), new User(set3), new User(set4), new User(set5));
         Post post = new Post();
         post.merge(userlist);
-        assertThat(userlist.get(0).getEmailAdress(), is(Set.of("xxx@ya.ru","foo@gmail.com","lol@mail.ru",
-                "ups@pisem.net","aaa@bbb.ru")));
-        assertThat(userlist.get(1).getEmailAdress(), is(Set.of("foo@gmail.com","ups@pisem.net","aaa@bbb.ru")));
-        assertThat(userlist.get(2).getEmailAdress(), is(Set.of("xyz@pisem.net","vasya@pupkin.com")));
-        assertThat(userlist.get(3).getEmailAdress(), is(Set.of("ups@pisem.net","aaa@bbb.ru")));
+        assertThat(userlist.get(0).getEmailAdress(), is(Set.of("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru",
+                "ups@pisem.net", "aaa@bbb.ru")));
+        assertThat(userlist.get(1).getEmailAdress(), is(Set.of("foo@gmail.com", "ups@pisem.net", "aaa@bbb.ru")));
+        assertThat(userlist.get(2).getEmailAdress(), is(Set.of("xyz@pisem.net", "vasya@pupkin.com")));
+        assertThat(userlist.get(3).getEmailAdress(), is(Set.of("ups@pisem.net", "aaa@bbb.ru")));
     }
 }

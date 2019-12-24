@@ -25,7 +25,7 @@ public class Analize {
         for (User curElement : current) {
             mapOfCurrent.put(curElement.getId(), curElement.getName());
         }
-        for(Integer key : mapOfPrevious.keySet()) {
+        for (Integer key : mapOfPrevious.keySet()) {
             if (!mapOfCurrent.containsKey(key)) {
                 info.deleted++;
             } else if (!mapOfCurrent.get(key).equals(mapOfPrevious.get(key))) {

@@ -16,11 +16,11 @@ public class PredicateFactory {
      */
     public Predicate createSearch(String choose, Arg arg) {
         Predicate predicate = null;
-        if(choose.equals(arg.getMap().get("fullname")))
+        if (choose.equals(arg.getMap().get("fullname"))) {
             predicate = new SearchByFullName();
-        else if(choose.equals(arg.getMap().get("mask"))) {
-            predicate =new SearchByMask();
-        } else if(choose.equals((arg.getMap().get("regex")))) {
+        } else if (choose.equals(arg.getMap().get("mask"))) {
+            predicate = new SearchByMask();
+        } else if (choose.equals((arg.getMap().get("regex")))) {
             predicate = new SearchByRegEx();
         }
         return predicate;

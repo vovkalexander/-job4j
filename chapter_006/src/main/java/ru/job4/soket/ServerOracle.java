@@ -1,4 +1,4 @@
-package ru.job4.Soket;
+package ru.job4.soket;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,7 +35,7 @@ public class ServerOracle {
     public void connect() throws IOException {
         try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-            String ask ;
+            String ask;
             String answer;
             do {
                 System.out.println("wait command ...");

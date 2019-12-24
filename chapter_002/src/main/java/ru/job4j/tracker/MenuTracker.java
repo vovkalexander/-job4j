@@ -11,7 +11,7 @@ import java.util.function.Consumer;
  * @since 0.1
  */
 
-public class MenuTracker {
+public class MenuTracker  {
     /**
      * @param хранит ссылку на объект .
      */
@@ -49,7 +49,7 @@ public class MenuTracker {
      * Метод заполняет массив.
      */
     public void fillActions(StartUI ui) {
-        this.actions.add(new AddItem(0, "Add the new item."));
+        //this.actions.add(new AddItem(0, "Add the new item."));
         this.actions.add(new ShowItems(1, "Show all items"));
         this.actions.add(new UpdateItem(2, "Edit item"));
         this.actions.add(new DeleteItem(3, "Delete item"));
@@ -63,7 +63,7 @@ public class MenuTracker {
      * @param key ключ операции
      */
     public void select(int key) {
-        this.actions.get(key).execute(this.input,  this.tracker);
+        this.actions.get(key).execute(this.input, this.tracker);
     }
     /**
      * Метод выводит на экран меню.
@@ -78,29 +78,33 @@ public class MenuTracker {
     /**
      *  Класс - пункт подменю добавление заявки
      */
-    private class AddItem extends BaseAction  {
+ //   private class AddItem extends BaseAction  {
         /**
          * Конструтор инициализирующий поля.
          * @param key номер пункта меню.
          * @param name название пункта меню.
          */
-        protected AddItem(int key, String name) {
-            super(key, name);
-        }
+    //    protected AddItem(int key, String name) {
+      //      super(key, name);
+     //   }
 
-        @Override
-        public void execute(Input input, ITracker tracker) {
-            output.accept("------------ Adding new item --------------");
-            String name = input.ask("Please, provide item name:");
-            String desc = input.ask("Please, provide item description:");
-            Item item = new Item(name, desc);
-            tracker.add(item);
-            output.accept("------------ New Item with Id : " + item.getId());
-            output.accept("------------ New Item with Name : " + item.getName());
-            output.accept("------------ New Item with Description : " + item.getDescription());
-        }
+       // @Override
+      //  public void execute(Input input, ITracker tracker) {
+         //   output.accept("------------ Adding new item --------------");
+         //   String name = input.ask("Please, provide item name:");
+         //   String desc = input.ask("Please, provide item description:");
+         //   Item item = new Item(name, desc);
+         //   tracker.add(item);
+         //   output.accept("------------ New Item with Id : " + item.getId());
+         //   output.accept("------------ New Item with Name : " + item.getName());
+          //  output.accept("------------ New Item with Description : " + item.getDescription());
+        //}
 
-    }
+      //  @Override
+     //   public void execute(Input input, ITracker tracker) {
+
+    //    }
+  //  }
     /**
      *  Класс - пункт подменю показ всех заявок
      */
@@ -238,7 +242,7 @@ public class MenuTracker {
     /**
      *      Класс - пункт подменю выход из главного меню
      */
-    class ExitProgram extends BaseAction {
+    class ExitProgram extends BaseAction  {
         /**
          * @param хранит ссылку.
          */

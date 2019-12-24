@@ -8,11 +8,11 @@ import java.util.NoSuchElementException;
  * @version $Id$
  * @since 0.1
  */
-public class SimpleHashMap<K,V> implements Iterable<V>  {
+public class SimpleHashMap<K, V> implements Iterable<V>  {
     /**
      * Поле - хранит массив.
      */
-    private  Entry<K,V>[] table;
+    private  Entry<K, V>[] table;
     /**
      * Поле - хранит размер массива.
      */
@@ -48,11 +48,11 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
      * @return логический вывод.
      */
     public boolean insert(K key, V value) {
-        if(loadFactor <= (float)count/size) {
+        if (loadFactor <= (float) count / size) {
             increaseCapacity();
         }
         index = hash(key);
-        Entry<K,V> element = this.table[index];
+        Entry<K, V> element = this.table[index];
         if (element == null) {
             this.table[index] = new Entry<>(key, value);
             count++;
@@ -102,11 +102,11 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
      * @param key - ключ объекта.
      * @return логический ввывод.
      */
-    public boolean delete(K key){
+    public boolean delete(K key) {
         index = hash(key);
-        if(this.table[index] != null && key.equals(this.table[index].key)) {
+        if (this.table[index] != null && key.equals(this.table[index].key)) {
             this.table[index] = null;
-            count --;
+            count--;
             return true;
         }
         return false;
@@ -152,7 +152,7 @@ public class SimpleHashMap<K,V> implements Iterable<V>  {
      * @version $Id$
      * @since 0.1
      */
-   private class Entry<K,V> {
+   private class Entry<K, V> {
         /**
          * Поле - хранит массив.
          */

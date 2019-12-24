@@ -23,7 +23,7 @@ public class Finder {
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
-    public Finder (String[] args) throws IOException {
+    public Finder(String[] args) throws IOException {
         arg = new Arg(args);
         arg.chooseCategory();
     }

@@ -56,15 +56,15 @@ public class User {
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + children;
-        result = 31 * result + (birthday!= null ? birthday.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
     }
     @Override
     public boolean equals(Object o) {
-        if(this == o) {
+        if (this == o) {
             return true;
         }
-        if(o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         User user = (User) o;

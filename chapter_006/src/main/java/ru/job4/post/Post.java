@@ -21,15 +21,15 @@ public class Post {
             User s = q.poll();
             Iterator<User> it = q.iterator();
             while (it.hasNext()) {
-               User itPost = it.next();
-                if (!disjoint(s.getEmailAdress(), itPost.getEmailAdress()))
-                      s.getEmailAdress().addAll(itPost.getEmailAdress());
+                User itPost = it.next();
+                if (!disjoint(s.getEmailAdress(), itPost.getEmailAdress())) {
+                    s.getEmailAdress().addAll(itPost.getEmailAdress());
+                }
             }
         }
         return list;
     }
 }
-
 
 
 

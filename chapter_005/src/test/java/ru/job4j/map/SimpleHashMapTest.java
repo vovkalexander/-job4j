@@ -39,10 +39,10 @@ public class SimpleHashMapTest {
         map.insert(15, "Carter");
         map.insert(21, "Dunkan");
         map.insert(2, "Jonson");
-        assertThat(map.getSize(),is(20));
+        assertThat(map.getSize(), is(20));
     }
     @Test(expected = NoSuchElementException.class)
-    public void whenIterateAfterReturningFinalValueNextThenExсeption() {
+    public void when() {
         map.insert(23, "Jordan");
         map.insert(2, "Jonson");
         Iterator<String> it = map.iterator();
@@ -53,8 +53,8 @@ public class SimpleHashMapTest {
     }
     @Test
     public void whenElementsHaveTheSameHashCodeThenReplaceValue() {
-        assertThat(map.insert(23,"Jordan"), is(true));
-        assertThat(map.insert(23,"Lebron"), is(false));
+        assertThat(map.insert(23, "Jordan"), is(true));
+        assertThat(map.insert(23, "Lebron"), is(false));
         assertThat(map.get(23), is("Lebron"));
     }
 }

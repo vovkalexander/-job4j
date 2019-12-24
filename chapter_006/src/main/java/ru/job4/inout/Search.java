@@ -1,4 +1,4 @@
-package ru.job4.InOut;
+package ru.job4.inout;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,14 +20,14 @@ public class Search {
         List<File> list = new LinkedList<>();
         Queue<File> queue = new LinkedList<>();
         queue.add(new File(parent));
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             File file = queue.poll();
             if (file.isDirectory()) {
                 for (File subFile : file.listFiles()) {
                     queue.add(subFile);
                 }
             }
-            for(String extension : exts) {
+            for (String extension : exts) {
                 if (file.isFile() && extension.contains(file.getName().substring(file.getName().lastIndexOf(".") + 1))) {
                     list.add(file);
                 }

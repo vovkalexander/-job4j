@@ -57,7 +57,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         NodeItr it = new NodeItr();
         while (it.hasNext()) {
             Node<E> node = it.next();
-            if(node.leaves().size() > 2) {
+            if (node.leaves().size() > 2) {
                 return false;
             }
         }

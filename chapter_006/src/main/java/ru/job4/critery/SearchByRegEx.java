@@ -18,7 +18,7 @@ public class SearchByRegEx implements Predicate {
     public List<Path> execute(Arg arg) throws IOException {
         List<Path> list = new ArrayList<>();
         Pattern pattern = Pattern.compile(arg.getMap().get("name"));
-        try(Stream<Path> paths = Files.walk(Paths.get(arg.getMap().get("direct")))) {
+        try (Stream<Path> paths = Files.walk(Paths.get(arg.getMap().get("direct")))) {
             paths.filter(path -> pattern.matcher(path.getFileName().toString()).find())
                     .forEach(list::add);
         }

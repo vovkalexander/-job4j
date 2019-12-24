@@ -1,4 +1,4 @@
-package ru.job4.InOut;
+package ru.job4.inout;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +14,10 @@ public class Analizy {
      * @param source - файл регистрации событий сервера.
      * @param target - файл простоя сервера.
      */
-    public void unavailable(String source,String target) {
+    public void unavailable(String source, String target) {
         try (BufferedReader read = new BufferedReader(new FileReader(source));
              PrintWriter out = new PrintWriter(new FileOutputStream(target))) {
-            boolean logic= true;
+            boolean logic = true;
             String value;
             String line = null;
             List<String> list = new ArrayList<>();
@@ -33,15 +33,15 @@ public class Analizy {
                     if (line.contains("200") || line.contains("300")) {
                         value = line.substring(4);
                         list.add(value);
-                        logic= true;
+                        logic = true;
                     }
                 }
             }
             System.out.println(list);
-            for (int i = 0; i<list.size(); i += 2) {
+            for (int i = 0; i < list.size(); i += 2) {
                 System.out.println(list.size());
-                if(list.size() % 2 == 0) {
-                    out.write(String.join(";", list.get(i),list.get(i+1)));
+                if (list.size() % 2 == 0) {
+                    out.write(String.join(";", list.get(i), list.get(i + 1)));
                     out.write(System.lineSeparator());
                 }
             }

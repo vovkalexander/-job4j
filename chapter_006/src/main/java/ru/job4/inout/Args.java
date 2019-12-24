@@ -1,4 +1,4 @@
-package ru.job4.InOut;
+package ru.job4.inout;
 
 public class Args {
     /**

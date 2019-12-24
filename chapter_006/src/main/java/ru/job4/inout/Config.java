@@ -1,4 +1,4 @@
-package ru.job4.InOut;
+package ru.job4.inout;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
@@ -33,11 +33,11 @@ public class Config {
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             String line = null;
-            while((line = read.readLine()) != null) {
+            while ((line = read.readLine()) != null) {
                 String[] rst = line.split("=");
                 if (rst.length == 2) {
-                    for (int i = 0; i < rst.length; i+=2) {
-                        values.put(rst[i],rst[i+1]);
+                    for (int i = 0; i < rst.length; i += 2) {
+                        values.put(rst[i], rst[i + 1]);
                     }
                 }
             }
@@ -60,7 +60,7 @@ public class Config {
      * Метод - возвращает хеш таблицу.
      * @return  Map - хеш таблица.
      */
-    public Map<String,String> getMap() {
+    public Map<String, String> getMap() {
         return this.values;
     }
     @Override

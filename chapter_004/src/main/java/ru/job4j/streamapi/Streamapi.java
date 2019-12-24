@@ -1,4 +1,4 @@
-package ru.job4j.streamApi;
+package ru.job4j.streamapi;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
@@ -8,16 +8,16 @@ import java.util.function.UnaryOperator;
  * @version $Id$
  * @since 0.1
  */
-public class StreamApi {
+public class Streamapi {
     /**
      * Метод преобразует поток в массив с одним элементом.
      * @param lists список чисел.
      * @return преобразованый список с одним элементом.
      */
     public Optional<Integer> stream(List<Integer> lists) {
-        UnaryOperator<Integer> unary = x -> x*x;
+        UnaryOperator<Integer> unary = x -> x * x;
         return  lists.stream().filter(list -> list % 2 == 0).map(list ->unary.apply(list)).
-                reduce((x,y) ->x+y);
+                reduce((x, y) ->x + y);
     }
 }
 

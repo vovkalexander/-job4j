@@ -12,7 +12,7 @@ public  class Arg {
     /**
      * Поле - хранит карту значений принятых аргументов.
      */
-    private   Map<String,String> map = new HashMap<>();
+    private   Map<String, String> map = new HashMap<>();
     /**
      * Поле - хранит объект сканер для ввода плдьзователя.
      */
@@ -21,19 +21,19 @@ public  class Arg {
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
-    public Arg(String[] args ) {
+    public Arg(String[] args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-d")) {
-                map.put("direct",args[++i]);
+                map.put("direct", args[++i]);
             }
             if (args[i].equals("-n")) {
-                map.put("name",args[++i]);
+                map.put("name", args[++i]);
             }
             if (args[i].equals("-m")) {
-                map.put("mask",args[++i]);
+                map.put("mask", args[++i]);
             }
             if (args[i].equals("-f")) {
-                map.put("fullname",args[++i]);
+                map.put("fullname", args[++i]);
             }
             if (args[i].equals("-r")) {
                 map.put("regex", args[++i]);
@@ -47,7 +47,7 @@ public  class Arg {
      * Метод возвращает карту значений аргументов .
      * @return карта значений.
      */
-    public Map<String,String> getMap() {
+    public Map<String, String> getMap() {
         return  this.map;
     }
     /**
@@ -85,7 +85,7 @@ public  class Arg {
         display();
         String scan;
         System.out.println("Choose category: -f, -m, -r.");
-        while (in.hasNext() && !(scan = in.next()).equals("finish")) {
+        while (in.hasNext() && !(scan=in.next()).equals("finish")) {
             if (scan.equals("-f")) {
                 map.put("name", map.get("fullname"));
                 break;

@@ -13,11 +13,11 @@ import static org.junit.Assert.assertThat;
 public class ScriptTest {
     @Test
     public void whenLoadScriptThenGetInterconnectedListOfScript() {
-        Map<Integer, List<Integer>> map = Map.of(1, List.of(2,3), 2, List.of(4), 3, List.of(4,5),
+        Map<Integer, List<Integer>> map = Map.of(1, List.of(2, 3), 2, List.of(4), 3, List.of(4, 5),
                 4, List.of(), 5, List.of());
         Script script = new Script();
         List<Integer> list = script.load(map, 1);
         assertThat(list.size(), is(5));
-        assertThat(list, is(List.of(1,2,3,4,5)));
+        assertThat(list, is(List.of(1, 2, 3, 4, 5)));
     }
 }

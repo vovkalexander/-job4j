@@ -1,4 +1,4 @@
-package ru.job4.Soket;
+package ru.job4.soket;
 import com.google.common.base.Joiner;
 import org.junit.Test;
 import static org.hamcrest.Matchers.is;

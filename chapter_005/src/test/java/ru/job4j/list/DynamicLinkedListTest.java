@@ -43,10 +43,10 @@ public class DynamicLinkedListTest {
         Iterator<Integer> it = list.iterator();
         assertThat(it.next(), is(3));
         list.add(5);
-        assertThat(it.next(), is(5) );
+        assertThat(it.next(), is(5));
     }
     @Test(expected = NoSuchElementException.class)
-    public void whenIterateAfterReturningFinalValueNextThenExсeption() {
+    public void when() {
         DynamicLinkedList list = new DynamicLinkedList();
         list.add(3);
         list.add(4);

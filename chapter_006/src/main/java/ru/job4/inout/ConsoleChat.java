@@ -1,4 +1,4 @@
-package ru.job4.InOut;
+package ru.job4.inout;
 import java.io.*;
 import java.util.*;
 /**
@@ -19,7 +19,7 @@ public class ConsoleChat {
     /**
      * Поле - хранит путь к файлу записи диалога.
      */
-    private String parent= System.getProperty("user.dir") + File.separator + "test.txt";
+    private String parent = System.getProperty("user.dir") + File.separator + "test.txt";
     /**
      * Конструктор  для активации консольного потока
      * @param stream поток ввода.
@@ -32,7 +32,7 @@ public class ConsoleChat {
      * Конструктор  для активации консольного потока
      * @param input  строки пользователя.
      */
-    public ConsoleChat(String input ) {
+    public ConsoleChat(String input) {
         this.in = new Scanner(input);
 
     }

@@ -65,7 +65,7 @@ public class StartUITest {
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();     // создаём Tracker
         Input input = new StubInput(Arrays.asList("0", "test name", "desc", "6"));   //создаём StubInput с последовательностью действий
-        new StartUI(input, tracker,output).init();     //   создаём StartUI и вызываем метод init()
+        new StartUI(input, tracker, output).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
     @Test
@@ -77,7 +77,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(производим замену заявки)
         Input input = new StubInput(Arrays.asList("2", item.getId(), "test replace", "заменили заявку", "6"));
         // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker,output).init();
+        new StartUI(input, tracker, output).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
@@ -86,7 +86,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(удаляем заявку)
         Input input = new StubInput(Arrays.asList("3", item.getId(), "6"));
         // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker,System.out::println).init();
+        new StartUI(input, tracker, System.out::println).init();
         //// проверяем, что нулевой элемент массива в трекере удален, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
@@ -102,7 +102,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(находим заявку по id)
         Input input = new StubInput(Arrays.asList("4", item.getId(), "6"));
         // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker,System.out::println).init();
+        new StartUI(input, tracker, System.out::println).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
@@ -118,7 +118,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(находим заявку по имени)
         Input input = new StubInput(Arrays.asList("5", item.getName(), "6"));
         // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker,System.out::println).init();
+        new StartUI(input, tracker, System.out::println).init();
         //// // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
@@ -138,7 +138,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(находим все заявки)
         Input input = new StubInput(Arrays.asList("1", "6"));
         // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker,System.out::println).init();
+        new StartUI(input, tracker, System.out::println).init();
         //// // проверяем, что заявки находяться в массиве, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)

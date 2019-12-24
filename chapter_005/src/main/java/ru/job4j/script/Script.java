@@ -9,7 +9,8 @@ import java.util.*;
 public class Script {
     /**
      * Метод - возвращает список всех скриптов .
-     * @param map - карта зависимости скриптов.
+     *
+     * @param map      - карта зависимости скриптов.
      * @param scriptId - закрузочный скрипт.
      * @return список взаимозависимых скриптов.
      */
@@ -21,9 +22,10 @@ public class Script {
         while (!queue.isEmpty()) {
             List<Integer> list = map.get(queue.poll());
             for (Integer integer : list) {
-                if (map.containsKey(integer))
+                if (map.containsKey(integer)) {
                     queue.offer(integer);
                     tree.add(integer);
+                }
             }
         }
         return new ArrayList<>(tree);

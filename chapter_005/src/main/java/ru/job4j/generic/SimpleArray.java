@@ -54,9 +54,9 @@ public class SimpleArray<T> implements Iterable<T> {
      * Метод - удаляет  элемент массива по индексу.
      * @param i ячейка массива.
      */
-    public void remove (int i) {
-        final int newSize;
-        if ((newSize = index - 1) > i) {
+    public void remove(int i) {
+        final int newSize = index - 1;
+        if (newSize  > i) {
             System.arraycopy(this.objects, i + 1, objects, i, newSize - i);
             index--;
         }
@@ -73,7 +73,7 @@ public class SimpleArray<T> implements Iterable<T> {
             }
             @Override
             public T next() {
-                return (T)objects[position++];
+                return (T) objects[position++];
             }
         };
     }

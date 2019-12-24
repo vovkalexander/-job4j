@@ -17,15 +17,15 @@ public class AnalizeTest {
     @Before
     public void setUp() {
         previous = new ArrayList<>();
-        previous.add(new User(23, "Jordan") );
-        previous.add(new User(33,"Pippen"));
+        previous.add(new User(23, "Jordan"));
+        previous.add(new User(33, "Pippen"));
     }
     @Test
     public void whenArraysEqualThenStatisticNotChanging() {
         List<User> current = new ArrayList<>();
         current.add(new User(23, "Jordan"));
-        current.add(new User(33,"Pippen"));
-        Analize.Info info = new Analize().diff(previous,current);
+        current.add(new User(33, "Pippen"));
+        Analize.Info info = new Analize().diff(previous, current);
         Analize.Info expect = new Analize.Info(0, 0, 0);
         assertThat(expect, is(info));
     }
@@ -33,9 +33,9 @@ public class AnalizeTest {
     public void whenCurrentAddElementThenStatisticAddPosition() {
         List<User> current = new ArrayList<>();
         current.add(new User(23, "Jordan"));
-        current.add(new User(33,"Pippen"));
-        current.add(new User(15,"Carter"));
-        Analize.Info info = new Analize().diff(previous,current);
+        current.add(new User(33, "Pippen"));
+        current.add(new User(15, "Carter"));
+        Analize.Info info = new Analize().diff(previous, current);
         Analize.Info expect = new Analize.Info(1, 0, 0);
         assertThat(expect, is(info));
     }
@@ -43,8 +43,8 @@ public class AnalizeTest {
     public void whenCurrentIsChangingThenStatisticChangePosition() {
         List<User> current = new ArrayList<>();
         current.add(new User(23, "James"));
-        current.add(new User(33,"Pippen"));
-        Analize.Info info = new Analize().diff(previous,current);
+        current.add(new User(33, "Pippen"));
+        Analize.Info info = new Analize().diff(previous, current);
         Analize.Info expect = new Analize.Info(0, 1, 0);
         assertThat(expect, is(info));
     }
@@ -52,7 +52,7 @@ public class AnalizeTest {
     public void whenCurrentHasLessElementsThenStatisticIncreasesDeletePosition() {
         List<User> current = new ArrayList<>();
         current.add(new User(23, "Jordan"));
-        Analize.Info info = new Analize().diff(previous,current);
+        Analize.Info info = new Analize().diff(previous, current);
         Analize.Info expect = new Analize.Info(0, 0, 1);
         assertThat(expect, is(info));
     }

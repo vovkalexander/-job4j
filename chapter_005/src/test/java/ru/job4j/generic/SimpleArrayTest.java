@@ -26,7 +26,7 @@ public class SimpleArrayTest {
         SimpleArray<Integer> list = new SimpleArray<>(10);
         list.add(1);
         list.add(0);
-        list.set(1,3);
+        list.set(1, 3);
         assertThat(list.get(1), is(3));
     }
     @Test
@@ -36,7 +36,7 @@ public class SimpleArrayTest {
         list.add(11);
         list.add(12);
         list.remove(1);
-        assertThat(list.get(1), is (12));
+        assertThat(list.get(1), is(12));
     }
     @Test
     public void whenIteratorNextthenReturnElementOfArray() {

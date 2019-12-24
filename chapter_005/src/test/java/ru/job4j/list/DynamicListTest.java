@@ -37,7 +37,7 @@ public class DynamicListTest {
         it.hasNext();
     }
     @Test(expected = NoSuchElementException.class)
-    public void whenIterateAfterReturningFinalValueNextThenExсeption() {
+    public void when() {
         list.add(3);
         list.add(4);
         Iterator<Integer> it = list.iterator();

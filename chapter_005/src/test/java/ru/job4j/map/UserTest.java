@@ -15,12 +15,12 @@ import static org.junit.Assert.assertThat;
 public class UserTest {
     @Test
     public void whenInstallSameObjectsWithDefaultHashCodeThenReceiveDifferentObjects() {
-        User user1 = new User("Kuzma",2, new GregorianCalendar(2000, Calendar.JANUARY , 1));
-        User user2 = new User("Petrovich",15, new GregorianCalendar(2000, Calendar.JANUARY , 1));
+        User user1 = new User("Kuzma", 2, new GregorianCalendar(2000, Calendar.JANUARY, 1));
+        User user2 = new User("Petrovich", 15, new GregorianCalendar(2000, Calendar.JANUARY, 1));
         Map<User, Object> map = new HashMap<>();
-        map.put(user1,"first");
-        map.put(user2,"second");
+        map.put(user1, "first");
+        map.put(user2, "second");
         System.out.println(map);
-        assertThat(map.size(), is (2));
+        assertThat(map.size(), is(2));
     }
 }

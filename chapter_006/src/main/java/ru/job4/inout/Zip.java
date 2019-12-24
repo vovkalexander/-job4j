@@ -1,4 +1,4 @@
-package ru.job4.InOut;
+package ru.job4.inout;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,7 +43,7 @@ public class Zip {
                     queue.add(subFile);
                 }
             }
-            if (file.isFile() && !file.getName().endsWith(ext)){
+            if (file.isFile() && !file.getName().endsWith(ext)) {
                 list.add(file);
             }
         }
