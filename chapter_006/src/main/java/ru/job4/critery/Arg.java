@@ -84,22 +84,25 @@ public  class Arg {
     public void chooseCategory() {
         display();
         String scan;
-        System.out.println("Choose category: -f, -m, -r.");
-        while (in.hasNext() && !(scan=in.next()).equals("finish")) {
-            if (scan.equals("-f")) {
-                map.put("name", map.get("fullname"));
-                break;
-            }
-            if (scan.equals("-m")) {
-                map.put("name", map.get("mask"));
-                break;
-            }
-            if (scan.equals("-r")) {
-                map.put("name", map.get("regex"));
-                break;
-            } else {
-                System.out.println("please choose correct category or put finish");
-            }
-        }
+            do {
+                scan = in.next();
+                if (scan.equals("-f")) {
+                    map.put("name", map.get("fullname"));
+                    break;
+                }
+                if (scan.equals("-m")) {
+                    map.put("name", map.get("mask"));
+                    break;
+                }
+                if (scan.equals("-r")) {
+                    map.put("name", map.get("regex"));
+                    break;
+                } else {
+                    System.out.println("please choose correct category or put finish");
+                }
+                System.out.println("Choose category: -f, -m, -r.");
+            }  while (in.hasNext() && !scan .equals("finish"));
+
+
     }
 }

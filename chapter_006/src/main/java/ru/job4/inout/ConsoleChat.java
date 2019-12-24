@@ -84,7 +84,8 @@ public class ConsoleChat {
         Boolean check = true;
         String scan;
         String answer;
-        while (in.hasNext() && !(scan = in.next()).equals("закончить")) {
+        do {
+            scan = in.next();
             link.add(scan);
             if (scan.equals("стоп")) {
                 check = false;
@@ -100,7 +101,7 @@ public class ConsoleChat {
                 link.add(answer);
                 break;
             }
-        }
+        }  while (in.hasNext() && !in.next().equals("закончить"));
     }
     public static void main(String[] args) throws IOException {
         ConsoleChat chat = new ConsoleChat(System.in);

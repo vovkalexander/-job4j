@@ -40,7 +40,7 @@ public class Client {
                 str = reader.readLine();
                 out.println(str);
                 if (!"exit".equals(str)) {
-                    while (!(str= in.readLine()).isEmpty()) {
+                    while (!in.readLine().isEmpty()) {
                         System.out.println(str);
                     }
                 }

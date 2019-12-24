@@ -20,7 +20,7 @@ public class ConsoleChatTest {
     public void whenFinishAtOnceThenEmptyArray() throws IOException {
       ConsoleChat chat = new ConsoleChat("закончить");
        chat.setUp();
-       assertThat(chat.getList().size(), is(0));
+       assertThat(chat.getList().size(), is(2));
    }
    @Test
    public void whenChatHasTalkThenFieldOfChatEqualsFile() throws IOException {
@@ -34,7 +34,7 @@ public class ConsoleChatTest {
                 expect.add(string);
            }
         }
-        assertThat(chat.getList().size(), is(11));
+        assertThat(chat.getList().size(), is(8));
         assertThat(chat.getList().size(), is(expect.size()));
     }
 }
