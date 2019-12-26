@@ -23,5 +23,5 @@ notifications:
         services:
           - postgresql
 
-        before_install:
+     before_install:
           - psql -c 'create database tracker;' -U postgres
