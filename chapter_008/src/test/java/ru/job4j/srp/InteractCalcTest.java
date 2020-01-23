@@ -17,7 +17,7 @@ public class InteractCalcTest {
      * Field - store link for object of Calculator.
      */
     private Calculator calculator;
-    ActionFactory factory;
+    private ActionFactory factory;
     @Before
     public void initObjects() {
         calculator = new Calculator();
@@ -45,7 +45,31 @@ public class InteractCalcTest {
     public void whenUserInputsDivThenIsReturnedSplit() throws IOException {
         String string = "/ 1024 8 finish";
         Double number = 128.0;
-       test(string, number);
+        test(string, number);
+    }
+    @Test
+    public void whenUserInputsSinThenIsReturnedTrigonometryValue() throws IOException {
+        String string = "sin 45 finish";
+        Double number = 0.8509035245341184;
+        test(string, number);
+    }
+    @Test
+    public void whenUserInputsCosThenIsReturnedTrigonometryValue() throws IOException {
+        String string = "cos 3 finish";
+        Double number = 0.1411200080598672;
+        test(string, number);
+    }
+    @Test
+    public void whenUserInputsTanThenIsReturnedTrigonometryValue() throws IOException {
+        String string = "tan 15 finish";
+        Double number = 0.6502878401571168;
+        test(string, number);
+    }
+    @Test
+    public void whenUserInputsCtgThenIsReturnedTrigonometryValue() throws IOException {
+        String string = "ctg 7  finish";
+        Double number = 0.6569865987187891;
+        test(string, number);
     }
     /**
      * Method  activates main code of test.

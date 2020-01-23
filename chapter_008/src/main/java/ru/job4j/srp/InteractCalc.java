@@ -46,7 +46,7 @@ public class InteractCalc {
      * @return pattern - string for criteria of calculation.
      */
     public String setPattern() {
-        String pattern = "[-+*/]";
+        String pattern = "sin|cos|tan|ctg|[-+*/]";
         return pattern;
     }
     /**
@@ -74,9 +74,9 @@ public class InteractCalc {
     public void display() {
         System.out.printf("%s%s%s%n", "Choose parameter for calculation or put finish for ending ",
                 System.getProperty("line.separator"),
-                "+, -, *, / ");
+                "+, -, *, / , trigonometry (sin, cos, tan, ctg) ");
     }
-    /**
+    /*
      * The method returns result of calculation.
      */
     public Double getResult() {
