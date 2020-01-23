@@ -17,9 +17,11 @@ public class InteractCalcTest {
      * Field - store link for object of Calculator.
      */
     private Calculator calculator;
+    ActionFactory factory;
     @Before
     public void initObjects() {
         calculator = new Calculator();
+        factory = new ActionFactory();
     }
     @Test
     public void whenUserInputsAddThenIsReturnedSum() throws IOException {
@@ -53,7 +55,7 @@ public class InteractCalcTest {
     public void test(String str, Double number) throws IOException {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
         System.setIn(inputStream);
-        InteractCalc inter = new InteractCalc(calculator, inputStream);
+        InteractCalc inter = new InteractCalc(calculator, inputStream, factory);
         inter.chooseCategory();
         assertThat(inter.getResult(), is(number));
     }

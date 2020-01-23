@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.regex.Pattern;
 
 public class InteractCalc {
     /**
@@ -23,6 +23,10 @@ public class InteractCalc {
      */
     private final List<Double> list = new ArrayList<>();
     /**
+     * Field - store link for object of  ActionFactory.
+     */
+    ActionFactory factory;
+    /**
      * Field - store variable of double.
      */
     Double result;
@@ -30,99 +34,39 @@ public class InteractCalc {
      * Constructor for activation fields.
      * @param calculator - link for class Calculator.
      * @param stream - link for class InputStream.
+     * @param factory - link for class ActionFactory.              .
      */
-    public InteractCalc(Calculator calculator, InputStream stream) {
+    public InteractCalc(Calculator calculator, InputStream stream, ActionFactory factory) {
         this.calculator = calculator;
         this.in = new Scanner(stream);
+        this.factory = factory;
+    }
+    /**
+     * The method sets up criteria of calculation for users.
+     * @return pattern - string for criteria of calculation.
+     */
+    public String setPattern() {
+        String pattern = "[-+*/]";
+        return pattern;
     }
     /**
      * The method accepts variables users, makes calculation and records result.
      */
     public void chooseCategory() throws IOException {
-        String scan;
-        double d = 0.0;
         boolean switchOff = true;
         do {
             this.display();
             String str = in.next();
-            if (str.equals("+")) {
-                System.out.println("put number or r - last result");
-                while (in.hasNext("[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]|r")) {
-                    scan = in.next();
-                    if (scan.equals("r")) {
-                        d = calculator.getResult();
-                        list.add(d);
-                    } else {
-                        list.add(Double.parseDouble(scan));
-                    }
-                    if (list.size() == 2) {
-                        calculator.add(list.get(0), list.get(1));
-                        System.out.println("Result is  " + calculator.getResult());
-                        list.clear();
-                        break;
-                    }
-                    System.out.println("put number or r - last result");
-                }
-            } else if (str.equals("-")) {
-                System.out.println("put number or r - last result");
-                while (in.hasNext("[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]|r")) {
-                    scan = in.next();
-                    if (scan.equals("r")) {
-                        d = calculator.getResult();
-                        list.add(d);
-                    } else {
-                        list.add(Double.parseDouble(scan));
-                    }
-                    if (list.size() == 2) {
-                        calculator.subtract(list.get(0), list.get(1));
-                        System.out.println("Result is  " + calculator.getResult());
-                        list.clear();
-                        break;
-                    }
-                    System.out.println("put number or r - last result");
-                }
-            } else if (str.equals("*")) {
-                System.out.println("put number or r - last result");
-                while (in.hasNext("[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]|r")) {
-                    scan = in.next();
-                    if (scan.equals("r")) {
-                        d = calculator.getResult();
-                        list.add(d);
-                    } else {
-                        list.add(Double.parseDouble(scan));
-                    }
-                    if (list.size() == 2) {
-                        calculator.multiple(list.get(0), list.get(1));
-                        System.out.println("Result is  " + calculator.getResult());
-                        list.clear();
-                        break;
-                    }
-                    System.out.println("put number or r - last result");
-                }
-            } else if (str.equals("/")) {
-                System.out.println("put number or r - last result");
-                while (in.hasNext("[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]|r")) {
-                    scan = in.next();
-                    if (scan.equals("r")) {
-                        d = calculator.getResult();
-                        list.add(d);
-                    } else {
-                        list.add(Double.parseDouble(scan));
-                    }
-                    if (list.size() == 2) {
-                        calculator.div(list.get(0), list.get(1));
-                        System.out.println("Result is  " + calculator.getResult());
-                        list.clear();
-                        break;
-                    }
-                    System.out.println("put number or r - last result");
-                }
-            }else if (str.equals("finish")) {
+            if (str.matches(this.setPattern())) {
+                Action action = factory.createOperation(str);
+                action.operation(in, calculator, list);
+            } else if (str.equals("finish")) {
                 switchOff = false;
-            }else {
+            }  else  {
                 System.out.println("put correct input");
             }
-        } while(switchOff);
+
+        } while (switchOff);
     }
     /**
      * The method which displays menu.
@@ -136,12 +80,14 @@ public class InteractCalc {
      * The method returns result of calculation.
      */
     public Double getResult() {
-        return this.result = calculator.getResult();
+        this.result = calculator.getResult();
+        return result;
     }
-
     public static void main(String[] args) throws IOException {
         Calculator cal = new Calculator();
-        InteractCalc inter = new InteractCalc(cal, System.in);
+        ActionFactory factory = new ActionFactory();
+        InteractCalc inter = new InteractCalc(cal, System.in, factory);
         inter.chooseCategory();
     }
+
 }
