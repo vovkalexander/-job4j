@@ -16,5 +16,5 @@ public interface Action {
     /**
      * The abstracted method of interface.
      */
-    public void operation(Scanner scan, Calculator calc, List<Double> list);
+    public Double operation(Calculator calc, List<Double> list);
 }

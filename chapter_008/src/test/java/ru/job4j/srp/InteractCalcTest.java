@@ -1,5 +1,6 @@
 package ru.job4j.srp;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.job4j.calculator.Calculator;
 import static org.hamcrest.Matchers.is;
@@ -13,11 +14,6 @@ import java.io.IOException;
  * @since 0.1
  */
 public class InteractCalcTest {
-    /**
-     * Field - store link for object of Calculator.
-     */
-    private Calculator calculator;
-    private ActionFactory factory;
     @Before
     public void initObjects() {
         calculator = new Calculator();
@@ -79,7 +75,7 @@ public class InteractCalcTest {
     public void test(String str, Double number) throws IOException {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
         System.setIn(inputStream);
-        InteractCalc inter = new InteractCalc(calculator, inputStream, factory);
+        InteractCalc inter = new InteractCalc();
         inter.chooseCategory();
         assertThat(inter.getResult(), is(number));
     }

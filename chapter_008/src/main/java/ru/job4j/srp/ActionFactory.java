@@ -24,14 +24,6 @@ public  class  ActionFactory {
             action = new Multiplication();
         } else if (choose.equals("/")) {
             action = new Dividing();
-        } else if (choose.equals("sin")) {
-            action = new Sin();
-        } else if (choose.equals("cos")) {
-            action = new Sin();
-        } else if (choose.equals("tan")) {
-            action = new Sin();
-        } else if (choose.equals("ctg")) {
-            action = new Sin();
         }
         return action;
     }
