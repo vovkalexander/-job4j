@@ -16,18 +16,19 @@ public class Post {
      * @return list -список пользователей объединенных e-mails.
      */
     public List<User> merge(List<User> list) {
-        Queue<User> q = new LinkedList<>(list);
-        while (!q.isEmpty()) {
-            User s = q.poll();
-            Iterator<User> it = q.iterator();
-            while (it.hasNext()) {
-                User itPost = it.next();
-                if (!disjoint(s.getEmailAdress(), itPost.getEmailAdress())) {
-                    s.getEmailAdress().addAll(itPost.getEmailAdress());
-                }
+        List<User> result = new ArrayList<>();
+        int index = 0;
+        for (Iterator<User> it = list.iterator(); it.hasNext(); index++) {
+            User idCurrent = it.next();
+            for (int j = index + 1; j < list.size(); j++) {
+                User user = list.get(j);
+                if (idCurrent.getEmailAdress().removeAll(user.getEmailAdress())) {
+                    idCurrent.getEmailAdress().addAll(user.getEmailAdress());
+                };
             }
+            result.add(idCurrent);
         }
-        return list;
+        return result;
     }
 }
 
