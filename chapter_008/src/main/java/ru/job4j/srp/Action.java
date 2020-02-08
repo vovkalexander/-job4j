@@ -1,7 +1,8 @@
 package ru.job4j.srp;
-import ru.job4j.calculator.Calculator;
+
+
 import java.util.List;
-import java.util.Scanner;
+
 /**
  * Action.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -16,5 +17,5 @@ public interface Action {
     /**
      * The abstracted method of interface.
      */
-    public Double operation(Calculator calc, List<Double> list);
+    public Double perform(ExtendedCalc calc, List<Double> list);
 }

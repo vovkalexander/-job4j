@@ -1,27 +1,30 @@
 package ru.job4j.srp;
-
-import ru.job4j.calculator.Calculator;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-
+import java.util.function.Consumer;
+/**
+ * InteractCalc.
+ * @author Vovk Alexander  vovk.ag747@gmail.com
+ * @version $Id$
+ * @since 0.1
+ */
 public class InteractCalc {
     /**
-     * Field - store link for object of Calculator.
+     * Field - store link for object of ExtendedCalc.
      */
-    private Calculator calculator;
+    private ExtendedCalc calculator;
     /**
-     * Field - store link for object of  Scanner.
+     * Field - store link for object of  Input.
      */
-    private Scanner in;
+    Input input;
+    /**
+     * Field - store link for object of  Input.
+     */
+    private final Consumer<String> output;
     /**
      * Field - activate object of list.
      */
-    private final List<Double> list = new ArrayList<>();
+    private  List<Integer> range = new ArrayList<>();
     /**
      * Field - store link for object of  ActionFactory.
      */
@@ -31,88 +34,52 @@ public class InteractCalc {
      */
     Double result;
     /**
-     * Constructor for activation fields.
+     .
      */
-    public InteractCalc() {
-        this.calculator = new Calculator();
-        this.in = new Scanner(System.in);
-        this.factory = new ActionFactory();
-    }
-    /**
-     * The method sets up criteria of calculation for users.
-     * @return pattern - string for criteria of calculation.
-     */
-    public String setPattern() {
-        String pattern = "[-+*/]";
-        return pattern;
+    public InteractCalc(Input input, ExtendedCalc calculator, Consumer<String> output) {
+        this.calculator=calculator;
+        this.output=output;
+        this.input=input;
+        factory=new ActionFactory();
+
     }
     /**
      * The method accepts variables users, makes calculation and records result.
      */
-    public void chooseCategory() throws IOException {
-        boolean switchOff = true;
-        do {
+    public void init() {
+        for (int i = 0; i < factory.getActionCount(); i++) {
+            range.add(i);
+        }
+        while (true){
             this.display();
-            String str = in.next();
-            if (str.matches(this.setPattern())) {
-                Action action = factory.createOperation(str);
-                InteractCalc.execute(calculator, action, in, list);
-            } else if (str.equals("finish")) {
-                switchOff = false;
-            }  else  {
-                System.out.println("put correct input");
+            Action action = factory.createOperation(input.ask("select:", range));
+            if (action == null) {
+                break;
             }
-        } while (switchOff);
+            PerformOperation.execute(calculator, action);
+        }
+
     }
     /**
      * The method which displays menu.
      */
     public void display() {
-        System.out.printf("%s%s%s%n", "Choose parameter for calculation or put finish for ending ",
-                System.getProperty("line.separator"),
-                "+, -, *, / ");
+        output.accept("Choose 0-4 for calculation or put finish for ending "+
+                System.getProperty("line.separator")+
+                "0- add, 1- sub, 2- mult, 3 - divid");
     }
     /**
-     * The method which displays menu.
-     * @param calc - link for object of Calculator.
-     * @param action -link for object of Action.
-     * @param list - link for object of List.
-     */
-    public static void execute(Calculator calc, Action action, Scanner scan, List<Double> list) {
-        Double d;
-        String str;
-        displayExecute();
-        while (scan.hasNext(action.REGEX)) {
-            str = scan.next();
-            if (str.equals("r")) {
-                d = calc.getResult();
-                list.add(d);
-            } else {
-                list.add(Double.parseDouble(str));
-            }
-            if (action.operation(calc, list) != null) {
-                System.out.println("Result is " + action.operation(calc, list));
-                list.clear();
-                break;
-            }
-            displayExecute();
-        }
-
-    }
-
-    public static   void displayExecute() {
-        System.out.println("put number or r - last result");
-    }
-    /*
      * The method returns result of calculation.
+     * @return result - double of calculation.
      */
     public Double getResult() {
         this.result = calculator.getResult();
         return result;
     }
-    public static void main(String[] args) throws IOException {
-        InteractCalc inter = new InteractCalc();
-        inter.chooseCategory();
-    }
 
+    public static void main(String[] args) {
+        InteractCalc inter =  new InteractCalc(new ValidateInput(new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println);
+        inter.init();
+        inter.getResult();
+    }
 }
