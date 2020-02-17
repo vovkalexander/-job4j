@@ -11,10 +11,6 @@ import java.util.List;
  */
 public interface Action {
     /**
-     * Field - store regular expression limits inputting parameter.
-     */
-    String REGEX = "[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]?[\\d]|r";
-    /**
      * The abstracted method of interface.
      */
     public Double perform(ExtendedCalc calc, List<Double> list);

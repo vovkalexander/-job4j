@@ -16,7 +16,7 @@ public class InteractCalc {
     /**
      * Field - store link for object of  Input.
      */
-    Input input;
+    ValidateInput in;
     /**
      * Field - store link for object of  Input.
      */
@@ -26,39 +26,53 @@ public class InteractCalc {
      */
     private  List<Integer> range = new ArrayList<>();
     /**
-     * Field - store link for object of  ActionFactory.
-     */
-    ActionFactory factory;
-    /**
      * Field - store variable of double.
      */
     Double result;
     /**
-     .
+     * Field - store object of DispatchAction.
+     */
+    DispatchAction pattern = new DispatchAction();
+    /**
+     * Constructor for activation fields.
      */
     public InteractCalc(Input input, ExtendedCalc calculator, Consumer<String> output) {
         this.calculator=calculator;
         this.output=output;
-        this.input=input;
-        factory=new ActionFactory();
-
+        in=new ValidateInput(input) {
+            @Override
+            public String ask(String question) {
+                return super.ask(question);
+            }
+        };
+        this.initCalculator();
+    }
+    /*
+     * The method loads objects of Action for calculation in DispatchAction .
+     */
+    public void initCalculator() {
+        pattern.load(-1, pattern.toFinish());
+        pattern.load(0, pattern.toAddition());
+        pattern.load(1, pattern.toSubtracting());
+        pattern.load(2, pattern.toMultiplication());
+        pattern.load(3, pattern.toDividing());
     }
     /**
      * The method accepts variables users, makes calculation and records result.
      */
     public void init() {
-        for (int i = 0; i < factory.getActionCount(); i++) {
+        this.initCalculator();
+        for (int i = 0; i < pattern.getDispatch().size(); i++) {
             range.add(i);
         }
         while (true){
             this.display();
-            Action action = factory.createOperation(input.ask("select:", range));
+            Action action = pattern.sent(in.ask("select:", range));
             if (action == null) {
                 break;
             }
-            PerformOperation.execute(calculator, action);
+            in.execute(calculator, action);
         }
-
     }
     /**
      * The method which displays menu.
@@ -76,9 +90,8 @@ public class InteractCalc {
         this.result = calculator.getResult();
         return result;
     }
-
     public static void main(String[] args) {
-        InteractCalc inter =  new InteractCalc(new ValidateInput(new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println);
+        InteractCalc inter =  new InteractCalc((new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println);
         inter.init();
         inter.getResult();
     }
