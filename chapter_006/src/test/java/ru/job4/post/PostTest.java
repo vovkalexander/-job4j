@@ -1,10 +1,11 @@
 package ru.job4.post;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
+
 /**
  * PostTest.
  * @author Vovk Alexander (vovk.ag747@gmail.com)
@@ -29,13 +30,29 @@ class PostTest {
         set4 .add("aaa@bbb.ru");
         Set<String> set5 = new LinkedHashSet<>();
         set5.add("xyz@pisem.net");
-        List<User> userlist = List.of(new User(set1), new User(set2), new User(set3), new User(set4), new User(set5));
+        Map<String, Set<String>> users = new LinkedHashMap<>();
+        users.put("user1",set1);
+        users.put("user2",set2);
+        users.put("user3",set3);
+        users.put("user4",set4);
+        users.put("user5",set5);
+        Map<String, String> email = new LinkedHashMap<>();
+        email.put("xxx@ya.ru","user1");
+        email.put("foo@gmail.com","user1");
+        email.put("lol@mail.ru","user1");
+        email.put("foo@gmail.com","user2");
+        email.put("ups@pisem.net","user2");
+        email.put("xyz@pisem.net","user3");
+        email.put("vasya@pupkin.com","user3");
+        email.put("ups@pisem.net","user4");
+        email.put("aaa@bbb.ru","user4");
+        email.put("xyz@pisem.net","user5");
         Post post = new Post();
-        post.merge(userlist);
-        assertThat(userlist.get(0).getEmailAdress(), is(Set.of("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru",
+        post.merge(users, email);
+        assertThat(users.get("user1"), is(Set.of("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru",
                 "ups@pisem.net", "aaa@bbb.ru")));
-        assertThat(userlist.get(1).getEmailAdress(), is(Set.of("foo@gmail.com", "ups@pisem.net", "aaa@bbb.ru")));
-        assertThat(userlist.get(2).getEmailAdress(), is(Set.of("xyz@pisem.net", "vasya@pupkin.com")));
-        assertThat(userlist.get(3).getEmailAdress(), is(Set.of("ups@pisem.net", "aaa@bbb.ru")));
+        assertThat(users.get("user2"), is(Set.of("foo@gmail.com", "ups@pisem.net", "aaa@bbb.ru")));
+        assertThat(users.get("user3"), is(Set.of("xyz@pisem.net", "vasya@pupkin.com")));
+        assertThat(users.get("user4"), is(Set.of("ups@pisem.net", "aaa@bbb.ru")));
     }
 }
