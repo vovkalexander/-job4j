@@ -1,7 +1,10 @@
 package ru.job4j.srp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
+
 /**
  * InteractCalc.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -16,11 +19,11 @@ public class InteractCalc {
     /**
      * Field - store link for object of  Input.
      */
-    ValidateInput in;
+   private ValidateInput in;
     /**
      * Field - store link for object of  Input.
      */
-    private final Consumer<String> output;
+   protected Consumer<String> output;
     /**
      * Field - activate object of list.
      */
@@ -28,11 +31,11 @@ public class InteractCalc {
     /**
      * Field - store variable of double.
      */
-    Double result;
+   private Double result;
     /**
      * Field - store object of DispatchAction.
      */
-    DispatchAction pattern = new DispatchAction();
+   private DispatchAction pattern = new DispatchAction();
     /**
      * Constructor for activation fields.
      */
@@ -62,8 +65,8 @@ public class InteractCalc {
      */
     public void init() {
         this.initCalculator();
-        for (int i = 0; i < pattern.getDispatch().size(); i++) {
-            range.add(i);
+        for (Map.Entry<Integer, Function<Integer, Action>> entry: pattern.getDispatch().entrySet()) {
+            range.add(entry.getKey());
         }
         while (true){
             this.display();
@@ -89,6 +92,9 @@ public class InteractCalc {
     public Double getResult() {
         this.result = calculator.getResult();
         return result;
+    }
+    public DispatchAction getPattern() {
+        return this.pattern;
     }
     public static void main(String[] args) {
         InteractCalc inter =  new InteractCalc((new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println);

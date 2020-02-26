@@ -1,5 +1,4 @@
 package ru.job4j.srp;
-import org.junit.Ignore;
 import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -35,6 +34,25 @@ public class InteractCalcTest {
         Double number = 128.0;
         test(string, number);
     }
+    @Test
+    public void whenUserInputsTripleAddThenIsReturnedSum()  {
+        String string =  "5\n3\n4\n7\nfinish";
+        Double number = 14.0;
+        testForTripleCalc(string, number);
+    }
+    @Test
+    public void whenUserInputsTripleSubstThenIsReturnedBate()  {
+        String string = "6\nr\n43\n57\nfinish";
+        Double number = -100.0;
+        testForTripleCalc(string, number);
+    }
+    @Test
+    public void whenUserInputsTripleMultThenIsReturnedRise()  {
+        String string  = "7\n12\n12\n2\nfinish";
+        Double number = 288.0;
+        testForTripleCalc(string, number);
+    }
+
     /**
      * Method  activates main code of test.
      * @param str - strings of choice user.
@@ -44,6 +62,19 @@ public class InteractCalcTest {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
         System.setIn(inputStream);
         InteractCalc inter =  new InteractCalc(new ConsoleInput(inputStream), new ExtendedCalc(), System.out::println);
+        inter.init();
+        inter.getResult();
+        assertThat(inter.getResult(), is(number));
+    }
+    /**
+     * Method  activates main code of test.
+     * @param str - strings of choice user.
+     * @param  number- expected result.
+     */
+    public void testForTripleCalc(String str, Double number) {
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
+        System.setIn(inputStream);
+        TripleInteractCalc inter =  new TripleInteractCalc(new ConsoleInput(inputStream), new ExtendedCalc(), System.out::println);
         inter.init();
         inter.getResult();
         assertThat(inter.getResult(), is(number));
