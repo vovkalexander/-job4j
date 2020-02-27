@@ -11,10 +11,10 @@ import static java.util.Collections.disjoint;
  */
 public class Post {
      public void merge(Map<String, Set<String>> user, Map<String, String> emails) {
-          for (Map.Entry<String, Set<String>> entry : user.entrySet()) {
-               for (String key : emails.keySet()) {
-                    if (entry.getValue().contains(key)) {
-                         user.get(entry.getKey()).addAll(user.get(emails.get(key)));
+          for (Map.Entry<String, String> entry : emails.entrySet()) {
+               for (String key : user.keySet()) {
+                    if (user.get(key).contains(entry.getKey())) {
+                         user.get(key).addAll(user.get(entry.getValue()));
                     }
                }
           }
