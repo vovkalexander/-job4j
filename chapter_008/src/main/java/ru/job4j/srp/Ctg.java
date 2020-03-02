@@ -1,7 +1,5 @@
 package ru.job4j.srp;
-import ru.job4j.calculator.Calculator;
 import java.util.List;
-import java.util.Scanner;
 /**
  * Ctg.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -9,24 +7,14 @@ import java.util.Scanner;
  * @since 0.1
  */
 public class Ctg implements Action {
-    @Override
-    public void operation(Scanner scan, Calculator calc, List<Double> list) {
-        Double d;
-        String str;
-        this.display();
-        while (scan.hasNext(Action.REGEX)) {
-            str = scan.next();
-            if (str.equals("r")) {
-                d = calc.getResult();
-            } else {
-                d = Double.parseDouble(str);
-            }
-            calc.setResult(1.0/Math.tan(d));
-            System.out.println("Result is  " + calc.getResult());
-            break;
-        }
-    }
-    public void display() {
-        System.out.println("put number or r - last result");
-    }
+   @Override
+   public Double perform(ExtendedCalc calc, List<Double> list) {
+       Double rst = calc.getResult();
+       if (list.size() == 1) {
+           calc.ctg(list.get(0));
+       } else {
+           rst = null;
+       }
+       return rst;
+   }
 }

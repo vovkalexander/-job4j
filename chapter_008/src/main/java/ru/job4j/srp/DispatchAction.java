@@ -71,14 +71,34 @@ public class DispatchAction {
     public Function<Integer, Action> toTripMul() {
         return choose -> new TripleMultiply();
     }
-    //  public DispatchAction init() {
-    //     this.load(-1, this.toFinish());
-    //     this.load(0, this.toAddition());
-    //     this.load(1, this.toSubtracting());
-    //     this.load(2, this.toMultiplication());
-    //     this.load(3, this.toDividing());
-    //     return this;
-    // }
+    /**
+     * Handle to Action.
+     * @return type of Action.
+     */
+    public Function<Integer, Action> toSin() {
+        return choose -> new Sin();
+    }
+    /**
+     * Handle to Action.
+     * @return type of Action.
+     */
+    public Function<Integer, Action> toCos() {
+        return choose -> new Cos();
+    }
+    /**
+     * Handle to Action.
+     * @return type of Action.
+     */
+    public Function<Integer, Action> toTan() {
+        return choose -> new Tan();
+    }
+    /**
+     * Handle to Action.
+     * @return type of Action.
+     */
+    public Function<Integer, Action> toCtg() {
+        return choose -> new Ctg();
+    }
     /**
      * Fills in Map.
      * @param key of Map.

@@ -52,6 +52,30 @@ public class InteractCalcTest {
         Double number = 288.0;
         testForTripleCalc(string, number);
     }
+    @Test
+    public void whenUserInputsSinThenIsReturnedTrigonometryValue()  {
+        String string = "8\n45\nfinish";
+        Double number = 0.8509035245341184;
+        testForEngineerCalc(string, number);
+    }
+    @Test
+    public void whenUserInputsCosThenIsReturnedTrigonometryValue()  {
+        String string = "9\n3\nfinish";
+        Double number = -0.9899924966004454;
+        testForEngineerCalc(string, number);
+    }
+    @Test
+    public void whenUserInputsTanThenIsReturnedTrigonometryValue()  {
+        String string = "10\n15\nfinish";
+        Double number = -0.8559934009085187;
+        testForEngineerCalc(string, number);
+    }
+    @Test
+    public void whenUserInputsCtgThenIsReturnedTrigonometryValue()  {
+        String string = "11\n7\nfinish";
+        Double number = 1.1475154224051356;
+        testForEngineerCalc(string, number);
+    }
 
     /**
      * Method  activates main code of test.
@@ -78,5 +102,18 @@ public class InteractCalcTest {
         inter.init();
         inter.getResult();
         assertThat(inter.getResult(), is(number));
+    }
+    /**
+     * Method  activates main code of test.
+     * @param str - strings of choice user.
+     * @param  number- expected result.
+     */
+    public void testForEngineerCalc(String str, Double number) {
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
+        System.setIn(inputStream);
+        EngineerCalc enCalc= new EngineerCalc((new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println );
+        enCalc.init();
+        enCalc.getResult();
+        assertThat(enCalc.getResult(), is(number));
     }
 }
