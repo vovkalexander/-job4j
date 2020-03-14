@@ -49,10 +49,13 @@ class PostTest {
         email.put("xyz@pisem.net","user5");
         Post post = new Post();
         post.merge(users, email);
-        assertThat(users.get("user1"), is(Set.of("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru",
-                "ups@pisem.net", "aaa@bbb.ru")));
-        assertThat(users.get("user2"), is(Set.of("foo@gmail.com", "ups@pisem.net", "aaa@bbb.ru")));
-        assertThat(users.get("user3"), is(Set.of("xyz@pisem.net", "vasya@pupkin.com")));
-        assertThat(users.get("user4"), is(Set.of("ups@pisem.net", "aaa@bbb.ru")));
+        assertThat(users.values().toArray(), is(new LinkedHashSet[]{
+                new LinkedHashSet<>(List.of("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru", "ups@pisem.net", "aaa@bbb.ru")),
+                new LinkedHashSet<>(List.of("foo@gmail.com", "ups@pisem.net", "aaa@bbb.ru")),
+                new LinkedHashSet<>(List.of("xyz@pisem.net", "vasya@pupkin.com")),
+                new LinkedHashSet<>(List.of("ups@pisem.net", "aaa@bbb.ru")),
+                new LinkedHashSet<>(List.of("xyz@pisem.net"))}));
+        assertThat(email.keySet(), is(new LinkedHashSet<>(List.of("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru", "ups@pisem.net","xyz@pisem.net","vasya@pupkin.com",  "aaa@bbb.ru"))));
+        assertThat(email.values().toArray(), is(new String[]{"user1", "user2", "user1", "user4", "user5", "user3", "user4"}));
     }
 }
