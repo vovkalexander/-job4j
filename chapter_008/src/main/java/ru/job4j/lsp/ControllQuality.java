@@ -1,7 +1,6 @@
 package ru.job4j.lsp;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 /**
  * ControllQuality.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -32,4 +31,22 @@ public class ControllQuality {
         }
         return rst;
     }
+    /**
+     * The method deletes products and puts back again;
+     */
+    public void resort() throws ParseException {
+        Queue<Food> queue;
+        Food food;
+        for (Storage storage : storageSet) {
+            queue = storage.recordIntoQueue();
+            while (!queue.isEmpty()) {
+                food =  queue.poll();
+                this.checkStorage(food);
+            }
+        }
+    }
 }
+
+
+
+

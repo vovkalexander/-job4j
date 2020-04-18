@@ -1,6 +1,9 @@
 package ru.job4j.lsp;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+
 /**
  * Shop.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -42,5 +45,14 @@ public class Shop implements Storage {
      */
     public List<Food> getList() {
         return list;
+    }
+    /*
+     * The method makes list into queue and returns.
+     * @return queue of food's object.
+     */
+    public Queue<Food> recordIntoQueue() {
+        Queue<Food> queue = new LinkedList<>(this.getList());
+        this.getList().clear();
+        return queue;
     }
 }
