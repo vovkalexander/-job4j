@@ -1,8 +1,10 @@
 package ru.job4j.lsp.parking;
-import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 /**
  * CarParkingTest.
@@ -11,49 +13,46 @@ import java.util.Map;
  * @since 0.1
  */
 public class CarParkingTest {
-    private Vehicle passat;
-    private Vehicle golf;
-    private Vehicle crafter;
-    private Place place1;
-    private Place place2;
-    private Place place3;
-    private Place place4;
-    private Parking carParking;
-    @Before
-    public void setUp() {
-        passat = new Car(1);
-        golf = new Car(1);
-        crafter = new Truck(2);
-        place1 = new Place("1", 1, false);
-        place2 = new Place("2", 1, false);
-        place3 = new Place("3", 2, false);
-        place4 = new Place("4", 1, false);
+    @Test
+    public void whenCarTakesOnePlace() {
+        Vehicle passat = new Car(1);
+        Map<Place, Vehicle> park = new LinkedHashMap<>();
+        park.put(new Place("1", 1, false), null);
+        park.put(new Place("2",1, false ),null);
+        Parking carParking = new CarParking(park);
+        carParking.add(passat);
+        List<Place> keys= new ArrayList<>(carParking.getMapParking().keySet());
+        assertThat(carParking.getMapParking().get(keys.get(0)), is (passat));
+        assertThat(keys.get(0).getOccupied(), is (true));
+        assertThat(keys.get(1).getOccupied(), is (false));
+
     }
     @Test
-    public void whenEveryVehicleTakesOnePlace() {
-        carParking = new CarParking(Map.of(
-                place1, null,
-                place2, null,
-                place3, null
-        ));
-        carParking.add(passat);
+    public void whenLorryTakesOnePlace() {
+        Vehicle crafter = new Truck(2);
+        Map<Place, Vehicle> park = new LinkedHashMap<>();
+        park.put(new Place("1", 1, false), null);
+        park.put(new Place("2",2, false ),null);
+        Parking carParking = new CarParking(park);
         carParking.add(crafter);
-        carParking.add(golf);
-        assertThat(carParking.getMapParking().get(place1), is(passat));
-        assertThat(carParking.getMapParking().get(place2), is(golf));
-        assertThat(carParking.getMapParking().get(place3), is(crafter));
+        List<Place> keys = new ArrayList<>(carParking.getMapParking().keySet());
+        assertThat(carParking.getMapParking().get(keys.get(1)), is (crafter));
+        assertThat(keys.get(0).getOccupied(), is (false));
+        assertThat(keys.get(1).getOccupied(), is (true));
+
     }
     @Test
-    public void whenLorryVehicleTakestwoPlace() {
-        carParking = new CarParking(Map.of(
-                place1, null,
-                place2, null,
-                place4, null
-        ));
-        carParking.add(passat);
+    public void whenLorryTakesTwoPlace() {
+        Vehicle crafter = new Truck(2);
+        Map<Place, Vehicle> park = new LinkedHashMap<>();
+        park.put(new Place("1", 1, false), null);
+        park.put(new Place("2",1, false ),null);
+        Parking carParking = new CarParking(park);
         carParking.add(crafter);
-        assertThat(carParking.getMapParking().get(place1), is(passat));
-        assertThat(carParking.getMapParking().get(place2), is(crafter));
-        assertThat(carParking.getMapParking().get(place4), is(crafter));
+        List<Place> keys = new ArrayList<>(carParking.getMapParking().keySet());
+        assertThat(carParking.getMapParking().get(keys.get(0)), is (crafter));
+        assertThat(carParking.getMapParking().get(keys.get(1)), is (crafter));
+        assertThat(keys.get(0).getOccupied(), is (true));
+        assertThat(keys.get(1).getOccupied(), is (true));
     }
 }
