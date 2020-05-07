@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public interface Parking {
     /**
-     * Method adds  vehicle .
+     * Method adds vehicle.
      */
     void add(Vehicle vehicle);
     /**

@@ -14,10 +14,10 @@ public class Truck implements Vehicle {
      * Constructor for activation fields.
      */
     public Truck(int type) {
-        //ToDo
+        this.type = type;
     }
     @Override
     public int getNumber(){
-        return type;
+        return this.type;
     }
 }

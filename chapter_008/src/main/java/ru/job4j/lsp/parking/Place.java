@@ -22,32 +22,44 @@ public class Place {
      * Constructor for activation fields.
      */
     public Place(String number,Integer size, Boolean occupied) {
-        //ToDo;
+        this.number = number;
+        this.size = size;
+        this.occupied = occupied;
     }
     /**
-     * Method returns type of vehicle .
+     * Method returns type of vehicle.
      */
     public int getSize() {
-        return size;
+        return this.size;
     }
     /**
      * Method checks, place is occupied or not.
      */
     public Boolean getOccupied() {
-        return occupied;
+        return this.occupied;
     }
     /**
      * Method sets up, place is occupied or not.
      */
     public void setOccupied(Boolean occupied) {
-        //ToDo;
+        this.occupied = occupied;
     }
     @Override
     public int hashCode() {
-       //ToDo
+        int result = this.number != null ? this.number.hashCode() : 0;
+        result = 31 * result + this.size;
+        return  result;
     }
     @Override
     public boolean equals(Object o) {
-        //ToDo
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Place place = (Place) o;
+        return this.number.equals(place.number) && this.size == place.size;
     }
 }
+

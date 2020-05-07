@@ -7,7 +7,7 @@ package ru.job4j.lsp.parking;
  */
 public  interface Vehicle {
     /**
-     * Method returns  type of vehicle .
+     * Method returns  type of vehicle.
      */
-    public int getNumber();
+     int getNumber();
 }

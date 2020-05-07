@@ -9,16 +9,16 @@ public class Car implements Vehicle {
     /**
      * Field - stores sort of vehicle .
      */
-    private int type;
+    private  int type;
     /**
      * Constructor for activation fields.
      */
     public Car( int type) {
-        //ToDo
+        this.type = type;
     }
     @Override
    public  int getNumber(){
-        return type;
+        return this.type;
    }
 
 }
