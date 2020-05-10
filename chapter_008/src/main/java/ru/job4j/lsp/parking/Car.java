@@ -17,7 +17,7 @@ public class Car implements Vehicle {
         this.type = type;
     }
     @Override
-   public  int getNumber(){
+   public  int getSize(){
         return this.type;
    }
 

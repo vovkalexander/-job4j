@@ -9,5 +9,5 @@ public  interface Vehicle {
     /**
      * Method returns  type of vehicle.
      */
-     int getNumber();
+     int getSize();
 }

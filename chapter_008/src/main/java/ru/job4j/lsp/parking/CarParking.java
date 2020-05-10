@@ -24,14 +24,14 @@ public class CarParking implements Parking {
         List<Place> keys = new ArrayList<>(park.keySet());
         for (int i = 0; i < keys.size(); i++) {
             firstPlace = keys.get(i);
-            if (firstPlace.getSize() == vehicle.getNumber() && !firstPlace.getOccupied()) {
+            if (firstPlace.getSize() == vehicle.getSize() && !firstPlace.getOccupied()) {
                 firstPlace.setOccupied(true);
                 park.put(firstPlace, vehicle);
                 break;
             }
             if (firstPlace != keys.get(keys.size() - 1)) {
                 secondPlace = keys.get(i + 1);
-                if ((firstPlace.getSize() + secondPlace.getSize()) == vehicle.getNumber()
+                if ((firstPlace.getSize() + secondPlace.getSize()) == vehicle.getSize()
                         && !firstPlace.getOccupied() && !secondPlace.getOccupied()) {
                     firstPlace.setOccupied(true);
                     secondPlace.setOccupied(true);
