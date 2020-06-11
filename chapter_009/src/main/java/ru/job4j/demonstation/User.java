@@ -41,7 +41,7 @@ public class User {
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        System.out.println("Object has been destroyed");
+       System.out.println("Object has been destroyed");
     }
     @Override
     public String toString() {
@@ -70,5 +70,9 @@ public class User {
         System.out.println("Used Memory:" + (runtime.totalMemory() - runtime.freeMemory()) / mb);
         System.out.println("Total Memory:" + runtime.totalMemory() / mb);
         System.out.println("Maximum Memory:" + runtime.maxMemory() / mb);
+    }
+    public static void main(String[] args) {
+        User user = new User();
+        user.method(10000000);
     }
 }
