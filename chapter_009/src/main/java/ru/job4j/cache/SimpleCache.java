@@ -21,13 +21,14 @@ public class SimpleCache extends Cache {
     /**
      * Field - Constructor for activation  field.
      */
+
     public SimpleCache(String path) {
         this.path = path;
     }
 
     @Override
     public String getStuff(String filename) {
-        if (!cacheMap.containsKey(filename)) {
+        if (cacheMap.get(filename) == null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(
                     new File(path, filename)))) {
                 String record;
