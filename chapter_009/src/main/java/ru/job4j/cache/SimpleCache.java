@@ -28,7 +28,7 @@ public class SimpleCache extends Cache {
 
     @Override
     public String getStuff(String filename) {
-        if (cacheMap.get(filename) == null) {
+        if (!cacheMap.containsKey(filename) || cacheMap.get(filename) == null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(
                     new File(path, filename)))) {
                 String record;
