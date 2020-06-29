@@ -28,22 +28,35 @@ public class SimpleCache extends Cache {
 
     @Override
     public String getStuff(String filename) {
-        if (!cacheMap.containsKey(filename) || cacheMap.get(filename) == null) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(
-                    new File(path, filename)))) {
-                String record;
-                StringBuilder buid = new StringBuilder();
-                while ((record = reader.readLine()) != null) {
-                    buid.append(record).append(System.lineSeparator());
-                }
-                cacheMap.put(filename, new SoftReference<>(buid.toString()));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        String text = "";
+        if (cacheMap.containsKey(filename))  {
+            text = cacheMap.get(filename).get();
         }
-        return cacheMap.get(filename).get();
+        if (text == null || text.length() == 0 || !cacheMap.containsKey(filename)) {
+            text = readFile(filename);
+            cacheMap.put(filename, new SoftReference<>(text));
+        }
+        return text;
+    }
+    /**
+     * Method finds file and reads date of it.
+     * @param filename - name of file.
+     * return value of file or empty string.
+     */
+
+    private String readFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(
+                new File(path, filename)))) {
+            String record;
+            StringBuilder build = new StringBuilder();
+            while ((record = reader.readLine()) != null) {
+                build.append(record).append(System.lineSeparator());
+            }
+            return build.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
     /**
      * Method returns map.
