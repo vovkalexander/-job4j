@@ -11,25 +11,36 @@ name varchar(100));
 ----- Нужно доработать модель базы данных, так чтобы пользователи могли учавствовать во встречах. 
 ----- У каждого участника встречи может быть разный статус участия - например подтвердил участие, отклонил.
 
-ALTER TABLE users
-ADD COLUMN meet_id int references meeting(id),
-ADD COLUMN participation varchar(3);
+CREATE TABLE users_meeting (
+user_id int references users(id),
+meet_id int references meeting(id),
+participation varchar(3),
+primary key (user_id, meet_id));
 
 2) --- Нужно написать запрос, который получит список всех заявок и количество подтвердивших участников.
 
-SELECT m.name, count(u.name) FROM meeting AS m
-FULL JOIN users as u
-ON m.id = u.meet_id
-and u.participation = 'yes'
-group by(m.name)
-order by (m.name);
+SELECT array_to_string(array_agg(meeting.name), ',') AS meet_name, 
+(SELECT count (users.name) AS cout_part  FROM users
+LEFT OUTER JOIN users_meeting
+ON  users.id = users_meeting.user_id
+WHERE users_meeting.participation = 'yes') FROM meeting
+LEFT OUTER JOIN users_meeting
+ON meeting.id = users_meeting.meet_id
+GROUP BY cout_part;
 
 3) ----- Нужно получить все совещания, где не было ни одной заявки на посещения
 
-SELECT m.name FROM meeting AS m
-Left OUTER JOIN users AS u
-ON m.id = u.meet_id
-WHERE u.name IS NULL;
+SELECT m.name  FROM meeting AS m
+LEFT OUTER JOIN users_meeting  AS u_m
+ON m.id = u_m.meet_id
+LEFT JOIN users AS u
+ON u.id = u_m.meet_id
+WHERE u.name IS NULL; 
+ 
+
+
+
+
 
 
  
