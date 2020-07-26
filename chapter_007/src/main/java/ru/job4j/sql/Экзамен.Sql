@@ -19,14 +19,13 @@ primary key (user_id, meet_id));
 
 2) --- Нужно написать запрос, который получит список всех заявок и количество подтвердивших участников.
 
-SELECT array_to_string(array_agg(meeting.name), ',') AS meet_name, 
-(SELECT count (users.name) AS cout_part  FROM users
-LEFT OUTER JOIN users_meeting
-ON  users.id = users_meeting.user_id
-WHERE users_meeting.participation = 'yes') FROM meeting
+SELECT array_to_string(array_agg(meeting.name), ',')  AS meet_name, count (users.name) AS cout_part
+FROM meeting
 LEFT OUTER JOIN users_meeting
 ON meeting.id = users_meeting.meet_id
-GROUP BY cout_part;
+and users_meeting.participation = 'yes'
+LEFT OUTER JOIN users
+ON users.id = users_meeting.meet_id;
 
 3) ----- Нужно получить все совещания, где не было ни одной заявки на посещения
 
