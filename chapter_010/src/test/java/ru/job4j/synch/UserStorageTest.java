@@ -21,6 +21,6 @@ public class UserStorageTest {
         second.start();
         first.join();
         second.join();
-        assertThat(storage.getList().get(0).getAmount(), is(70));
+        assertThat(user2.getAmount(), is(70));
     }
 }

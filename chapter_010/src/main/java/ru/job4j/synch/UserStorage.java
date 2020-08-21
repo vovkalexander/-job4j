@@ -73,12 +73,4 @@ public class UserStorage {
             }
         }
     }
-    /**
-     * The method returns list of users.
-     * @return list.
-     */
-
-    public synchronized List<User> getList() {
-        return this.list;
-    }
 }
