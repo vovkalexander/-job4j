@@ -12,9 +12,6 @@ import net.jcip.annotations.ThreadSafe;
 @ThreadSafe
 public class UserStorage {
     @GuardedBy("this")
-    /**
-     * Field - stores object's list of Users.
-     */
     private  final List<User> list = new ArrayList<>();
     /**
      * The method adds new object of Users.
