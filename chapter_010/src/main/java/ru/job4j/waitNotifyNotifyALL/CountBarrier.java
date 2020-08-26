@@ -11,10 +11,6 @@ public class CountBarrier {
      */
     private final Object monitor = this;
     /**
-     * Field - stores boolean for using like switcher between .
-     */
-    private boolean flag = false;
-    /**
      * Field - stores integer .
      */
     private final int total;
@@ -33,16 +29,9 @@ public class CountBarrier {
      */
 
     public void count()  {
-        while (!flag) {
-            synchronized (monitor) {
-                count++;
-                monitor.notifyAll();
-            }
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+        synchronized (monitor) {
+            count++;
+            monitor.notifyAll();
         }
     }
     /**
@@ -57,20 +46,25 @@ public class CountBarrier {
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
-
             }
-            flag = true;
         }
     }
 
     public static void main(String[] args) {
-        CountBarrier barrier = new CountBarrier(5);
+        CountBarrier barrier = new CountBarrier(2);
         Thread master = new Thread(
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " started");
                     barrier.count();
                 },
                 "Master"
+        );
+        Thread master1 = new Thread(
+                () -> {
+                    System.out.println(Thread.currentThread().getName() + " started");
+                    barrier.count();
+                },
+                "Master1"
         );
         Thread slave = new Thread(
                 () -> {
@@ -81,5 +75,6 @@ public class CountBarrier {
         );
         master.start();
         slave.start();
+        master1.start();
     }
 }
