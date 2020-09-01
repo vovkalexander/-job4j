@@ -26,7 +26,7 @@ public class SimpleBlockingQueue<T> {
      * @param value - type of value.
      */
 
-    public void offer(T value) {
+    public void offer(T value)  {
         synchronized (this) {
             while (queue.size() == maxSize) {
                 try {
@@ -43,14 +43,10 @@ public class SimpleBlockingQueue<T> {
      * The method returns type of value with removal.
      */
 
-    public T poll() {
+    public T poll() throws InterruptedException {
         synchronized (this) {
             while (this.queue.size() == 0) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+                wait();
             }
             T result = this.queue.poll();
             notify();
