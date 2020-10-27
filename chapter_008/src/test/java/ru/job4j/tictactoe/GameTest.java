@@ -10,37 +10,48 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class GameTest {
+
     @Test
     public void winByDiagonalWithNormalSize() {
         Board board = new ModifyBoard(3);
-        char[][] che = {{'x','.','.'},
-                        {'.','x','.'},
-                        {'.','.','x'}} ;
-        board.set(che);
-        Game game = new Game(board,4);
-        assertThat(game.play(), is (true));
+        char[][] array = {{'x', '.', '.'},
+                          {'.', 'x', '.'},
+                          {'.', '.', 'x'}};
+        this.test(board, array);
     }
+
     @Test
     public void winByVerticalWithSubstandardSize() {
         Board board = new ModifyBoard(4);
-        char[][] array = {{'x','.','.','.'},
-                          {'x','.','.','.'},
-                          {'x','.','.','.'},
-                          {'x','.','.','.'}};
-        board.set(array);
-        Game game = new Game(board,4);
-        assertThat(game.play(), is (true));
+        char[][] array = {{'x', '.', '.', '.'},
+                          {'x', '.', '.', '.'},
+                          {'x', '.', '.', '.'},
+                          {'x', '.', '.', '.'}};
+        this.test(board, array);
     }
+
     @Test
     public void winByHorizontalWithSubstandardSize() {
         Board board = new ModifyBoard(5);
-        char[][] array = {{'.','.','.','.','.'},
-                          {'x','x','x','x','x'},
-                          {'.','.','.','.','.'},
-                          {'.','.','.','.','.'},
-                          {'.','.','.','.','.'}};
+        char[][] array = {{'.', '.', '.', '.', '.'},
+                          {'x', 'x', 'x', 'x', 'x'},
+                          {'.', '.', '.', '.', '.'},
+                          {'.', '.', '.', '.', '.'},
+                          {'.', '.', '.', '.', '.'}};
+        this.test(board, array);
+    }
+    /**
+     * Method  activates main code of test.
+     * @param board - playing field.
+     * @param  array- dimensional array.
+     */
+
+    public void test(Board board, char[][] array) {
+        Player player = new UserPlayer();
+        Player playerAi = new AIPlayer();
         board.set(array);
-        Game game = new Game(board,4);
-        assertThat(game.play(), is (true));
+        Game game = new Game(board, player, playerAi, 4);
+        assertThat(game.play(), is(true));
     }
 }
+

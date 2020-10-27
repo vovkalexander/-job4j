@@ -10,7 +10,7 @@ public class AIPlayer implements Player {
     /**
      * Field - stores char value .
      */
-    private   char SIGN_O = 'o';
+    private char SIGN_O = 'o';
     /**
      * Field - stores the object of class Random.
      */
@@ -22,7 +22,7 @@ public class AIPlayer implements Player {
         do {
             x = random.nextInt(board.getSize());
             y = random.nextInt(board.getSize());
-        } while (!board.addMark(x ,y, SIGN_O));
+        } while (!board.addMark(x, y, SIGN_O));
 
     }
 

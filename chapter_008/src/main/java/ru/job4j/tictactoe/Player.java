@@ -16,5 +16,6 @@ public interface Player {
      * The method returns char.
      * @return  char.
      */
+
     char getMark();
 }

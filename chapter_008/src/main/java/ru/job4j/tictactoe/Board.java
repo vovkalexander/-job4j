@@ -11,7 +11,7 @@ public interface Board {
      * The method puts empty marks on cells.
      */
 
-    void clean ();
+    void clean();
     /**
      * The method prints court on console.
      */

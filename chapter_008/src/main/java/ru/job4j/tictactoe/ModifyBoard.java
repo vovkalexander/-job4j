@@ -25,33 +25,33 @@ public class ModifyBoard implements Board {
     public ModifyBoard(int size) {
         this.size = size;
         this.table = new char[size][size];
-        for (int row = 0; row < size ; row ++) {
+        for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 table[row][col] = SIGN_EMPTY;
             }
         }
-
     }
+
     @Override
     public void clean() {
-        for (int row = 0; row < size ; row ++) {
+        for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 table[row][col] = SIGN_EMPTY;
             }
         }
     }
-    @Override
 
+    @Override
     public void printTable() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                System.out.print(table[row][col] +" ") ;
+                System.out.print(table[row][col] + " ");
             }
             System.out.println();
         }
     }
-    @Override
 
+    @Override
     public boolean isCellValid(int x, int y) {
         if (x < 0 || y < 0 || x >= size || y >= size) {
             System.out.println("out of bounds");
@@ -59,9 +59,9 @@ public class ModifyBoard implements Board {
         } else if (table[y][x] != SIGN_EMPTY) {
             return false;
         }
-
         return true;
     }
+
     @Override
     public boolean isTableFull() {
         for (int row = 0; row < size; row++) {
@@ -73,8 +73,8 @@ public class ModifyBoard implements Board {
         }
         return true;
     }
-    @Override
 
+    @Override
     public   boolean checkWin(char dot) {
         int count = 0;
         for (int i = 0; i < size; i++) {
@@ -84,30 +84,29 @@ public class ModifyBoard implements Board {
                 } else if (table[i][j] != dot) {
                     count = 0;
                     break;
-
-                }  if (count == size) {
+                }
+                if (count == size) {
                     return true;
                 }
             }
         }
-        if(count!=size) {
+        if (count != size) {
             count = 0;
         }
-        for(int i = 0; i <size; i++) {
+        for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (table[j][i] == dot) {
-                    count ++;
-
+                    count++;
                 } else if (table[j][i] != dot) {
                     count = 0;
                     break;
-
-                }  if (count == size) {
+                }
+                if (count == size) {
                     return true;
                 }
             }
         }
-        if (count!=size) {
+        if (count != size) {
             count = 0;
         }
         for (int i = 0; i < size; i++) {
@@ -122,10 +121,10 @@ public class ModifyBoard implements Board {
                 return true;
             }
         }
-        if (count!=size) {
+        if (count != size) {
             count = 0;
         }
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             if  (table[i][size - 1 - i] == dot) {
                 count++;
             } else if (table[i][size - 1 - i] != dot) {
@@ -137,8 +136,8 @@ public class ModifyBoard implements Board {
         }
         return false;
     }
-    @Override
 
+    @Override
     public boolean addMark(int x, int y, char position) {
         if (isCellValid(x, y)) {
             table[y][x] = position;
@@ -146,14 +145,14 @@ public class ModifyBoard implements Board {
         }
         return false;
     }
-    @Override
 
+    @Override
     public int getSize() {
         return size;
     }
-    @Override
 
+    @Override
     public void set(char[][] array) {
-         this.table = array;
+        this.table = array;
     }
 }

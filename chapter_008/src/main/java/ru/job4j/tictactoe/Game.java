@@ -9,30 +9,36 @@ public class Game {
     /**
      * Field - stores link of Board .
      */
-    Board board;
+    private Board board;
     /**
      * Field - activates user's player .
      */
-    Player player = new UserPlayer();
+    private Player player;
     /**
      * Field - activates computer's player .
      */
-    Player playerAi = new AIPlayer();
+    private Player playerAi;
     /**
      * Field - stores quality winners of user.
      */
-    int qtyWin;
+    private int qtyWin;
     /**
      * Constructor for activation fields.
      */
-    public Game(Board bord ) {
+
+    public Game(Board bord, Player player1, Player player2) {
         this.board = bord;
+        this.player = player1;
+        this.playerAi = player2;
     }
     /**
      * Overloaded  Constructor for activation fields in additional quality winners of user.
      */
-    public Game(Board bord,  int qtyWin ) {
-        this.board = bord;
+
+    public Game(Board board, Player player, Player playerAi, int qtyWin) {
+        this.board = board;
+        this.player = player;
+        this.playerAi = playerAi;
         this.qtyWin = qtyWin;
     }
     /**
@@ -45,14 +51,14 @@ public class Game {
         board.printTable();
         do {
             if (board.checkWin(player.getMark())) {
-                qtyWin ++;
+                qtyWin++;
                 System.out.println("YOU WIN!");
-                 System.out.println("at a run " + qtyWin);
-                 board.clean();
-                 if (qtyWin == 5) {
-                     check = true;
-                       break;
-                  }
+                System.out.println("at a run " + qtyWin);
+                board.clean();
+                if (qtyWin == 5) {
+                    check = true;
+                    break;
+                }
             }
             player.turn(board);
             if (board.isTableFull()) {
@@ -63,7 +69,7 @@ public class Game {
             board.printTable();
             if (board.checkWin(playerAi.getMark())) {
                 System.out.println("AI WIN!");
-               break;
+                break;
             }
             if (board.isTableFull()) {
                 System.out.println("Sorry, DRAW!");
@@ -74,9 +80,12 @@ public class Game {
         return check;
 
     }
+
     public static void main(String[] args) {
         Board board = new ModifyBoard(3);
-        Game game = new Game(board);
+        Player player = new UserPlayer();
+        Player playerAi = new AIPlayer();
+        Game game = new Game(board, player, playerAi);
         game.play();
     }
 }

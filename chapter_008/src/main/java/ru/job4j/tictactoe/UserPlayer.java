@@ -19,16 +19,17 @@ public class UserPlayer implements Player {
 
     @Override
     public void turn(Board board) {
-        int x,y;
+        int x, y;
         do {
-            System.out.println(System.lineSeparator() + "Enter X and Y (1.." + board.getSize()+ ")");
+            System.out.println(
+                    System.lineSeparator() + "Enter X and Y (1.." + board.getSize() + ")");
             if (scanner.hasNextInt()) {
                 x = scanner.nextInt() - 1;
                 y = scanner.nextInt() - 1;
             } else {
               throw  new InputMismatchException("the type is incongruous");
             }
-        }  while ( !board.addMark(x, y, SIGN_X));
+        }  while (!board.addMark(x, y, SIGN_X));
     }
 
     @Override
