@@ -26,8 +26,8 @@
 
 ####Реализованные проекты:
 
-* [Парсинг вакансии](./chapter_007/src/main/java/ru/job4j/parser/README.md)
-* [Крестики-нолики ООД](./chapter_008/src/main/java/ru/job4j/tictactoe/README.md)
+* [Парсинг вакансии](https://github.com/vovkalexander/job4j_grabber/tree/master/chapter_007/src/main/java/ru/job4j/parser)
+* [Крестики-нолики ООД](https://github.com/vovkalexander/-job4j/tree/master/chapter_008/src/main/java/ru/job4j/tictactoe)
 
 
 ####Инструменты и библиотеки:
