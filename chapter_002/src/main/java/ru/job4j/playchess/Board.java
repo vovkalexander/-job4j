@@ -22,6 +22,7 @@ public class Board {
      * @param figure- шахматная фигура.
      * @return - возвращает фигуру.
      */
+
     public Figure add(Figure figure) {
         this.figures[place++] = figure;
         return figure;
@@ -31,11 +32,15 @@ public class Board {
      * @param source начальная позиция фигуры.
      * @param dest  конечная позиция фигуры.
      * @return возвращает логический вывод(правельное перемещение фигуры).
-     * @throws ImpossibleMoveException Выбрасывает исключение, если фигуру нельзя передвинуть в указанную точку.
-     * @throws OccupiedWayException    Выбрасывает исключение, если движению фигуры  мешают другие фигуры.
+     * @throws ImpossibleMoveException Выбрасывает исключение,
+     * если фигуру нельзя передвинуть в указанную точку.
+     * @throws OccupiedWayException    Выбрасывает исключение,
+     * если движению фигуры  мешают другие фигуры.
      * @throws FigureNotFoundException Выбрасывает исключение, если на начальной позиции нет фигуры.
      */
-    public boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+
+    public boolean move(Cell source, Cell dest)
+            throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
         boolean rst = false;
         int index = this.findBy(source);
         Figure figure = figures[index];
@@ -52,22 +57,28 @@ public class Board {
      * @return логический вывод.
      * @throws FigureNotFoundException Выбрасывает исключение, если в начальной позиции нет фигуры.
      */
+
     public int findBy(Cell sourse) throws FigureNotFoundException {
-        return IntStream.range(0, this.figures.length).filter(index ->figures[index] != null && figures[index].position.x == sourse.x
-                && figures[index].position.y == sourse.y).findFirst().orElseThrow(() -> new  FigureNotFoundException("На клетке отсутсвует фигура"));
+        return IntStream.range(0, this.figures.length).filter(index ->
+                figures[index] != null && figures[index].getPosition().getX() == sourse.getX()
+                && figures[index].getPosition().getY() == sourse.getY()).findFirst().orElseThrow(() ->
+                new  FigureNotFoundException("На клетке отсутсвует фигура"));
     }
     /**
      * Метод проверяет, свободен ли путь движения фигуры.
      * @param figure текущая фигура.
      * @param steps Список ячеек, через которые пройдет фигура.
      * @return логический вывод.
-     * @throws OccupiedWayException Выбрасывает исключение, если движению фигуры  мешают другие фигуры.
+     * @throws OccupiedWayException Выбрасывает исключение,
+     * если движению фигуры  мешают другие фигуры.
      */
+
     private boolean located(Figure figure, Cell[] steps) throws OccupiedWayException {
         boolean result = false;
         for (int i = 0; i < figures.length; i++) {
             for (int j = 0; j < steps.length; j++) {
-                if (figures[i] != null && figures[i].position.x == steps[j].x && figures[i].position.y == steps[j].y) {
+                if (figures[i] != null && figures[i].getPosition().getX() == steps[j].getX()
+                        && figures[i].getPosition().getY() == steps[j].getY()) {
                     result = true;
                     break;
                 }

@@ -28,7 +28,7 @@ public class BishopTest {
     @Test
     public void whenBishopCanMove() {
         bishop = new Bishop(Cell.A1);
-        Cell[] result = bishop.way(bishop.position, Cell.D4);
+        Cell[] result = bishop.way(bishop.getPosition(), Cell.D4);
         Cell[] expected = {Cell.B2, Cell.C3, Cell.D4};
         assertThat(result, is(expected));
     }

@@ -17,11 +17,11 @@ public enum Cell {
     /**
      * хранит координату по горизонтали.
      */
-    public int x;
+    private int x;
     /**
      * хранит координату по вертикали.
      */
-    public int y;
+    private int y;
     /**
      * Конструтор инициализирующий поля.
      * @param x координата по горизонтали.
@@ -47,5 +47,13 @@ public enum Cell {
             }
         }
         return rst;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
