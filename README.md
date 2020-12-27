@@ -24,6 +24,7 @@
 * **chapter_007.** SQL, JDBC.
 * **chapter_008.** OOD, Solid, TDD.
 * **chapter_009.** Multithreading.
+* **chapter_010.** Servlet и JSP.
 
 
 ####Реализованные проекты:
@@ -36,6 +37,8 @@
 * JavaCore
 * JavaDoc
 * Postgresql, JDBC
+* Apache Tomcat
+* HTML/CSS
 * Cборщик Maven
 * Github
 * В проектах используются модульные тесты Junit

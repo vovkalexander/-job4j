@@ -3,15 +3,20 @@ package ru.job4.tracker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 import ru.job4j.tracker.*;
-
+import static org.mockito.ArgumentMatchers.any;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 /**
  * Test.
@@ -153,6 +158,54 @@ public class StartUITest {
                 .append(menu)
                 .toString()));
     }
+
+    @Test
+    public void whenDeleteWithMockito() {
+        //создаём StubInput с последовательностью действий(удаляем заявку)
+        Input input = mock(Input.class);
+        when(input.ask(anyString())).thenReturn(item.getId());
+        // создаём StartUI и вызываем метод init()
+        new StartUI(input, tracker, System.out::println).removeItem();
+        //// проверяем, что нулевой элемент массива в трекере удален, введённое при эмуляции.
+        assertThat(this.output.toString(), is(new StringBuilder()
+                .append("---------Удаление  -------")
+                .append(System.lineSeparator())
+                .append("Заявка удалена")
+                .append(System.lineSeparator())
+                .toString()));
+    }
+
+    @Test
+    public void whenFindByIdWithMockito() {
+        //создаём StubInput с последовательностью действий(находим заявку по id)
+        Input input = mock(Input.class);
+        when(input.ask(any(String.class))).thenReturn(item.getId());
+        // создаём StartUI и вызываем метод init()
+        new StartUI(input, tracker, System.out::println).findById();
+        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(this.output.toString(), is(new StringBuilder()
+                .append("---------Нахождение заявки по ID -------")
+                .append(System.lineSeparator())
+                .append("Имя заявки :" + item.getName())
+                .append(System.lineSeparator())
+                .toString()));
+    }
+    @Test
+    public void whenFindByNameWithMockito() {
+        //создаём StubInput с последовательностью действий(находим заявку по id)
+        Input input = mock(Input.class);
+        when(input.ask(any(String.class))).thenReturn(item.getName());
+        // создаём StartUI и вызываем метод init()
+        new StartUI(input, tracker, System.out::println).findByName();
+        //// // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        assertThat(this.output.toString(), is(new StringBuilder()
+                .append("---------Нахождение заявки по Имени -------")
+                .append(System.lineSeparator())
+                .append("Имя заявки :" + item.getName() + " " + "ID :" + item.getId())
+                .append(System.lineSeparator())
+                .toString()));
+    }
+
 }
 
 
