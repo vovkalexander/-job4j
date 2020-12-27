@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import static org.mockito.ArgumentMatchers.anyString;
 
 /**
  * StartUI.
@@ -133,7 +134,7 @@ public class StartUI {
      * Метод реализует удаление заявки.
      */
 
-    private void removeItem() {
+    public void removeItem() {
         output.accept("---------Удаление  -------");
         String id = this.input.ask("Введите id заявки :");
         if (tracker.delete(id)) {
@@ -145,7 +146,7 @@ public class StartUI {
     /**
      * Метод реализует нахождение заявки по id.
      */
-    private void findById()  {
+    public void findById()  {
         output.accept("---------Нахождение заявки по ID -------");
         String id = this.input.ask("Введите id заявки :");
         Item item = this.tracker.findById(id);
@@ -158,7 +159,7 @@ public class StartUI {
     /**
      * Метод реализует нахождение заявки по имени.
      */
-    private void findByName() {
+    public void findByName() {
         output.accept("---------Нахождение заявки по Имени -------");
         String name = this.input.ask("Введите имя заявки :");
        List<Item> items = this.tracker.findByName(name);
