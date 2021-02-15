@@ -10,7 +10,7 @@
 соответствовать  квалификации  java - разработчика.
 
 На данный момент обучение продолжается, для завершения курса
-осталось освоить технологии Servlet and JSP, Hibernate, Spring.
+осталось освоить технологии Hibernate, Spring.
 
 ####Содержание проеденных тем:
 * **chapter_001.** Базовый синтаксис Java: циклы, операторы условий, массивы, алгоритмы.
@@ -22,6 +22,7 @@
 * **chapter_007.** SQL, JDBC.
 * **chapter_008.** OOD, Solid, TDD.
 * **chapter_009.** Multithreading.
+* **<a href="https://github.com/vovkalexander/job4j_dreamjob">Servlets and JSP</a>**
 
 
 ####Реализованные проекты:
@@ -31,9 +32,10 @@
 
 
 ####Инструменты и библиотеки:
-* JavaCore
+* JavaCore, JavaEE
 * JavaDoc
 * Postgresql, JDBC
+* JavaScript, Json
 * Cборщик Maven
 * Github
 * В проектах используются модульные тесты Junit
