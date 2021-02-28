@@ -14,6 +14,8 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
         <mapping class="ru.job4j.tracker.ItemForHiber" />
+        <mapping class="ru.job4j.tracker.Item" />
+
 
     </session-factory>
 </hibernate-configuration>
