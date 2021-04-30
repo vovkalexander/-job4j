@@ -21,21 +21,25 @@
 * **chapter_006.** Input-Output, Socket, Консольный zip-архиватор файлов.
 * **chapter_007.** SQL, JDBC.
 * **chapter_008.** OOD, Solid, TDD.
-* **chapter_009.** Multithreading.
+* **chapter_009.** Garbage Collection. 
+* **chapter_010.** Multithreading.
 * **<a href="https://github.com/vovkalexander/job4j_dreamjob">Servlets and JSP</a>**
-
+* **chapter_011.** Hibernate
 
 ####Реализованные проекты:
 
 * [Парсинг вакансии](https://github.com/vovkalexander/job4j_grabber/tree/master/chapter_007/src/main/java/ru/job4j/parser)
 * [Крестики-нолики ООД](https://github.com/vovkalexander/-job4j/tree/master/chapter_008/src/main/java/ru/job4j/tictactoe)
-
+* [Работа мечты](https://github.com/vovkalexander/job4j_dreamjob)
+* [Площадка продаж машин](https://github.com/vovkalexander/job4j_cars)
 
 ####Инструменты и библиотеки:
 * JavaCore, JavaEE
 * JavaDoc
+* Hibernate
+* Servlet и JSP
 * Postgresql, JDBC
-* JavaScript, Json
+* JavaScript, Json, Jquery
 * Cборщик Maven
 * Github
 * В проектах используются модульные тесты Junit
