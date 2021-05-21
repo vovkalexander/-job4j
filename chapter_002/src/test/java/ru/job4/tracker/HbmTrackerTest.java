@@ -10,10 +10,9 @@ import static org.hamcrest.core.IsNull.nullValue;
 import java.util.List;
 
 public class HbmTrackerTest {
-    final HbmTracker hbmTracker = new HbmTracker();
-
     @Test
     public void whenAddItem() {
+        final HbmTracker hbmTracker = new HbmTracker();
         Item item = new Item("item1", "itemDescription");
         hbmTracker.add(item);
         List<Item> items = hbmTracker.findAll();
@@ -24,6 +23,7 @@ public class HbmTrackerTest {
 
     @Test
     public void whenReplaceItemId() {
+        final HbmTracker hbmTracker = new HbmTracker();
         Item first = new Item("first");
         Item second = new Item("second");
         hbmTracker.add(first);
@@ -35,6 +35,7 @@ public class HbmTrackerTest {
 
     @Test
     public void whenDeleteItem() {
+        final HbmTracker hbmTracker = new HbmTracker();
         Item first = new Item("first");
         hbmTracker.add(first);
         hbmTracker.delete(String.valueOf(first.getIdy()));
@@ -43,6 +44,7 @@ public class HbmTrackerTest {
 
     @Test
     public void whenFindItemsByName() {
+        final HbmTracker hbmTracker = new HbmTracker();
         Item first = new Item("goods");
         Item second = new Item("goods");
         Item third = new Item("product");
@@ -57,6 +59,7 @@ public class HbmTrackerTest {
 
     @Test
     public void whenFindItemById() {
+        final HbmTracker hbmTracker = new HbmTracker();
        Item item = new Item("product");
        hbmTracker.add(item);
        assertThat(hbmTracker.findById(String.valueOf(item.getIdy())).getName(), is("product"));
