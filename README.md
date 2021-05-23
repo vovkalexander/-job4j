@@ -25,6 +25,7 @@
 * **chapter_010.** Multithreading.
 * **<a href="https://github.com/vovkalexander/job4j_dreamjob">Servlets and JSP</a>**
 * **chapter_011.** Hibernate
+* **chapter_012.** Spring
 
 ####Реализованные проекты:
 
