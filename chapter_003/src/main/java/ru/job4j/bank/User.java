@@ -20,6 +20,7 @@ public class User implements Comparable<User> {
      * @param name имя пользователя.
      * @param passport  пасспорт пользователя.
      */
+
     public User(String name, String passport) {
         this.name = name;
         this.passport = passport;
@@ -28,6 +29,7 @@ public class User implements Comparable<User> {
      * Метод возвращает имя пользователя.
      * @return имя пользователя.
      */
+
     public String getName() {
         return name;
     }
@@ -36,13 +38,16 @@ public class User implements Comparable<User> {
      *
      * @return пасспорт пользователя.
      */
+
     public String getPassport() {
         return passport;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, passport);
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -54,6 +59,7 @@ public class User implements Comparable<User> {
         User user = (User) o;
         return getName().equals(user.getName()) && getPassport().equals(user.getPassport());
     }
+
     @Override
     public int compareTo(User one) {
         int rls = this.passport.compareTo(one.getPassport());

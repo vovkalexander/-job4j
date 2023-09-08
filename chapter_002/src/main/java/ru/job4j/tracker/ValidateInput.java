@@ -17,13 +17,16 @@ public class ValidateInput implements  Input {
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
      */
+
     public ValidateInput(final Input input) {
         this.input = input;
     }
+
     @Override
     public String ask(String question) {
         return this.input.ask(question);
     }
+
     @Override
     public int ask(String question, List<Integer> range) {
        boolean invalid = true;

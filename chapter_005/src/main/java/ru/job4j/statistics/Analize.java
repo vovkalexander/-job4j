@@ -45,6 +45,7 @@ public class Analize {
      * @version $Id$
      * @since 0.1
      */
+
     public static class User {
         /**
          * Поле - хранит id пользователя.
@@ -59,6 +60,7 @@ public class Analize {
          * @param name имя пользователя.
          * @param id пользователя.
          */
+
        public User(int id, String name) {
             this.id = id;
             this.name = name;
@@ -67,6 +69,7 @@ public class Analize {
          * Метод возвращает id пользователя.
          * @return id пользователя.
          */
+
         public int getId() {
             return this.id;
         }
@@ -74,6 +77,7 @@ public class Analize {
          * Метод возвращает имя пользователя.
          * @return имя пользователя.
          */
+
         public String getName() {
             return this.name;
         }
@@ -84,22 +88,24 @@ public class Analize {
      * @version $Id$
      * @since 0.1
      */
+
     public static class Info {
         /**
          * Поле - хранит статистику добавления.
          */
-        int added;
+        private int added;
         /**
          * Поле - хранит статистику изменения.
          */
-        int changed;
+        private int changed;
         /**
          * Поле - хранит статистику удаления.
          */
-        int deleted;
+        private int deleted;
         /**
          * Конструктор пустой.
          */
+
         public Info() {
         }
         /**
@@ -108,11 +114,13 @@ public class Analize {
          * @param changed изменение.
          * @param deleted удаление.
          */
+
         public Info(int added, int changed, int deleted) {
             this.added = added;
             this.changed = changed;
             this.deleted = deleted;
         }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) {
@@ -124,6 +132,7 @@ public class Analize {
             Info info = (Info) o;
             return added == info.added && changed == info.changed && deleted == info.deleted;
         }
+
         @Override
         public int hashCode() {
             int result = 31 * added;

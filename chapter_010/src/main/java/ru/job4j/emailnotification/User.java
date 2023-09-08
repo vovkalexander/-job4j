@@ -1,4 +1,4 @@
-package ru.job4j.emailNotification;
+package ru.job4j.emailnotification;
 /**
  * User.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -9,11 +9,11 @@ public class User {
     /**
      * Field - stores link of string.
      */
-    String username;
+   private String username;
     /**
      * Field - stores link of string.
      */
-    String email;
+   private String email;
     /**
      * Constructor for activation fields.
      */

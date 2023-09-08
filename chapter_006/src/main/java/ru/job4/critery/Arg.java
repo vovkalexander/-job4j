@@ -21,6 +21,7 @@ public  class Arg {
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
+
     public Arg(String[] args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-d")) {
@@ -47,12 +48,14 @@ public  class Arg {
      * Метод возвращает карту значений аргументов .
      * @return карта значений.
      */
+
     public Map<String, String> getMap() {
         return  this.map;
     }
     /**
      * Метод - выводит меню выбора пользователю.
      */
+
     private void display() {
         StringBuilder build = new StringBuilder();
         build.append("Name:")
@@ -81,6 +84,7 @@ public  class Arg {
     /**
      * Метод - устанавливает имя файла после выбора категории пользователя.
      */
+
     public void chooseCategory() {
         display();
         String scan;

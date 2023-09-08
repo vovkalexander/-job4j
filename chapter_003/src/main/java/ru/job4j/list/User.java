@@ -24,6 +24,7 @@ public class User {
      * @param name имя пользователя.
      * @param city место проживание пользователя.
      */
+
     public User(int id, String name, String city) {
         this.id = id;
         this.name = name;
@@ -33,6 +34,7 @@ public class User {
      * Метод возвращает номер пользователя.
      * @return номер пользователя.
      */
+
     public int getId() {
         return id;
     }
@@ -40,6 +42,7 @@ public class User {
      * Метод возвращает имя пользователя.
      * @return имя пользователя.
      */
+
     public String getName() {
         return name;
     }
@@ -47,6 +50,7 @@ public class User {
      * Метод возвращает место проживание пользователя .
      * @return место проживание пользователя.
      */
+
     public String getCity() {
         return city;
     }

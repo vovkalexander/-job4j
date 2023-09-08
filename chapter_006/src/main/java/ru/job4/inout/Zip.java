@@ -18,11 +18,12 @@ public class Zip {
     /**
      * Поле - хранит ссылку класса Args.
      */
-    Args arg;
+   private Args arg;
     /**
      * Конструктор для активации объекта класса Args.
      * @param args массив аргументов командной строки.
      */
+
     public Zip(String[] args) {
         arg = new Args(args);
     }
@@ -32,6 +33,7 @@ public class Zip {
      * @param ext - расширение файла.
      * @return  список файлов без заданного расширения.
      */
+
     public List<File> seekBy(String root, String ext) {
         List<File> list = new LinkedList<>();
         Queue<File> queue = new LinkedList<>();
@@ -54,6 +56,7 @@ public class Zip {
      * @param source - список файлов без заданного расширения.
      * @param  target- путь хранения архива.
      */
+
     public void pack(List<File> source, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(target))) {
             for (File file : source) {
@@ -66,6 +69,11 @@ public class Zip {
             e.printStackTrace();
         }
     }
+
+    public Args getArg() {
+        return arg;
+    }
+
     public static void main(String[] args) {
         Zip zip = new Zip(args);
         List<File> list = zip.seekBy(zip.arg.directory(), zip.arg.exclude());

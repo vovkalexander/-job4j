@@ -17,6 +17,7 @@ public class Args {
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
+
     public Args(String[] args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-d")) {
@@ -34,6 +35,7 @@ public class Args {
      * Метод возвращает путь начального файла.
      * @return путь начального файла.
      */
+
     public String directory() {
         return this.directory;
     }
@@ -41,6 +43,7 @@ public class Args {
      * Метод возвращает файл с исключающем расширением .
      * @return файл с исключающем расширением
      */
+
     public String exclude() {
         return this.exclude;
     }
@@ -48,6 +51,7 @@ public class Args {
      * Метод возвращает путь расположение файла после архивации .
      * @return путь расположение файла после архивации
      */
+
     public String output() {
         return this.output;
     }
