@@ -18,6 +18,7 @@ public class Bank {
      * Метод - добавляет пользователя в отображение.
      * @param user пользователь.
      */
+
     public void addUser(User user) {
         this.userBank.putIfAbsent(user, new ArrayList<>());
     }
@@ -25,6 +26,7 @@ public class Bank {
      * метод - удаляет пользователя из отображения.
      * @param user пользователь.
      */
+
     public void deleteUser(User user) {
         this.userBank.remove(user);
     }
@@ -33,6 +35,7 @@ public class Bank {
      * @param passport  пользователя.
      * @param account счет пользователя.
      */
+
     public void addAccountToUser(String passport, Account account) {
         userBank.keySet().stream().filter(user -> user.getPassport().contains(passport)).forEach(user ->
                  this.userBank.get(user).add(account));
@@ -66,6 +69,7 @@ public class Bank {
      * @param amount - сумма перечисления.
      * @return логический вывод.
      */
+
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         User userSrc = getUser(srcPassport);
@@ -85,6 +89,7 @@ public class Bank {
      * @param passport  пользователя.
      * @return  пользователя по пасспорту.
      */
+
     public User getUser(String passport) {
         User result = null;
         for (User user : this.userBank.keySet()) {
@@ -101,6 +106,7 @@ public class Bank {
      * @param requisite  реквизиты пользователя.
      * @return счет  пользователя по реквизитам.
      */
+
     public Account getAccount(User user, String requisite) {
         return this.userBank.get(user).stream().filter(account -> account.getReqs().contains(requisite)).
                 findFirst().orElse(null);
@@ -109,6 +115,7 @@ public class Bank {
      * Метод - возвращает отображение.
      * @return поле отображение.
      */
+
     public Map getMap() {
         return userBank;
     }

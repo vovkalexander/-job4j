@@ -48,6 +48,7 @@ public class MenuTracker  {
     /**
      * Метод заполняет массив.
      */
+
     public void fillActions(StartUI ui) {
         this.actions.add(new AddItem(0, "Add the new item."));
         this.actions.add(new ShowItems(1, "Show all items"));
@@ -68,6 +69,7 @@ public class MenuTracker  {
     /**
      * Метод выводит на экран меню.
      */
+
     public void show() {
         for (UserAction action : this.actions) {
             if (action != null) {
@@ -78,6 +80,7 @@ public class MenuTracker  {
     /**
      *  Класс - пункт подменю добавление заявки
      */
+
     private class AddItem extends BaseAction  {
         /**
          * Конструтор инициализирующий поля.
@@ -103,6 +106,7 @@ public class MenuTracker  {
     /**
      *  Класс - пункт подменю показ всех заявок
      */
+
     private class ShowItems  extends BaseAction  {
         /**
          * Конструтор инициализирующий поля.
@@ -112,10 +116,12 @@ public class MenuTracker  {
         protected ShowItems(int key, String name) {
             super(key, name);
         }
+
         @Override
         public int key() {
             return 1;
         }
+
         @Override
         public void execute(Input input, ITracker tracker) {
             output.accept("------------ All Items --------------");
@@ -125,6 +131,7 @@ public class MenuTracker  {
                 }
             }
         }
+
         @Override
         public String info() {
             return String.format("%s. %s", this.key(), "Show all items");
@@ -133,6 +140,7 @@ public class MenuTracker  {
     /**
      *  Класс - пункт подменю редактирование заявки
      */
+
     private class UpdateItem extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
@@ -141,8 +149,8 @@ public class MenuTracker  {
          */
         protected UpdateItem(int key, String name) {
             super(key, name);
-
         }
+
         @Override
         public void execute(Input input, ITracker tracker) {
             output.accept("------------ Edit item --------------");
@@ -162,6 +170,7 @@ public class MenuTracker  {
     /**
      *  Класс - пункт подменю удаление заявки
      */
+
     private class DeleteItem extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
@@ -172,6 +181,7 @@ public class MenuTracker  {
         protected DeleteItem(int key, String name) {
             super(key, name);
         }
+
         @Override
         public void execute(Input input, ITracker tracker) {
             output.accept("---------Removing  -------");
@@ -186,6 +196,7 @@ public class MenuTracker  {
     /**
      *  Класс - пункт подменю поиск заявки по Id
      */
+
     private class FindItemById extends BaseAction {
         /**
          * Конструтор инициализирующий поля.
@@ -196,6 +207,7 @@ public class MenuTracker  {
         public FindItemById(int key, String name) {
             super(key, name);
         }
+
         @Override
         public void execute(Input input, ITracker tracker) {
             output.accept("---------Finding item by ID -------");
@@ -237,6 +249,7 @@ public class MenuTracker  {
     /**
      *      Класс - пункт подменю выход из главного меню
      */
+
     class ExitProgram extends BaseAction  {
         /**
          * @param хранит ссылку.

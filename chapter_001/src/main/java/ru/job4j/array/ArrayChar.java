@@ -15,6 +15,7 @@ public class ArrayChar  {
      * Constructor ArrayChar.
      * @param line - string variable.
      */
+
     public ArrayChar(String line) {
         this.data = line.toCharArray();
     }
@@ -23,6 +24,7 @@ public class ArrayChar  {
      * @param prefix-string variable.
      * return boolean.
      */
+
     public boolean startWith(String prefix) {
         boolean result = true;
         char[] value = prefix.toCharArray();

@@ -20,6 +20,7 @@ public class EvenNumbersIterator implements Iterator {
      * Конструктор для активации поля.
      * @param numbers массив чисел.
      */
+
     public EvenNumbersIterator(final int[] numbers) {
         this.numbers = numbers;
     }
@@ -27,6 +28,7 @@ public class EvenNumbersIterator implements Iterator {
      * Метод - проверяет наличие четных чисел в массиве.
      * @return логический вывод.
      */
+
     @Override
     public boolean hasNext() {
         int i = index;
@@ -39,6 +41,7 @@ public class EvenNumbersIterator implements Iterator {
      * Метод возращает четное число массива и переводит каретку на одну позицию вперед.
      * @return rst - элемент массиа.
      */
+
     @Override
     public Object next() {
         while ((index < numbers.length) && (numbers[index] % 2 != 0)) {

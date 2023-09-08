@@ -14,12 +14,14 @@ public abstract class Base {
      * Конструктор для активации поля.
      * @param id объекта.
      */
+
     protected Base(final String id) {
         this.id = id;
     }
     /**
      * Метод - возвращает id объекта.
      */
+
     public String getId() {
         return id;
     }

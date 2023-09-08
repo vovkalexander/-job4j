@@ -23,6 +23,7 @@ public class Finder {
      * Конструктор  для активации полей
      * @param args массив аргументов командной строки.
      */
+
     public Finder(String[] args) throws IOException {
         arg = new Arg(args);
         arg.chooseCategory();
@@ -30,6 +31,7 @@ public class Finder {
     /**
      * Метод - поиска  файлов после выбронной категории пользователя и добавление в список.
      */
+
     public void search() throws IOException {
         PredicateFactory factory = new PredicateFactory();
         Predicate predicate = factory.createSearch(arg.getMap().get("name"), arg);
@@ -38,6 +40,7 @@ public class Finder {
     /**
      * Метод - записывает список файлов в удаленный файл.
      */
+
     public void write() throws IOException  {
         try (BufferedWriter out = new BufferedWriter(new FileWriter(arg.getMap().get("output")))) {
             for (Path path : this.result) {
@@ -49,6 +52,7 @@ public class Finder {
      * Метод - возвращает список файлов.
      * @return  список файлов.
      */
+
     public List<Path> getList() {
         return this.result;
     }

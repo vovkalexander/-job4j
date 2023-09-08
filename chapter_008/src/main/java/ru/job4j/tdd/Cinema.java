@@ -16,9 +16,11 @@ public interface Cinema extends Movies {
     /*
    The method returns  Ticket's.
      */
+
     Ticket buy(Account account, int row, int column, Calendar date);
     /*
      The method adds Session's objects into list.
        */
+
     void add(Session session);
 }

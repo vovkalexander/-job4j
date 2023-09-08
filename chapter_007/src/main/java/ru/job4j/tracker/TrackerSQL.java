@@ -25,6 +25,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * Конструктор для активации подключения к базе данных.
      * @param connection - ссылка на класс Connection;
      */
+
     public TrackerSQL(Connection connection) {
         this.connection = connection;
     }
@@ -32,6 +33,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * Метод реализаущий подключение к базе данных.
      * @return логическое значение.
      */
+
     public boolean init() {
         try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
@@ -51,6 +53,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * Метод реализаущий добавление заявки.
      * @param item новая заявка
      */
+
     @Override
     public Item add(Item item) {
         try (PreparedStatement st = this.connection.prepareStatement("insert into items (names, description, created) VALUES (?, ?, ?) ",
@@ -74,6 +77,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * @param id   заявки.
      * return логическое значение.
      */
+
     @Override
     public boolean replace(String id, Item item) {
         boolean rst = false;
@@ -95,6 +99,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * @param id заявки.
      * return логическое значение.
      */
+
     @Override
     public boolean delete(String id) {
         boolean rst = false;
@@ -112,6 +117,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * Находит все заявки .
      * return список заявок.
      */
+
     @Override
     public List<Item> findAll() {
         List<Item> list = new ArrayList<>();
@@ -130,6 +136,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * @param name-имя заявки.
      * return список заявок(массив) с именим key.
      */
+
     @Override
     public List<Item> findByName(String name) {
         List<Item> list = new ArrayList<>();
@@ -149,6 +156,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      * @param id заявки.
      * return заявку.
      */
+
     @Override
     public Item findById(String id) {
         Item item = null;
@@ -166,6 +174,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     /**
      * Закрывает соединение с базой данных.
      */
+
     @Override
     public void close() {
         try {

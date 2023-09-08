@@ -17,6 +17,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toAddition() {
         return choose ->  new Addition();
 
@@ -25,6 +26,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toSubtracting() {
         return choose -> new Subtracting();
     }
@@ -40,6 +42,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toDividing() {
         return choose -> new Dividing();
     }
@@ -47,6 +50,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return null.
      */
+
     public Function<Integer, Action> toFinish() {
         return choose -> null;
     }
@@ -54,6 +58,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toTripAdd() {
         return choose -> new TripleAdditional();
     }
@@ -61,6 +66,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toTripSub() {
         return choose -> new TripleSubtracting();
     }
@@ -68,6 +74,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toTripMul() {
         return choose -> new TripleMultiply();
     }
@@ -75,6 +82,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toSin() {
         return choose -> new Sin();
     }
@@ -82,6 +90,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toCos() {
         return choose -> new Cos();
     }
@@ -89,6 +98,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toTan() {
         return choose -> new Tan();
     }
@@ -96,6 +106,7 @@ public class DispatchAction {
      * Handle to Action.
      * @return type of Action.
      */
+
     public Function<Integer, Action> toCtg() {
         return choose -> new Ctg();
     }
@@ -104,6 +115,7 @@ public class DispatchAction {
      * @param key of Map.
      * @param handle - value of Map.
      */
+
     public void load(Integer key, Function<Integer, Action> handle) {
         this.dispatch.put(key, handle);
     }
@@ -112,6 +124,7 @@ public class DispatchAction {
      * @param choose - user's input.
      * @return Action's object if it finds in a dispatch.
      */
+
     public Action sent(Integer choose) {
         return this.dispatch.get(choose).apply(choose);
     }
@@ -119,6 +132,7 @@ public class DispatchAction {
      * Sent message to dispatch.
      * @return value of field of Class.
      */
+
     public Map<Integer, Function<Integer, Action>> getDispatch() {
         return dispatch;
     }

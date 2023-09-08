@@ -14,9 +14,11 @@ public class CarParking implements Parking {
     /**
      * Constructor for activation fields.
      */
+
     public CarParking(Map<Place, Vehicle> park) {
         this.park = park;
     }
+
     @Override
     public void add(Vehicle vehicle) {
         Place firstPlace;

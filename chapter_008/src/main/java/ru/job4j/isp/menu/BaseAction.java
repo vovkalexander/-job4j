@@ -11,14 +11,15 @@ public class BaseAction {
     /**
      * Field - stores link of class Menu.
      */
-    Menu wood;
+  private Menu wood;
     /**
      * Field - stores link of class Scanner.
      */
-    Scanner scan;
+  private Scanner scan;
     /**
      * Constructor for activation fields.
      */
+
     public BaseAction(InputStream stream, Menu wood) {
         this.wood = wood;
         this.scan = new Scanner(stream);
@@ -26,6 +27,7 @@ public class BaseAction {
     /**
      * Method  operates with user.
      */
+
     public void init() {
         String input;
         do {
@@ -33,12 +35,13 @@ public class BaseAction {
             input = this.scan.nextLine();
             if (wood.orderedMenu().contains(input)) {
                 System.out.println("You have chosen " + input);
-            } else if(!input.matches("exit")) {
+            } else if (!input.matches("exit")) {
                 System.out.println("Choose correct item ");
             }
         } while (!input.equals("exit"));
 
     }
+
     public static void main(String[] args) {
         Menu menu = new Menu("Menu");
         menu.add("Menu", "Task 1");
@@ -49,7 +52,7 @@ public class BaseAction {
         menu.add("Task 2", "Task 2.2");
         menu.add("Task 2.1", "Task 2.1.1");
         menu.add("Task 2.1", "Task 2.1.2");
-        BaseAction conversation = new BaseAction(System.in,menu);
+        BaseAction conversation = new BaseAction(System.in, menu);
         conversation.init();
     }
 }

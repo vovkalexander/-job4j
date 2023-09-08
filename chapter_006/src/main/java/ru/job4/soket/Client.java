@@ -25,6 +25,7 @@ public class Client {
      * @param socket ссылка класса Socket
      * @param reader ссылка класса BufferedReader.
      */
+
     public Client(Socket socket, BufferedReader reader) {
         this.socket = socket;
         this.reader = reader;
@@ -32,6 +33,7 @@ public class Client {
     /**
      * Метод переписки с сервером через соккет.
      */
+
     public void start() throws IOException {
         try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
@@ -47,6 +49,7 @@ public class Client {
             } while (!str.equals("exit"));
         }
     }
+
     public static void main(String[] args) throws IOException {
         String ip = "127.0.0.1";
         try (Socket socket = new Socket(InetAddress.getByName(ip), 2030);

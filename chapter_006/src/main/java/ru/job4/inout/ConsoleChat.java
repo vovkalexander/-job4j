@@ -24,6 +24,7 @@ public class ConsoleChat {
      * Конструктор  для активации консольного потока
      * @param stream поток ввода.
      */
+
     public ConsoleChat(InputStream stream) {
         this.in = new Scanner(stream);
 
@@ -32,6 +33,7 @@ public class ConsoleChat {
      * Конструктор  для активации консольного потока
      * @param input  строки пользователя.
      */
+
     public ConsoleChat(String input) {
         this.in = new Scanner(input);
 
@@ -40,6 +42,7 @@ public class ConsoleChat {
      * Метод возвращает файл с исключающем расширением .
      * @return список переписки.
      */
+
     public List<String> getList() {
         return this.link;
     }
@@ -48,6 +51,7 @@ public class ConsoleChat {
      * @param logic - выключатель потока ответчика.
      * @return список выражений ответчика.
      */
+
     public List<String> load(Boolean logic) throws IOException {
         List<String> list = new ArrayList<>();
         Boolean rst = true;
@@ -69,6 +73,7 @@ public class ConsoleChat {
      * @param list - список переписки.
      * @param  path - путь к файлу
      */
+
     public void writeDown(List<String> list, String path) throws IOException {
         try (BufferedWriter out = new BufferedWriter(new FileWriter(path))) {
             for (String string : list) {
@@ -80,6 +85,7 @@ public class ConsoleChat {
     /**
      * Метод создает переписку.
      */
+
     public void setUp() throws IOException {
         Boolean check = true;
         String scan;
@@ -103,6 +109,7 @@ public class ConsoleChat {
             }
         }  while (in.hasNext() && !in.next().equals("закончить"));
     }
+
     public static void main(String[] args) throws IOException {
         ConsoleChat chat = new ConsoleChat(System.in);
         chat.setUp();

@@ -57,12 +57,15 @@ public class Calculator {
      * @return 2,0,1,4.
      */
 
+    public double getResult() {
+
         return this.result;
     }
     /**
      * Method getResult.
      * @param digit - variable of Double.
      */
+
     public void setResult(Double digit) {
         this.result = digit;
     }

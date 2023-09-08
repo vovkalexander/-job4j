@@ -16,7 +16,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
     /**
      * Поле - хранит счетчик изменение структуры массива.
      */
-    int modCount;
+    private int modCount;
     /**
      * Поле - хранит ссылку на  объект внутреннего класса.
      */
@@ -29,6 +29,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
      * Метод вставляет в конец списка данные.
      * @param data - данные.
      */
+
     public void add(E data) {
         Node<E> newLink = new Node<>(data);
         if (first == null) {
@@ -45,6 +46,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
      * Метод получения элемента по индексу.
      * @param index - индекс элеммента.
      */
+
     public E get(int index) {
         Node<E> result = this.last;
         if (index > size || index < 0) {
@@ -60,6 +62,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
     /**
      * Метод получения размера коллекции.
      */
+
     public int getSize() {
         return this.size;
     }
@@ -67,6 +70,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
      * Метод удаляет первый элемент коллекции.
      * @return возвращает значение.
      */
+
     public E deleteFirst() {
         E temp = first.data;
         if (first.next == null) { // Если только один элемент
@@ -82,6 +86,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
      * Метод удаляет элемент коллекции.
      * @return возвращает значение.
      */
+
     public E deleteLast() {
         E temp = last.data;
         if (size >= 2) {
@@ -103,15 +108,15 @@ public class DynamicLinkedList<E> implements Iterable<E> {
         /**
          * Поле - хранит данные.
          */
-        E data;
+       private E data;
         /**
          * Поле - хранит ссылку на  объект следующего объкта.
          */
-        Node<E> next;
+        private Node<E> next;
         /**
          * Поле - хранит ссылку на  объект предыдущего объекта.
          */
-        Node<E> previous;
+      private   Node<E> previous;
 
         /**
          * Конструктор для активации поля .
@@ -125,10 +130,11 @@ public class DynamicLinkedList<E> implements Iterable<E> {
     /**
      * Метод - возвращает итератор .
      */
+
     public Iterator<E> iterator() {
         return new Iterator<>() {
-            int expectedModCount = modCount;
-            Node<E> current = first;
+         private    int expectedModCount = modCount;
+        private     Node<E> current = first;
             @Override
             public boolean hasNext() {
                 if (this.expectedModCount != modCount) {
@@ -136,6 +142,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
                 }
                 return current != null;
             }
+
             @Override
             public E next() {
                 if (!hasNext()) {

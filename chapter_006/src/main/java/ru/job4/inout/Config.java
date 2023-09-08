@@ -24,12 +24,14 @@ public class Config {
      * Конструктор для активации пути к файлу.
      * @param path  путь к файлу.
      */
+
     public Config(String path) {
         this.path = path;
     }
     /**
      * Метод - загружает файл в хеш таблицу.
      */
+
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             String line = null;
@@ -50,6 +52,7 @@ public class Config {
      * @param key - ключ хеш таблицы.
      * @return  value - значение.
      */
+
     public String value(String key)  throws ValueNotFoundException {
         if (values.get(key) == null) {
             throw new ValueNotFoundException("Don't impl this method yet!");
@@ -60,9 +63,11 @@ public class Config {
      * Метод - возвращает хеш таблицу.
      * @return  Map - хеш таблица.
      */
+
     public Map<String, String> getMap() {
         return this.values;
     }
+
     @Override
     public String toString() {
         StringJoiner out = new StringJoiner(System.lineSeparator());
@@ -73,6 +78,7 @@ public class Config {
         }
         return out.toString();
     }
+
     public static void main(String[] args) {
         Config conf = new Config("C:\\projects\\student\\Vovk Alexander\\-job4j\\app.properties");
         System.out.println(conf);

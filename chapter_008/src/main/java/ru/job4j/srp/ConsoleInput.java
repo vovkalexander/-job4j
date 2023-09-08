@@ -17,13 +17,15 @@ public class ConsoleInput implements Input {
      * Constructor activates fields.
      * @param stream - input stream.
      */
-    public ConsoleInput( InputStream stream) {
+
+    public ConsoleInput(InputStream stream) {
         this.scanner = new Scanner(stream);
     }
     /**
      * Method realizing request of users's parameters.
      * @param question - request to user.
      */
+
     public String ask(String question) {
         System.out.print(question);
         return scanner.nextLine();
@@ -33,6 +35,7 @@ public class ConsoleInput implements Input {
      * @param question - request to user.
      * @param range - list according to qua-ty items of menu.
      */
+
     public int ask(String question, List<Integer> range) throws ArrayIndexOutOfBoundsException {
         int key;
         String scan = this.ask(question);
@@ -48,7 +51,7 @@ public class ConsoleInput implements Input {
                 }
             }
             if (!exist) {
-                throw new ArrayIndexOutOfBoundsException();//("Out of menu range.");
+                throw new ArrayIndexOutOfBoundsException(); //("Out of menu range.");
             }
         }
         return key;

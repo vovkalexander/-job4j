@@ -28,6 +28,7 @@ public class DynamicList<E> implements Iterable<E> {
      * Конструктор для активации размера массива.
      * @param size  размер массива.
      */
+
     public DynamicList(int size) {
         this.size = size;
         this.container = new Object[size];
@@ -36,6 +37,7 @@ public class DynamicList<E> implements Iterable<E> {
      * Метод - добавляет элемент в массив.
      * @param  value значение.
      */
+
     public void add(E value) {
         ensureCapacity();
         container[index++] = value;
@@ -44,6 +46,7 @@ public class DynamicList<E> implements Iterable<E> {
     /**
      * Метод - увеличивает размер  массива при заполнении.
      */
+
     private void ensureCapacity() {
         if (index + 1 == size) {
             size *= 2;
@@ -58,6 +61,7 @@ public class DynamicList<E> implements Iterable<E> {
      * Метод - возвращает элемент  массива.
      * @param index позиция массива.
      */
+
     public E get(int index) {
         return (E) container[index];
     }
@@ -66,6 +70,7 @@ public class DynamicList<E> implements Iterable<E> {
      * @param value значение.
      * @return логический вывод.
      */
+
     public boolean contains(E value) {
         for (int i = 0; i < index; i++) {
             if (Objects.equals(value, container[i])) {
@@ -77,16 +82,18 @@ public class DynamicList<E> implements Iterable<E> {
     /**
      * Метод - возвращает массив.
      */
+
     public Object[] get() {
         return this.container;
     }
     /**
      * Метод - возвращает итератор .
      */
+
     public Iterator<E> iterator() {
         return new Iterator<>() {
             private int position;
-            int expectedModCount = modCount;
+          private int expectedModCount = modCount;
             @Override
             public boolean hasNext() {
                 if (this.expectedModCount != modCount) {
@@ -94,6 +101,7 @@ public class DynamicList<E> implements Iterable<E> {
                 }
                 return position < index;
             }
+
             @Override
             public E next() {
                 if (!hasNext()) {

@@ -20,7 +20,8 @@ package ru.job4j.calculate;
 * @param name vovk alexander.
 * @return Echo plus vovk alexander.
 */
- public String echo(String name) {
+
+public String echo(String name) {
     return "Echo, echo, echo : " + name;
 }
 

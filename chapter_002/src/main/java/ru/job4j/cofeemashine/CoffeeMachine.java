@@ -16,6 +16,7 @@ public class CoffeeMachine {
      * @param price цена кофе.
      * @return сдача количеством монет с большим номиналом .
      */
+
     public int[] changes(int value, int price) {
         if (value < price) {
             throw new NotEnoughMoney("Недостаточное количество денег");
