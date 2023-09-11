@@ -16,15 +16,18 @@ public interface Store<T extends Base> {
      * @param  id объекта.
      * @param  model новый объект.
      */
+
     boolean replace(String id, T model);
     /**
      * Метод - заменяет удаляет объект в массиве.
      * @param  id объекта.
      */
+
     boolean delete(String id);
     /**
      * Метод - находит объект в массиве.
      * @param  id объекта.
      */
+
     T findById(String id);
 }

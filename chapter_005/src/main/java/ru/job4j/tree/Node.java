@@ -19,6 +19,7 @@ public class Node<E extends Comparable<E>> {
      * Конструктор активации значения узла.
      * @param value значение узла.
      */
+
     public Node(final E value) {
         this.value = value;
     }
@@ -26,6 +27,7 @@ public class Node<E extends Comparable<E>> {
      * Метод - добавляет листья в дерево.
      * @param child - лист дерева
      */
+
     public void add(Node<E> child) {
         this.children.add(child);
     }
@@ -33,6 +35,7 @@ public class Node<E extends Comparable<E>> {
      * Метод - возвращает массив листьев дерева.
      * @return массив листьев.
      */
+
     public List<Node<E>> leaves() {
         return this.children;
     }
@@ -40,6 +43,7 @@ public class Node<E extends Comparable<E>> {
      * Метод - спавнивает значение узлов.
      * @return нуль если значения равны.
      */
+
     public boolean eqValue(E that) {
         return this.value.compareTo(that) == 0;
     }
@@ -47,6 +51,7 @@ public class Node<E extends Comparable<E>> {
      * Метод - возвращает значение узла.
      * @return значение узла.
      */
+
     public E getValue() {
         return this.value;
     }

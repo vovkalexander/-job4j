@@ -71,6 +71,7 @@ public class Triangle {
      * @param bc Длина от точки b c.
      * @return boolean правда или ложь.
      */
+
     private boolean exist(double ab, double ac, double bc) {
 
         return ab + bc > ac && ab + ac > bc && ac + bc > ab;

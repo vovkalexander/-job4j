@@ -10,14 +10,15 @@ public class Profession {
     /**
      * @param name of profession .
      */
-    public String name;
+    private String name;
     /**
      * @param name of worker .
      */
-    public String profession;
+    private String profession;
     /**
      * constructor profession empty.
      */
+
     public Profession() {
     }
     /**
@@ -25,6 +26,7 @@ public class Profession {
      * @param name for initializing.
      * @param profession for initializing.
      */
+
     public Profession(String name, String profession) {
         this.name = name;
         this.profession = profession;
@@ -42,6 +44,7 @@ public class Profession {
      * method getProfession.
      * @return  initialized profession.
      */
+
     public String getProfession(String profession) {
         return profession;
     }

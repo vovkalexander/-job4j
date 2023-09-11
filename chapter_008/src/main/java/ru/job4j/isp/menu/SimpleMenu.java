@@ -19,5 +19,6 @@ public interface SimpleMenu extends Display {
      * @param value -  item's value.
      * @return 	filled up collection.
      */
+
     Optional<MenuItem> findBy(String value);
 }

@@ -22,7 +22,6 @@ public class    Point {
      * @param x coordinate.
      * @param y coordinate.
      */
-
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
@@ -41,7 +40,6 @@ public class    Point {
      * Main .
      * @param args- args.
      */
-
 
     public static void main(String[] args) {
         Point a = new Point(0, 1);

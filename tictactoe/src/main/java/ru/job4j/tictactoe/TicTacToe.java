@@ -15,7 +15,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
-
 public class TicTacToe extends Application {
     private static final String JOB4J = "Крестики-нолики www.job4j.ru";
     private final int size = 3;
@@ -115,7 +114,6 @@ public class TicTacToe extends Application {
         }
         return panel;
     }
-
 
     @Override
     public void start(Stage stage) {

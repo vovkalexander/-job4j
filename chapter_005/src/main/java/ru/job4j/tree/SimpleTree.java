@@ -19,5 +19,6 @@ public interface SimpleTree<E extends Comparable<E>> extends Iterable<E> {
      * @param value - значение узла.
      * @return узел дерева.
      */
+
     Optional<Node<E>> findBy(E value);
 }

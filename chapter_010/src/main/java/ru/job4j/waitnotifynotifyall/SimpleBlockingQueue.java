@@ -1,4 +1,4 @@
-package ru.job4j.waitNotifyNotifyALL;
+package ru.job4j.waitnotifynotifyall;
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.LinkedList;
@@ -18,6 +18,7 @@ public class SimpleBlockingQueue<T> {
     /**
      * Constructor for activation field.
      */
+
     public SimpleBlockingQueue(int maxSize) {
         this.maxSize = maxSize;
     }

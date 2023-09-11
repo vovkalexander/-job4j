@@ -13,11 +13,13 @@ public class Truck implements Vehicle {
     /**
      * Constructor for activation fields.
      */
+
     public Truck(int type) {
         this.type = type;
     }
+
     @Override
-    public int getSize(){
+    public int getSize() {
         return this.type;
     }
 }

@@ -23,6 +23,7 @@ public class MatrixIterator implements Iterator {
      * Конструктор для активации поля.
      * @param values двумерный массив.
      */
+
     public MatrixIterator(final int[][] values) {
         this.values = values;
     }
@@ -30,6 +31,7 @@ public class MatrixIterator implements Iterator {
      * Метод - проверяет наличие элементов в массиве.
      * @return логический вывод.
      */
+
     public boolean hasNext() {
         return row < values.length && cell < values[row].length;
     }
@@ -37,6 +39,7 @@ public class MatrixIterator implements Iterator {
      * Метод возращает элемент массива и переводит каретку на одну позицию вперед.
      * @return rst - элемент массиа.
      */
+
     public Object next() {
         int rst;
         if (values[row].length == cell + 1) {

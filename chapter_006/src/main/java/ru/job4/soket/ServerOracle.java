@@ -26,12 +26,14 @@ public class ServerOracle {
      * Конструктор для активации переменых.
      * @param socket ссылка класса Socket
      */
+
     public ServerOracle(Socket socket) {
         this.socket = socket;
     }
     /**
      * Метод переписки с клиентом через соккет.
      */
+
     public void connect() throws IOException {
         try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
@@ -57,6 +59,7 @@ public class ServerOracle {
      * Метод возвращает  список ответов сервера.
      * @return map список ответов сервера клиенту.
      */
+
     private Map<String, String> load() {
         this.map.put("hello", "Hello, dear friend, I'm a oracle.");
         this.map.put("hi", "Hi, how are you doing");
@@ -64,6 +67,7 @@ public class ServerOracle {
         this.map.put("what do you like?", "eat and sleep");
         return this.map;
     }
+
     public static void main(String[] args) throws IOException {
         try (final Socket socket = new ServerSocket(2030).accept()) {
             new ServerOracle(socket).connect();

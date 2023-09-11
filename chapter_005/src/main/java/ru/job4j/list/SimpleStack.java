@@ -17,6 +17,7 @@ public class SimpleStack<E> {
      * Конструктор для активации ссылки.
      * @param link  ссылка на объект.
      */
+
     public SimpleStack(DynamicLinkedList<E> link) {
         this.link = new DynamicLinkedList<E>();
     }
@@ -24,6 +25,7 @@ public class SimpleStack<E> {
      * Метод - добавляет элемент в список.
      * @param  value значение.
      */
+
     public void push(E value) {
         link.add(value);
     }
@@ -31,6 +33,7 @@ public class SimpleStack<E> {
      * Метод - удаляет элемент из списока и возвращает.
      * @return значение.
      */
+
     public E poll() {
         return link.deleteLast();
     }
@@ -38,6 +41,7 @@ public class SimpleStack<E> {
      * Метод - проверяет наличие элемента.
      * @return логическое выражение.
      */
+
     public boolean isEmpty() {
         Iterator<E> it = link.iterator();
         if (!it.hasNext()) {

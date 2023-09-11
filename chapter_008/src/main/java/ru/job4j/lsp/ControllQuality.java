@@ -15,12 +15,14 @@ public class ControllQuality {
     /**
      * The method adds object Scorage to list;
      */
+
     public void addStorage(Storage storage) {
         storageSet.add(storage);
     }
     /**
      * The method distributes products by quality to storage;
      */
+
     public boolean checkStorage(Food food) throws ParseException {
         boolean rst = false;
         for (Storage storage: storageSet) {
@@ -34,6 +36,7 @@ public class ControllQuality {
     /**
      * The method deletes products and puts back again;
      */
+
     public void resort() throws ParseException {
         Queue<Food> queue;
         Food food;

@@ -8,6 +8,7 @@ public class TripleInteractCalc extends InteractCalc {
     public TripleInteractCalc(Input input, ExtendedCalc calculator, Consumer<String> output) {
         super(input, calculator, output);
     }
+
     @Override
     public void initCalculator() {
         super.getPattern().load(5, super.getPattern().toTripAdd());
@@ -15,14 +16,18 @@ public class TripleInteractCalc extends InteractCalc {
         super.getPattern().load(7, super.getPattern().toTripMul());
         super.getPattern().load(-1, super.getPattern().toFinish());
     }
+
     @Override
     public void display() {
-        super.output.accept("Choose  for calculation or put finish for ending "+
-                System.getProperty("line.separator")+
+        super.output.accept("Choose  for calculation or put finish for ending "
+                +
+                System.getProperty("line.separator")
+                +
                 "5- tripadd, 6- tripsub, 7- tripmult");
     }
+
     public static void main(String[] args) {
-        TripleInteractCalc trip = new TripleInteractCalc((new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println );
+        TripleInteractCalc trip = new TripleInteractCalc((new ConsoleInput(System.in)), new ExtendedCalc(), System.out::println);
         trip.init();
         trip.getResult();
     }

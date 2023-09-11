@@ -14,5 +14,6 @@ public interface Parking {
     /**
      * Method returns filling up  parking.
      */
-    Map<Place,Vehicle> getMapParking();
+
+    Map<Place, Vehicle> getMapParking();
 }

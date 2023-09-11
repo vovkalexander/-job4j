@@ -45,6 +45,7 @@ public class Departments {
      * @param deps- список департаментов.
      * @return отсортированный список департаментов.
      */
+
     public List<String> sortAsc(List<String> deps) {
         Set<String> straightSort = convert(deps);
         return new ArrayList<>(straightSort);
@@ -55,6 +56,7 @@ public class Departments {
      * @param deps- список департаментов.
      * @return отсортированный список департаментов.
      */
+
     public List<String> sortDesc(List<String> deps) {
         Set<String> straightSort = convert(deps);
         Set<String> reverseSort = new TreeSet<>(new Comparator<String>() {

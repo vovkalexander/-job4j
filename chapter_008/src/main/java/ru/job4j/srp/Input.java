@@ -19,5 +19,6 @@ public interface Input {
      * @param question - запрос.
      * @param range - массив соответствующий кол-во пунктов меню.
      */
+
     int ask(String question, List<Integer> range) throws ArrayIndexOutOfBoundsException;
 }

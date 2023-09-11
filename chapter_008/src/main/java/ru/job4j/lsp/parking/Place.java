@@ -21,7 +21,8 @@ public class Place {
     /**
      * Constructor for activation fields.
      */
-    public Place(String number,Integer size, Boolean occupied) {
+
+    public Place(String number, Integer size, Boolean occupied) {
         this.number = number;
         this.size = size;
         this.occupied = occupied;
@@ -29,27 +30,32 @@ public class Place {
     /**
      * Method returns type of vehicle.
      */
+
     public int getSize() {
         return this.size;
     }
     /**
      * Method checks, place is occupied or not.
      */
+
     public Boolean getOccupied() {
         return this.occupied;
     }
     /**
      * Method sets up, place is occupied or not.
      */
+
     public void setOccupied(Boolean occupied) {
         this.occupied = occupied;
     }
+
     @Override
     public int hashCode() {
         int result = this.number != null ? this.number.hashCode() : 0;
         result = 31 * result + this.size;
         return  result;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

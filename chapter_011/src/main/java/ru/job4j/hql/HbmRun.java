@@ -1,4 +1,5 @@
 package ru.job4j.hql;
+import org.hibernate.Metamodel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -11,6 +12,8 @@ public class HbmRun {
                 .configure().build();
 
         SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
+
 
         try {
             Session session = sf.openSession();
@@ -32,12 +35,13 @@ public class HbmRun {
                     .setParameter("fName", "Juan")
                     .uniqueResult());
 
-            session.createQuery("update Candidate c set c.name = :fName," +
-                    "c.experience = :fExperience, c.salary = :fSalary where c.id = :fId")
+            session.createQuery("update Candidate c set c.name = :fName,"
+                            +
+                            "c.experience = :fExperience, c.salary = :fSalary where c.id = :fId")
                     .setParameter("fName", "Komuto")
                     .setParameter("fExperience", 10)
                     .setParameter("fSalary", 7000)
-                    .setParameter("fId", 2 )
+                    .setParameter("fId", 2)
                     .executeUpdate();
 
             session.createQuery("delete from Candidate c where c.id = :fId")

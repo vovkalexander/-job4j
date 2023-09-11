@@ -18,6 +18,7 @@ public class SimpleArrayList<E> {
      * Метод вставляет в начало списка данные.
      * @param data - данные.
      */
+
     public void add(E data) {
         Node<E> newLink = new Node<>(data);
         newLink.next = this.first;
@@ -27,6 +28,7 @@ public class SimpleArrayList<E> {
     /**
      * Метод удаляет первый элемент списка.
      */
+
     public E delete() {
         Node<E> temp = first;
         first = first.next;
@@ -36,6 +38,7 @@ public class SimpleArrayList<E> {
      * Метод получения элемента по индексу.
      * @param index - индекс элеммента.
      */
+
     public E get(int index) {
         Node<E> result = this.first;
         for (int i = 0; i < index; i++) {
@@ -46,27 +49,34 @@ public class SimpleArrayList<E> {
     /**
      * Метод получения размера коллекции.
      */
+
     public int getSize() {
         return this.size;
     }
     /**
      * Node<E> Класс предназначен для хранения данных.
      */
+
     private static class Node<E> {
         /**
          * Поле - хранит данные.
          */
-        E data;
+      private   E data;
         /**
          * Поле - хранит ссылку на  объект внутреннего класса.
          */
-        Node<E> next;
+       private Node<E> next;
         /**
          * Конструктор для активации поля .
          * @param data - данные.
          */
+
         Node(E data) {
             this.data = data;
         }
+    }
+
+    public Node<E> getNext() {
+        return first;
     }
 }

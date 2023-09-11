@@ -7,7 +7,6 @@ package ru.job4j.max;
  * @version 1
  */
 
-
 public class Max {
 
     /**

@@ -19,12 +19,14 @@ public class MenuItem {
     /**
      * Constructor for activation field.
      */
+
     public MenuItem(String name) {
         this.name = name;
     }
     /**
      * Method returns value of Node.
      */
+
     public String getName() {
         return name;
     }
@@ -32,15 +34,16 @@ public class MenuItem {
      * Method adds to list new Nodes.
      * @param item object of MenuItem.
      */
+
     public void add(MenuItem item) {
         this.children.add(item);
     }
     /**
      * Method returns list of bound Nodes.
      */
+
     public List<MenuItem> leaves() {
         return this.children;
     }
-
 
 }

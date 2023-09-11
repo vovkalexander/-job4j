@@ -37,6 +37,7 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
      * Конструктор для активации размера массива.
      * @param size  размер массива.
      */
+
     public SimpleHashMap(int size) {
         this.size = size;
         this.table = new Entry[size];
@@ -47,6 +48,7 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
      * @param value - значение.
      * @return логический вывод.
      */
+
     public boolean insert(K key, V value) {
         if (loadFactor <= (float) count / size) {
             increaseCapacity();
@@ -71,12 +73,14 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
      * @param key - ключ объекта.
      * @return int - число.
      */
+
     private int hash(Object key) {
         return  key.hashCode() % size;
     }
     /**
      * Метод - увеличивает размер  массива при заполнении.
      */
+
     private void increaseCapacity() {
         this.size = this.size * 2;
         Entry<K, V>[] newTable = new Entry[this.size];
@@ -88,6 +92,7 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
         }
         this.table = newTable;
     }
+
     /**
      * Метод - возвращает значение по ключу.
      * @param key - ключ объекта.
@@ -97,6 +102,7 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
         int i = hash(key);
         return (this.table[i] != null && key.equals(this.table[i].key) ? this.table[i].value : null);
     }
+
     /**
      * Метод - удаляет объект по ключу.
      * @param key - ключ объекта.
@@ -111,21 +117,24 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
         }
         return false;
     }
+
     /**
      * Метод - возвращает размер массива.
      * @return размер массива.
      */
+
     public int getSize() {
         return size;
     }
     /**
      * Метод - возвращает итератор .
      */
+
     @Override
     public Iterator<V> iterator() {
         return new Iterator<V>() {
             private int position;
-            int expectedModCount = modCount;
+            private int expectedModCount = modCount;
             @Override
             public boolean hasNext() {
                 if (this.expectedModCount != modCount) {
@@ -136,6 +145,7 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
                 }
                 return position < table.length;
             }
+
             @Override
             public V next() {
                 if (hasNext()) {
@@ -146,6 +156,7 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
             }
         };
     }
+
     /**
      * Entry<K,V> - внутренний класc
      * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -156,16 +167,17 @@ public class SimpleHashMap<K, V> implements Iterable<V>  {
         /**
          * Поле - хранит массив.
          */
-        K key;
+       private K key;
         /**
          * Поле - хранит массив.
          */
-        V value;
+        private V value;
         /**
          * Конструктор для активации полей.
          * @param key  ключ объекта.
          * @param value - значение объекта.
          */
+
         public Entry(K key, V value) {
             this.key = key;
             this.value = value;

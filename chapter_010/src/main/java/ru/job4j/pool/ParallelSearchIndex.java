@@ -11,7 +11,7 @@ public class ParallelSearchIndex extends RecursiveTask<Integer> {
     /**
      * Field - stores arrays of objects.
      */
-    private final Object[] objects ;
+    private final Object[] objects;
     /**
      * Field - stores integer of starting size of array.
      */
@@ -27,6 +27,7 @@ public class ParallelSearchIndex extends RecursiveTask<Integer> {
     /**
      * Constructor for activation fields.
      */
+
     public ParallelSearchIndex(Object[] objects, int start, int end, Object o) {
         this.objects = objects;
         this.start = start;
@@ -34,16 +35,16 @@ public class ParallelSearchIndex extends RecursiveTask<Integer> {
         this.o = o;
 
     }
-    @Override
 
+    @Override
     protected Integer compute() {
         int size = end - start + 1;
         if (size <= 10) {
             return processSearch();
         }
         int mid = (end + start) / 2;
-        ParallelSearchIndex task1 = new ParallelSearchIndex( objects, start, mid, o);
-        ParallelSearchIndex task2 = new ParallelSearchIndex( objects, mid + 1, end, o);
+        ParallelSearchIndex task1 = new ParallelSearchIndex(objects, start, mid, o);
+        ParallelSearchIndex task2 = new ParallelSearchIndex(objects, mid + 1, end, o);
         task1.fork();
         task2.fork();
         int left = task1.join();
@@ -56,8 +57,8 @@ public class ParallelSearchIndex extends RecursiveTask<Integer> {
      */
 
     private final Integer processSearch() {
-        int  count = 0 ;
-        for (int i = start; i <= end ; i++) {
+        int  count = 0;
+        for (int i = start; i <= end; i++) {
             if (objects[i].equals(o)) {
                 count = i;
                 return count;
@@ -72,7 +73,7 @@ public class ParallelSearchIndex extends RecursiveTask<Integer> {
 
     public static Integer indexOf(Object[] objects, Object o) {
         ForkJoinPool pool = new ForkJoinPool();
-        return pool.invoke(new ParallelSearchIndex(objects, 0, objects.length -1, o));
+        return pool.invoke(new ParallelSearchIndex(objects, 0, objects.length - 1, o));
     }
 }
 

@@ -16,8 +16,8 @@ public class Streamapi {
      */
     public Optional<Integer> stream(List<Integer> lists) {
         UnaryOperator<Integer> unary = x -> x * x;
-        return  lists.stream().filter(list -> list % 2 == 0).map(list ->unary.apply(list)).
-                reduce((x, y) ->x + y);
+        return  lists.stream().filter(list -> list % 2 == 0).map(list -> unary.apply(list)).
+                reduce((x, y) -> x + y);
     }
 }
 

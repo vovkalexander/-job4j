@@ -3,8 +3,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
-import static org.mockito.ArgumentMatchers.anyString;
-
 
 /**
  * StartUI.
@@ -14,10 +12,7 @@ import static org.mockito.ArgumentMatchers.anyString;
  */
 
 public class StartUI {
-    /**
-     * Массив -  массив соответствующий кол-во пунктов меню.
-     */
-    List<Integer> range = Arrays.asList(0, 1, 2, 3, 4, 5, 6);
+
     /**
      * Константа меню для добавления новой заявки.
      */
@@ -46,6 +41,11 @@ public class StartUI {
      * Константа меню для выхода из меню.
      */
     private static final String EXIT = "6";
+
+    /**
+     * Массив -  массив соответствующий кол-во пунктов меню.
+     */
+    private List<Integer> range = Arrays.asList(0, 1, 2, 3, 4, 5, 6);
     /**
      * Флажок для выхода.
      * Программа работает до тех пор, пока значение истинно.
@@ -65,6 +65,7 @@ public class StartUI {
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
+
     public StartUI(Input input, ITracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
@@ -73,6 +74,7 @@ public class StartUI {
     /**
      * Основой цикл программы.
      */
+
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker, output);
         List<Integer> range = new ArrayList<>();
@@ -88,12 +90,14 @@ public class StartUI {
     /**
      * Метод инкапсуляции переменной working.
      */
+
     public void stop() {
         this.working = false;
     }
     /**
      * Метод реализует добавление новый заявки в хранилище.
      */
+
     private void createItem()  {
         output.accept("Добавление новой заявки");
         String name = this.input.ask("Введите имя заявки :");
@@ -105,6 +109,7 @@ public class StartUI {
     /**
      * Метод реализует показ всех заявок.
      */
+
     private void showAllItems() {
         output.accept("-----------Все заявки------------");
         for (Item item : this.tracker.findAll()) {
@@ -116,6 +121,7 @@ public class StartUI {
     /**
      * Метод реализует редактирование заявки.
      */
+
     private void editItem() {
         output.accept("---------Редактирование по ID -------");
         String id = this.input.ask("Введите id заявки :");
@@ -143,6 +149,7 @@ public class StartUI {
             output.accept("Заявка по id" + id + "не найдена");
         }
     }
+
     /**
      * Метод реализует нахождение заявки по id.
      */
@@ -159,6 +166,7 @@ public class StartUI {
     /**
      * Метод реализует нахождение заявки по имени.
      */
+
     public void findByName() {
         output.accept("---------Нахождение заявки по Имени -------");
         String name = this.input.ask("Введите имя заявки :");
@@ -170,6 +178,7 @@ public class StartUI {
     /**
      * Метод реализует показ списка меню.
      */
+
     private void showMenu() {
         output.accept("Меню.");
         output.accept("0-добавление новой заявки");

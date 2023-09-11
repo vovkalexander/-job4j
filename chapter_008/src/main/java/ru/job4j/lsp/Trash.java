@@ -17,6 +17,7 @@ public class Trash implements Storage {
     /**
      * Constructor for activation fields.
      */
+
     public Trash() {
         list = new ArrayList<>();
     }
@@ -24,6 +25,7 @@ public class Trash implements Storage {
      * The method which accepts object of class Food as long as product goes off.
      * @param food - link of class Food.
      */
+
     public boolean addFood(Food food)  {
         boolean rst = false;
         int percent = food.dateDifference();
@@ -37,6 +39,7 @@ public class Trash implements Storage {
      * The method returns list of food objects.
      * @return list - field list.
      */
+
     public List<Food> getList() {
         return list;
     }
@@ -44,6 +47,7 @@ public class Trash implements Storage {
      * The method makes list into queue and returns.
      * @return queue of food's object.
      */
+
     public Queue<Food> recordIntoQueue() {
         Queue<Food> queue = new LinkedList<>(this.getList());
         this.getList().clear();

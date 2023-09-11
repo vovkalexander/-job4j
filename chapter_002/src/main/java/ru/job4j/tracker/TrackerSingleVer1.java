@@ -18,6 +18,7 @@ public enum TrackerSingleVer1 {
      * Метод - геттер.
      * @return data переменную поля.
      */
+
     public int getData() {
         return data;
     }
@@ -25,6 +26,7 @@ public enum TrackerSingleVer1 {
      * Метод - сеттар.
      * @param data переменную поля.
      */
+
     public void setData(int data) {
         this.data = data;
     }

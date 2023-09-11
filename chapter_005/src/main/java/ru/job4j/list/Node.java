@@ -9,15 +9,16 @@ public class Node<E> {
     /**
      * Поле - хранит данные.
      */
-    E value;
+    private E value;
     /**
      * Поле - хранит ссылку на  объект следующего объкта.
      */
-    Node<E> next;
+    private Node<E> next;
     /**
      * Конструктор для активации поля .
      * @param value - данные.
      */
+
     public Node(E value) {
         this.value = value;
     }
@@ -26,6 +27,7 @@ public class Node<E> {
      * @param first - первый объект списка.
      * @return возвращает логическое значение.
      */
+
     public static boolean  hasCycle(Node first) {
         if (first == null) {
             return false;

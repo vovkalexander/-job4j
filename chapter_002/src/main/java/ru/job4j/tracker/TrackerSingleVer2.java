@@ -13,12 +13,14 @@ public class TrackerSingleVer2 {
     /**
      * Конструктор - закрытого доступа.
      */
+
     private TrackerSingleVer2() {
     }
     /**
      * Метод - статический.
      * @return instance-статическую ссылку на объект типа класса
      */
+
     public static TrackerSingleVer2 getInstance() {
         if (instance == null) {
             instance = new TrackerSingleVer2();

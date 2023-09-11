@@ -18,6 +18,7 @@ public class SimpleQueue<E> {
      * Метод - добавляет элемент в очерьдь.
      * @param value значение.
      */
+
     public void push(E value) {
         inner.push(value);
     }
@@ -25,6 +26,7 @@ public class SimpleQueue<E> {
      * Метод - удаляет элемент из списока и возвращает его.
      * @return значение.
      */
+
     public E poll() {
         while (!inner.isEmpty()) {
             external.push(inner.poll());

@@ -15,6 +15,7 @@ public class PriorityQueue {
      * Метод добавляет отсортированную задачу .
      * @param task задача.
      */
+
     public void put(Task task) {
         var i = tasks.size();
         var index = 0;
@@ -32,6 +33,7 @@ public class PriorityQueue {
      * Метод возвращает задачу с головы массива .
      * @return задачу и удаляет из массива.
      */
+
     public Task take() {
         return this.tasks.poll();
     }

@@ -10,18 +10,20 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
     /**
      * Поле - хранит начальный узел дерева.
      */
-    Node<E> root;
+   private Node<E> root;
     /**
      * Поле - хранит количество узлов.
      */
-    int count = 1;
+    private int count = 1;
     /**
      * Конструктор для корневого узла с значением.
      * @param value значение.
      */
+
     public Tree(E value) {
         this.root = new Node<>(value);
     }
+
     @Override
     public boolean add(E parent, E child) {
         Optional<Node<E>> newNode = findBy(parent);
@@ -32,6 +34,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         }
         return false;
     }
+
     @Override
     public Optional<Node<E>> findBy(E value) {
         Optional<Node<E>> rsl = Optional.empty();
@@ -53,6 +56,7 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * Метод - проверяет наличие бинарного дерева.
      * @return логический вывод.
      */
+
     public boolean isBinary() {
         NodeItr it = new NodeItr();
         while (it.hasNext()) {
@@ -63,14 +67,16 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
         }
         return true;
     }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Queue<Node<E>> queue = new LinkedList<>(Collections.singletonList(root));
+         private Queue<Node<E>> queue = new LinkedList<>(Collections.singletonList(root));
             @Override
             public boolean hasNext() {
                 return !queue.isEmpty();
             }
+
             @Override
             public E next() {
                 if (!hasNext()) {
@@ -89,12 +95,15 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E> {
      * @version $Id$
      * @since 0.1
      */
+
     private class NodeItr implements Iterator<Node<E>> {
-        Queue<Node<E>> queue = new LinkedList<>(Collections.singletonList(root));
+        private Queue<Node<E>> queue = new LinkedList<>(Collections.singletonList(root));
+
         @Override
         public boolean hasNext() {
             return !queue.isEmpty();
         }
+
         @Override
         public Node<E> next() {
             if (!hasNext()) {

@@ -14,6 +14,7 @@ public class Task  {
      * @param desc описание приоретета.
      * @param priority номер приоретета.
      */
+
     public Task(String desc, int priority) {
         this.desc = desc;
         this.priority = priority;
@@ -22,6 +23,7 @@ public class Task  {
      * Метод возвращает описание приоретета .
      * @return описание приоретета.
      */
+
     public String getDesc() {
         return desc;
     }
@@ -29,6 +31,7 @@ public class Task  {
      * Метод возвращает номер приоретета .
      * @return номер приоретета.
      */
+
     public int getPriority() {
         return priority;
     }

@@ -13,15 +13,15 @@ import java.util.stream.Collectors;
  */
 public class Tracker implements ITracker {
     /**
-     * Массив для хранение заявок.
-     */
-    List<Item> items = new ArrayList<>();
-    /**
      * Указатель ячейки для новой заявки.
      */
     private static final Random RN = new Random();
-
     /**
+     * Массив для хранение заявок.
+     */
+   private List<Item> items = new ArrayList<>();
+
+   /**
      * Метод реализаущий добавление заявки в хранилище
      * @param item новая заявка
      *
@@ -63,6 +63,7 @@ public class Tracker implements ITracker {
      * @param id заявки.
      * return логическое значение.
      */
+
     public boolean delete(String id) {
         boolean result = false;
         for (int index = 0; index < items.size(); index++) {
@@ -77,6 +78,7 @@ public class Tracker implements ITracker {
      * Находит все заявки .
      * return список заявок(массив).
      */
+
     public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
         items.stream().forEach(item -> result.add(item));
@@ -87,6 +89,7 @@ public class Tracker implements ITracker {
      * @param key-имя заявки.
      * return список заявок(массив) с именим key.
      */
+
     public List<Item> findByName(String key) {
         return items.stream().filter(item -> item.getName().contains(key)).collect(Collectors.toList());
     }
@@ -95,6 +98,7 @@ public class Tracker implements ITracker {
      * @param id заявки.
      * return заявку.
      */
+
     public Item findById(String id) {
         Item result = null;
         for (Item item : items) {

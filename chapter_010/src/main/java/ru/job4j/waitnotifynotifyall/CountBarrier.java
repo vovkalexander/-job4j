@@ -1,4 +1,4 @@
-package ru.job4j.waitNotifyNotifyALL;
+package ru.job4j.waitnotifynotifyall;
 /**
  * Count.
  * @author Vovk Alexander  vovk.ag747@gmail.com
@@ -21,6 +21,7 @@ public class CountBarrier {
     /**
      * Constructor for activation field.
      */
+
     public CountBarrier(final int total) {
         this.total = total;
     }

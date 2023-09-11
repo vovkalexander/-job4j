@@ -18,6 +18,7 @@ public class Shop implements Storage {
     /**
      * Constructor for activation fields.
      */
+
     public Shop() {
         list = new ArrayList<>();
     }
@@ -26,6 +27,7 @@ public class Shop implements Storage {
      * discount of product if necessary.
      * @param food - link of class Food.
      */
+
     public boolean addFood(Food food) {
         boolean rst = false;
         int percent = food.dateDifference();
@@ -43,6 +45,7 @@ public class Shop implements Storage {
      * The method returns list of food objects.
      * @return list - field list.
      */
+
     public List<Food> getList() {
         return list;
     }
@@ -50,6 +53,7 @@ public class Shop implements Storage {
      * The method makes list into queue and returns.
      * @return queue of food's object.
      */
+
     public Queue<Food> recordIntoQueue() {
         Queue<Food> queue = new LinkedList<>(this.getList());
         this.getList().clear();

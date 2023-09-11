@@ -28,6 +28,7 @@ public class StubInput implements Input {
      * Конструтор инициализирующий поля.
      * @param value ввод данных.
      */
+
     public StubInput(final List<String> value) {
         this.value = value;
     }
@@ -35,6 +36,7 @@ public class StubInput implements Input {
      * Метод реализаущий активирующий запрос параметров .
      * @param question - запрос пользователю.
      */
+
     public String ask(String question) {
         return this.value.get(position++);
     }
@@ -43,6 +45,7 @@ public class StubInput implements Input {
      * @param question - запрос пользователю.
      * @param range - массив соответствующий кол-во пунктов меню.
      */
+
     public int ask(String question, List<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;

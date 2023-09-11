@@ -26,6 +26,7 @@ public class User {
      * @param children количество детей пользователя.
      * @param birthday дата рождения пользователя.
      */
+
     public User(String name, int children, Calendar birthday) {
         this.name = name;
         this.children = children;
@@ -35,6 +36,7 @@ public class User {
      * Метод возвращает имя пользователя.
      * @return имя пользователя.
      */
+
     public String getName() {
         return name;
     }
@@ -42,6 +44,7 @@ public class User {
      * Метод возвращает количество детей пользователя.
      * @return количество детей пользователя.
      */
+
     public int getChildren() {
         return children;
     }
@@ -49,9 +52,11 @@ public class User {
      * Метод возвращает дата рождения пользователя.
      * @return дата рождения пользователя.
      */
+
     public Calendar getBirthday() {
         return birthday;
     }
+
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
@@ -59,6 +64,7 @@ public class User {
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

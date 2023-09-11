@@ -18,6 +18,7 @@ public class PhoneDictionary {
      * Метод добовляет пользователей в массив.
      *  @param person - пользователь в телефонном справочнике.
      */
+
     public void add(Person person) {
         this.persons.add(person);
     }
@@ -26,6 +27,7 @@ public class PhoneDictionary {
      * @param key Ключ поиска.
      * @return Список подощедщих пользователей.
      */
+
     public List<Person> find(String key) {
          return persons.stream().filter(
                 person -> person.getName().contains(key) || person.getSurname().contains(key) || person.getPhone().contains(key) || person.getAddress().contains(key)
