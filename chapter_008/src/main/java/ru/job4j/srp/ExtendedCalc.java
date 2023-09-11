@@ -7,25 +7,28 @@ import ru.job4j.calculator.Calculator;
  * @since 0.1
  */
 public class ExtendedCalc extends Calculator {
+
     /**
      * The  method is overloaded.
      */
+
     public void add(double first, double second, double third) {
-        this.result = first + second + third;
+
+        setResult(first + second + third);
     }
     /**
      * The  method is overloaded.
      */
 
     public void subtract(double first, double second, double third) {
-        this.result = first - second - third;
+        setResult(first - second - third);
     }
     /**
      * The  method is overloaded.
      */
 
     public void multiple(double first, double second, double third) {
-        this.result = first * second * third;
+        setResult(first * second * third);
     }
     /**
      * Method, in which calculates values of sin.
@@ -33,7 +36,7 @@ public class ExtendedCalc extends Calculator {
      */
 
     public void sin(double first) {
-        this.result = Math.sin(first);
+        setResult(Math.sin(first));
     }
     /**
      * Method, in which calculates values of cos.
@@ -41,7 +44,7 @@ public class ExtendedCalc extends Calculator {
      */
 
     public void cos(double first) {
-        this.result = Math.cos(first);
+        setResult(Math.cos(first));
     }
     /**
      * Method, in which calculates values of tan.
@@ -49,7 +52,7 @@ public class ExtendedCalc extends Calculator {
      */
 
     public void tan(double first) {
-        this.result = Math.tan(first);
+        setResult(Math.tan(first));
     }
     /**
      * Method, in which calculates values of ctg.
@@ -57,6 +60,6 @@ public class ExtendedCalc extends Calculator {
      */
 
     public void ctg(double first) {
-        this.result = 1 / Math.tan(first);
+        setResult(1 / Math.tan(first));
     }
 }

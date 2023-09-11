@@ -17,18 +17,21 @@ public abstract class ValidateInput implements Input {
     /**
      * Field - stores object of list.
      */
-    List<Double> list = new ArrayList<>();
+   private List<Double> list = new ArrayList<>();
     /**
      * Constructors activating fields.
      * @param input - user's data.
      */
+
     public ValidateInput(final Input input) {
         this.input = input;
     }
+
     @Override
     public String ask(String question) {
         return this.input.ask(question);
     }
+
     @Override
     public int ask(String question, List<Integer> range) {
         boolean invalid = true;
@@ -54,6 +57,7 @@ public abstract class ValidateInput implements Input {
      * @param calc - link of object ExtendedCalc.
      * @param action link of object  Action.
      */
+
     public  void execute(ExtendedCalc calc, Action action) {
         Double d;
         String str;

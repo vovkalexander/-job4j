@@ -31,6 +31,7 @@ public class DepartmentsTest {
         List<String> result = deps.sortAsc(input);
         assertThat(result, is(expect));
     }
+
     @Test
     public void whenDesc() {
         List<String> input = Arrays.asList("k1\\sk1", "k1\\sk2",

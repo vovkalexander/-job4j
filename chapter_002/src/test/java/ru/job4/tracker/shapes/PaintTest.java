@@ -20,16 +20,19 @@ import static org.junit.Assert.assertThat;
 public class PaintTest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
     }
+
     @After
     public void backOutput() {
         System.setOut(this.stdout);
         System.out.println("execute after method");
     }
+
     @Test
     public void whenDrawSquare() {
         new Paint().draw(new Square());
@@ -43,6 +46,7 @@ public class PaintTest {
                                 .append(System.lineSeparator())
                                 .toString()));
     }
+
     @Test
     public void whenDrawTriangle() {
         PrintStream stdout = System.out;

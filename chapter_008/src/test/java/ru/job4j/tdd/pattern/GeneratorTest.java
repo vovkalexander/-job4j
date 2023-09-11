@@ -22,6 +22,7 @@ public class GeneratorTest {
         String expect = "I am Petr, Who are you";
         assertThat(result, is(expect));
     }
+
     @Test(expected = Exception.class)
     public void whenUnmatchedKeys() throws Exception {
         Generator generator = new SimpleGenerator();
@@ -31,6 +32,7 @@ public class GeneratorTest {
         map.put("pronoun", "mine");
         generator.produce(text, map);
     }
+
     @Test(expected = Exception.class)
     public void whenALotOfKeys() throws Exception {
         Generator generator = new SimpleGenerator();

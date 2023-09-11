@@ -10,14 +10,16 @@ public class Menu implements SimpleMenu {
     /**
      * Field - stores link of class MenuItem.
      */
-    MenuItem root;
+   private MenuItem root;
     /**
      * Constructor for activation field.
      * @param value
      */
+
     public Menu(String value) {
         this.root = new MenuItem(value);
     }
+
     @Override
     public boolean add(String parent,  String child) {
         Optional<MenuItem> newNode = this.findBy(parent);
@@ -27,6 +29,7 @@ public class Menu implements SimpleMenu {
         }
         return false;
     }
+
     @Override
     public Optional<MenuItem> findBy(String value) {
         Optional<MenuItem> rsl = Optional.empty();
@@ -47,6 +50,7 @@ public class Menu implements SimpleMenu {
     /**
      * Method puts in order list of Menu .
      */
+
     public final List<String> orderedMenu() {
         List<String> list = new ArrayList<>();
         Stack<MenuItem> queue = new Stack<>();
@@ -54,12 +58,14 @@ public class Menu implements SimpleMenu {
         while (!queue.empty()) {
             MenuItem item = queue.pop();
             list.add(item.getName());
-            for (MenuItem item1 : item.leaves())
+            for (MenuItem item1 : item.leaves()) {
                 queue.push(item1);
+            }
         }
         Collections.sort(list);
         return list;
     }
+
     @Override
     public void showMenu() {
         this.display();
@@ -70,8 +76,9 @@ public class Menu implements SimpleMenu {
     /**
      * Method displays first command for user .
      */
+
     public void display() {
-        System.out.printf("Choose item of menu or put %s%s%s%s%n", (char)34, "exit", (char)34,
+        System.out.printf("Choose item of menu or put %s%s%s%s%n", (char) 34, "exit", (char) 34,
                 " for disconnecting");
     }
 }

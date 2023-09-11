@@ -14,11 +14,13 @@ import static org.junit.Assert.assertThat;
 public class BankTest {
     private User user;
     private Account account;
+
     @Before
     public void insertInfo() {
         user = new User("Kuzmitch", "0101010101");
         account = new Account(3.14, "DataOfBank");
     }
+
     @Test
     public void whenAddUser() {
         Bank bank = new Bank();
@@ -26,6 +28,7 @@ public class BankTest {
         Map treeMap = bank.getMap();
         assertThat(treeMap.containsKey(user), is(true));
     }
+
     @Test
     public void whenDeleteUser() {
         Bank bank = new Bank();
@@ -34,6 +37,7 @@ public class BankTest {
         Map treeMap = bank.getMap();
         assertThat(treeMap.containsKey(user), is(false));
     }
+
     @Test
     public void whenAddAccountToUser() {
         Bank bank = new Bank();
@@ -42,6 +46,7 @@ public class BankTest {
         List<Account> result = bank.getUserAccounts("0101010101");
         assertThat(result.get(0).getReqs(), is("DataOfBank"));
     }
+
     @Test
     public void whenDeleteAccountToUser() {
         Bank bank = new Bank();
@@ -51,6 +56,7 @@ public class BankTest {
         Map treemap = bank.getMap();
         assertThat(treemap.containsValue(account), is(false));
     }
+
     @Test
     public void whenTransferMoneyOneUserToAnotherUser() {
         Bank bank = new Bank();

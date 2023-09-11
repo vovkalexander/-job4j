@@ -21,14 +21,17 @@ import static org.hamcrest.Matchers.is;
 public class ValidateInputTest {
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
     private final PrintStream out = System.out;
+
     @Before
     public void loadMem() {
         System.setOut(new PrintStream(this.mem));
     }
+
     @After
     public void loadSys() {
         System.setOut(this.out);
     }
+
     @Test
     public void whenInvalidInput() {
         ValidateInput input = new ValidateInput(
@@ -42,6 +45,7 @@ public class ValidateInputTest {
                 )
         );
     }
+
     @Test
     public void whenExceedInput() {
         ValidateInput input = new ValidateInput(

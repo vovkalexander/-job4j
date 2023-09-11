@@ -15,7 +15,8 @@ import static org.hamcrest.Matchers.is;
  * @since 0.1
  */
 public class SortedStudentTest {
-    List<Student> list = new ArrayList<>();
+   private List<Student> list = new ArrayList<>();
+
     @Before
     public void fullList() {
         list = Arrays.asList(
@@ -26,6 +27,7 @@ public class SortedStudentTest {
                 null
               );
     }
+
     @Test
     public void whenPutMarkThenHasSortedList() {
         SortedStudent student = new SortedStudent();

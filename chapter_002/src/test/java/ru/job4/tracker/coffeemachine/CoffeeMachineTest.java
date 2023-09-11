@@ -20,6 +20,7 @@ public class CoffeeMachineTest {
         int[] expected = {10, 5};
         assertThat(actual, is(expected));
     }
+
     @Test
     public void whenPriceFourtyTwoThenChangeEightCoins() {
         CoffeeMachine coffeeMachine = new CoffeeMachine();
@@ -27,6 +28,7 @@ public class CoffeeMachineTest {
         int[] expected = {5, 2, 1};
         assertThat(actual, is(expected));
     }
+
     @Test
     public void whenPriceSeventyThreeThenChangeTwentySevenCoins() {
         CoffeeMachine coffeeMachine = new CoffeeMachine();
@@ -34,6 +36,7 @@ public class CoffeeMachineTest {
         int[] expected = {10, 10, 5, 2};
         assertThat(actual, is(expected));
     }
+
     @Test(expected = NotEnoughMoney.class)
     public void whenPriceGraterThenValueThan() throws NotEnoughMoney {
         CoffeeMachine coffeeMachine = new CoffeeMachine();

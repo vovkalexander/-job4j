@@ -20,6 +20,7 @@ public class Contrast {
         );
         assertThat(rst, is(0));
     }
+
     @Test
     public void whenLeftLessThanRightResultShouldBeNegative() {
         ListCompare compare = new ListCompare();
@@ -39,6 +40,7 @@ public class Contrast {
         );
         assertThat(rst, greaterThan(0));
     }
+
     @Test
     public void secondCharOfLeftGreaterThanRightShouldBePositive() {
         ListCompare compare = new ListCompare();
@@ -48,6 +50,7 @@ public class Contrast {
         );
         assertThat(rst, greaterThan(0));
     }
+
     @Test
     public void secondCharOfLeftLessThanRightShouldBeNegative() {
         ListCompare compare = new ListCompare();

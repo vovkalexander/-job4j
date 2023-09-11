@@ -23,6 +23,7 @@ public class SortUserTest {
         Set<User> result = sorter.sort(users);
         assertThat(result.iterator().next().getName(), is("Obama"));
     }
+
     @Test
     public void whenOneNameLengthLessTwoThenSortFirst() {
         List<User> users = List.of(
@@ -33,6 +34,7 @@ public class SortUserTest {
         List<User> result = sorter.sortNameLength(users);
         assertThat(result.iterator().next().getName(), is("Bush"));
     }
+
     @Test
     public void whenOneNameEqualsTwoThenSortByAge() {
         List<User> users = List.of(

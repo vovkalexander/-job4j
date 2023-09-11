@@ -22,12 +22,14 @@ public class TrackerSingleton {
         tracker2.setData(10);
         assertThat(tracker1.getData(), is(10));
     }
+
     @Test
     public void whenCreateTwoSingletonsThenSingletonHaveSameId() {
         TrackerSingleVer2 tracker1 = TrackerSingleVer2.getInstance();
         TrackerSingleVer2 tracker2 = TrackerSingleVer2.getInstance();
         assertThat(tracker1.hashCode(), is(tracker2.hashCode()));
     }
+
     @Test
     public void whenCreateThreeSingletonsThenSingletonsHaveSameId() {
         TrackerSingleVer3 tracker1 = TrackerSingleVer3.getInstance();
@@ -35,12 +37,13 @@ public class TrackerSingleton {
         TrackerSingleVer3 tracker3 = TrackerSingleVer3.getInstance();
         assertThat(tracker1.hashCode(), is(tracker3.hashCode()));
     }
+
     @Test
     public void whenBuildThreeSingletonsThenSingletonsHaveSameConstructor() {
         TrackerSingleVer4 tracker1 = TrackerSingleVer4.getInstance();
         TrackerSingleVer4 tracker2 = TrackerSingleVer4.getInstance();
         TrackerSingleVer4 tracker3 = TrackerSingleVer4.getInstance();
-        assertThat(tracker3.sum, is(1));
+        assertThat(tracker3, is(1));
     }
 }
 

@@ -17,6 +17,7 @@ public class PhoneDictionaryTest {
         var persons = phones.find("Ale");
         assertThat(persons.iterator().next().getSurname(), is("Vovk"));
     }
+
     @Test
     public void whenFindByPhone() {
         var phones = new PhoneDictionary();

@@ -19,10 +19,12 @@ import static org.junit.Assert.assertThat;
  */
 public class TrackerSQLTest {
     private TrackerSQL sql;
+
     @Before
     public void setUp() throws SQLException {
         sql = new TrackerSQL(ConnectionRollback.create(this.init()));
     }
+
     public Connection init() {
         try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
@@ -37,23 +39,26 @@ public class TrackerSQLTest {
             throw new IllegalStateException(e);
         }
     }
+
     @Test
     public void checkAdd() throws SQLException {
-
         Item item = new Item("test1", "testDescription", 123L);
         sql.add(item);
         assertThat(sql.findByName("test1").size(), is(3));
     }
+
     @Test
     public void checkReplace() {
         Item newItem = new Item("test2", "testDescription2", 125L);
         assertThat(sql.replace("2", newItem), is(true));
 
     }
+
     @Test
     public void checkDelete() {
         assertThat(sql.delete("2"), is(true));
     }
+
     @Test
     public void checkFindAll() {
         Item item = new Item("test3", "testDescription3", 123456L);
@@ -62,10 +67,12 @@ public class TrackerSQLTest {
         sql.add(newItem);
         assertThat(sql.findAll().size(), is(6));
     }
+
     @Test
     public void checkFindByName() {
         assertThat(sql.findByName("test3").get(0).getId(), is("12"));
     }
+
     @Test
     public void checkFindById() {
         assertThat(sql.findById("12").getName(),  is("test3"));

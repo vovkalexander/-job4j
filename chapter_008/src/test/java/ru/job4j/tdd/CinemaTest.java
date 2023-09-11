@@ -21,6 +21,7 @@ public class CinemaTest {
         Ticket ticket = cinema.buy(account, 1, 1, date);
         assertThat(ticket, is(new Ticket3D()));
     }
+
     @Test
     public void find() {
         Cinema cinema = new Cinema3D();
@@ -28,6 +29,7 @@ public class CinemaTest {
         List<Session> sessions = cinema.find(session -> true);
         assertThat(sessions, is(Arrays.asList(new Session3D())));
     }
+
     @Test
     public void add() {
         Cinema cinema = new Cinema3D();

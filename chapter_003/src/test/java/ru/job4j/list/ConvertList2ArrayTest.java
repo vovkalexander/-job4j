@@ -23,6 +23,7 @@ public class ConvertList2ArrayTest {
         };
         assertThat(result, is(expect));
     }
+
     @Test
     public void when9ElementsThen10() {
         ConvertList2Array list = new ConvertList2Array();
@@ -36,6 +37,7 @@ public class ConvertList2ArrayTest {
         };
         assertThat(result, is(expect));
     }
+
     @Test
     public void whenConvert6ElementsThenHave6SequentialElements() {
         ConvertList2Array convertList = new ConvertList2Array();

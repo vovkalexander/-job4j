@@ -19,6 +19,7 @@ public class Account  {
      * @param values сумма пользователя.
      * @param requisites реквизиты пользователя.
      */
+
     public Account(double values, String requisites) {
         this.values = values;
         this.requisites = requisites;
@@ -27,6 +28,7 @@ public class Account  {
      * Метод возвращает сумму пользователя.
      * @return сумма пользователя.
      */
+
     public double getValues() {
         return this.values;
     }
@@ -34,6 +36,7 @@ public class Account  {
      * Метод возвращает реквизиты пользователя.
      * @return реквизиты пользователя.
      */
+
     public String getReqs() {
         return this.requisites;
     }
@@ -43,6 +46,7 @@ public class Account  {
      * @param amount сумма для перевода.
      * @return логический вывод.
      */
+
     boolean transfer(Account destination, double amount) {
         boolean success = false;
         if (amount > 0 && amount < this.values && destination != null) {

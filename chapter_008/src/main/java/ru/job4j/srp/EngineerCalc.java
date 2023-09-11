@@ -25,7 +25,7 @@ public class EngineerCalc extends InteractCalc {
 
     @Override
     public void display() {
-        super.output.accept("Choose  for calculation or put finish for ending "
+        super.getOutput().accept("Choose  for calculation or put finish for ending "
                 +
                 System.getProperty("line.separator")
                 +

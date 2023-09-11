@@ -11,7 +11,7 @@ public class UserPlayer implements Player {
     /**
      * Field - stores char value .
      */
-    private   char SIGN_X = 'x';
+    private   char signX = 'x';
     /**
      * Field - stores the object of class Scanner.
      */
@@ -29,11 +29,11 @@ public class UserPlayer implements Player {
             } else {
               throw  new InputMismatchException("the type is incongruous");
             }
-        }  while (!board.addMark(x, y, SIGN_X));
+        }  while (!board.addMark(x, y, signX));
     }
 
     @Override
     public char getMark() {
-        return this.SIGN_X;
+        return this.signX;
     }
 }

@@ -13,14 +13,17 @@ public abstract class  BaseAction implements UserAction {
      * @param key номер пункта меню.
      * @param name название пункта меню.
      */
+
     protected BaseAction(final int key, final String name) {
         this.key = key;
         this.name = name;
     }
+
     @Override
     public int key() {
         return this.key;
     }
+
     @Override
     public String info() {
         return String.format("%s. %s", this.key(), this.name);

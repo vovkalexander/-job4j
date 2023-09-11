@@ -15,16 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class BishopTest {
     private Board board;
     private Bishop bishop;
+
     @Before
     public void startUp() {
         board = new Board();
         board.add(new Bishop(Cell.A1));
     }
+
     @Test
     public void whenFigureNotFound() throws FigureNotFoundException {
         Throwable exception = assertThrows(FigureNotFoundException.class, () -> board.move(Cell.B3, Cell.D4));
         assertEquals("На клетке отсутсвует фигура", exception.getMessage());
     }
+
     @Test
     public void whenBishopCanMove() {
         bishop = new Bishop(Cell.A1);
@@ -32,6 +35,7 @@ public class BishopTest {
         Cell[] expected = {Cell.B2, Cell.C3, Cell.D4};
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenBishopMoveWrong() throws ImpossibleMoveException {
         Throwable exception = assertThrows(ImpossibleMoveException.class, () -> board.move(Cell.A1, Cell.B4));

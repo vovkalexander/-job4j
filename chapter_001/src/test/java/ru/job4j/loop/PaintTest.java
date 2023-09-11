@@ -27,6 +27,7 @@ public class PaintTest {
                                 .add("^^^^")
                                 .toString()));
     }
+
     @Test
     public void whenPyramid4Left() {
         Paint paint = new Paint();
@@ -41,6 +42,7 @@ public class PaintTest {
                                 .add("^^^^")
                                 .toString()));
     }
+
     @Test
     public void whenPyramidFull() {
         Paint paint = new Paint();

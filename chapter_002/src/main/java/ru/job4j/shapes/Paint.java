@@ -17,6 +17,7 @@ public class Paint {
      * Main Запуск программы(построение фигур)
      * @param args
      */
+
     public static void main(String[] args) {
         Paint paint = new Paint();
         paint.draw(new Triangle());

@@ -27,6 +27,7 @@ public enum Cell {
      * @param x координата по горизонтали.
      * @param y координата по вертикали.
      */
+
     Cell(int x, int y) {
         this.x = x;
         this.y = y;

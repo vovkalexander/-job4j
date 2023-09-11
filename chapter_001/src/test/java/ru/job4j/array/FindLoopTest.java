@@ -20,6 +20,7 @@ public class FindLoopTest {
         assertThat(result, is(expect));
 
     }
+
     @Test
     public void whenArrayHasLengh6ThenMinusOne() {
         FindLoop find = new FindLoop();

@@ -9,5 +9,5 @@ public class Patient {
     /**
      * @param name of Patient.
      */
-    String name;
+  private String name;
 }

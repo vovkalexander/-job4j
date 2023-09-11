@@ -20,7 +20,6 @@ public class MaxTest {
         assertThat(result, is(2));
     }
 
-
     @Test
     public void whenThirdMoreFirstAndSecond() {
         Max maxim = new Max();

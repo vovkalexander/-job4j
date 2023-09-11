@@ -15,6 +15,7 @@ import static org.junit.Assert.assertThat;
  */
 public class BaseActionTest {
     private static final String LN = System.getProperty("line.separator");
+
     @Test
     public void whenAddsItemToMenuThenRecieveOrderedMenu() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -27,16 +28,16 @@ public class BaseActionTest {
         menu.add("Task 1", "Task 1.1.2");
         menu.add("Task 1", "Task 1.2");
         System.setOut(new PrintStream(out));
-        BaseAction conversation = new BaseAction(System.in,menu);
+        BaseAction conversation = new BaseAction(System.in, menu);
         conversation.init();
         StringBuilder expect = new StringBuilder();
-        expect.append("Choose item of menu or put "+ (char)34 + "exit" + (char)34 + " for disconnecting").append(LN).
+        expect.append("Choose item of menu or put " + (char) 34 + "exit" + (char) 34 + " for disconnecting").append(LN).
                 append("Menu").append(LN).
                 append("Task 1").append(LN).
                 append("Task 1.1").append(LN).
                 append("Task 1.1.1").append(LN).
                 append("Task 1.1.2").append(LN).
                 append("Task 1.2").append(LN);
-        assertThat(out.toString(), is (expect.toString()));
+        assertThat(out.toString(), is(expect.toString()));
     }
 }

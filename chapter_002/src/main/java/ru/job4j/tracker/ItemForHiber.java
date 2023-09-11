@@ -51,9 +51,14 @@ public class ItemForHiber {
 
     @Override
     public String toString() {
-        return "{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+        return "{"
+                +
+                "id='" + id + '\''
+                +
+                ", name='"
+                + name
+                + '\''
+                +
                 '}';
     }
 }

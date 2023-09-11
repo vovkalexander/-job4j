@@ -9,7 +9,7 @@ public class ModifyBoard implements Board {
     /**
      * Field - stores char value .
      */
-    private  char SIGN_EMPTY = '.';
+    private  char signEMPTY = '.';
     /**
      * Field - stores size of court.
      */
@@ -27,7 +27,7 @@ public class ModifyBoard implements Board {
         this.table = new char[size][size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                table[row][col] = SIGN_EMPTY;
+                table[row][col] = signEMPTY;
             }
         }
     }
@@ -36,7 +36,7 @@ public class ModifyBoard implements Board {
     public void clean() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                table[row][col] = SIGN_EMPTY;
+                table[row][col] = signEMPTY;
             }
         }
     }
@@ -56,7 +56,7 @@ public class ModifyBoard implements Board {
         if (x < 0 || y < 0 || x >= size || y >= size) {
             System.out.println("out of bounds");
             return false;
-        } else if (table[y][x] != SIGN_EMPTY) {
+        } else if (table[y][x] != signEMPTY) {
             return false;
         }
         return true;
@@ -66,7 +66,7 @@ public class ModifyBoard implements Board {
     public boolean isTableFull() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                if (table[row][col] == SIGN_EMPTY) {
+                if (table[row][col] == signEMPTY) {
                     return false;
                 }
             }

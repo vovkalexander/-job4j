@@ -35,6 +35,7 @@ public class ConvertList2Array {
      * @param list - список, хранит множество типа целочисленного массива.
      * @return catalogue - список, хранит множество типа Integer.
      */
+
     public List<Integer> convert(List<int[]> list) {
         return list.stream().flatMapToInt(Arrays::stream).boxed().collect(Collectors.toList());
     }

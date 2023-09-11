@@ -12,19 +12,22 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class FunctionsTest {
-    Functions function = new Functions();
+  private   Functions function = new Functions();
+
     @Test
     public void whenLinearFunctionThenLinearResults() {
         List<Double> result = function.diapason(5, 8, x -> x + 5);
         List<Double> expected = Arrays.asList(10D, 11D, 12D);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenSquaredFunctionThenSquaredResults() {
         List<Double> result = function.diapason(2, 5, x -> Math.pow(x, 2));
         List<Double> expected = Arrays.asList(4D, 9D, 16D);
         assertThat(result, is(expected));
     }
+
     @Test
     public void whenLogarithmicFunctionThenLogarithmicResults() {
         List<Double> result = function.diapason(7, 10, x -> Math.log(x));

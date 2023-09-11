@@ -19,6 +19,7 @@ public class FactorialTest {
         assertThat(result, is(120));
 
     }
+
     @Test
     public void whenCalculateFactorialForZeroThenOne() {
         Factorial factorial = new Factorial();

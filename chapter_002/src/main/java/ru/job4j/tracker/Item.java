@@ -79,11 +79,17 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "idy=" + idy +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", create=" + create +
+        return "Item{"
+                +
+                "idy=" + idy
+                +
+                ", name='" + name + '\''
+                +
+                ", description='" + description
+                + '\''
+                +
+                ", create=" + create
+                +
                 '}';
     }
 }

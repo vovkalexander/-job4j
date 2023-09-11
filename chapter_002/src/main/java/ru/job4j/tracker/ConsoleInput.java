@@ -15,6 +15,7 @@ public class ConsoleInput implements Input {
      * Метод реализаущий запрос параметров пользователя.
      * @param question - запрос пользователю.
      */
+
     public String ask(String question) {
         System.out.print(question);
         return scanner.nextLine();
@@ -24,6 +25,7 @@ public class ConsoleInput implements Input {
      * @param question - запрос пользователю.
      * @param range - массив соответствующий кол-во пунктов меню.
      */
+
     public int ask(String question, List<Integer> range)  {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;

@@ -27,6 +27,7 @@ public class TrackerTest {
         tracker.add(item);
         assertThat(tracker.findAll().get(0), is(item));
     }
+
     @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
@@ -38,6 +39,7 @@ public class TrackerTest {
         tracker.replace(previous.getId(), next);
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
+
     @Test
     public void whenDeleteItemThenTreckerDeleteItem() {
         Tracker tracker = new Tracker();
@@ -48,6 +50,7 @@ public class TrackerTest {
         tracker.delete(previous.getId());
         assertThat(tracker.findById(previous.getId()), is(nullValue()));
     }
+
     @Test
     public void whenFindAllItemsThenTrackerFindsAllItems() {
         Tracker tracker = new Tracker();
@@ -59,6 +62,7 @@ public class TrackerTest {
         List<Item> array = Arrays.asList(previous, next);
         assertThat(tracker.findAll(), is(array));
     }
+
     @Test
     public void whenFindByNameThenTrackerFindsItem() {
         Tracker tracker = new Tracker();
@@ -68,6 +72,7 @@ public class TrackerTest {
         tracker.add(next);
         assertThat(tracker.findByName("test2"), is(Arrays.asList(next)));
     }
+
     @Test
     public void whenFindByIdThenTrackerFindsItem() {
         Tracker tracker = new Tracker();

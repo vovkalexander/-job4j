@@ -5,13 +5,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
 import ru.job4j.tracker.*;
-import static org.mockito.ArgumentMatchers.any;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.function.Consumer;
-
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 
 import static org.hamcrest.core.Is.is;
@@ -34,12 +33,14 @@ public class StartUITest {
         public void accept(String s) {
             stdout.println(s);
         }
+
         @Override
         public String toString() {
             return new String(out.toByteArray());
         }
     };
-    String menu = new StringBuilder()
+
+  private   String menu = new StringBuilder()
             .append("0. Add the new item.")
             .append(System.lineSeparator())
             .append("1. Show all items")
@@ -62,10 +63,12 @@ public class StartUITest {
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
+
     @After
     public void backOutput() {
         System.setOut(System.out);
     }
+
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();     // создаём Tracker
@@ -73,6 +76,7 @@ public class StartUITest {
         new StartUI(input, tracker, output).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
+
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
         // создаём Tracker
@@ -86,6 +90,7 @@ public class StartUITest {
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
+
     @Test
     public void whenDeleteThenTrackerHasDeletedValue() {
         //создаём StubInput с последовательностью действий(удаляем заявку)
@@ -102,6 +107,7 @@ public class StartUITest {
                 .append(menu)
                 .toString()));
     }
+
     @Test
     public void whenFindByIdThenTrackerHasFoundByIdValue() {
         //создаём StubInput с последовательностью действий(находим заявку по id)
@@ -118,6 +124,7 @@ public class StartUITest {
                 .append(menu)
                 .toString()));
     }
+
     @Test
     public void whenFindByNameThenTrackerHasFoundByNameValue() {
         //создаём StubInput с последовательностью действий(находим заявку по имени)
@@ -134,6 +141,7 @@ public class StartUITest {
                 .append(menu)
                 .toString()));
     }
+
     @Test
     public void whenShowAllItemsThenTrackerHasShowedAllItemsValue() {
         //Напрямую добавляем первую заявку
@@ -190,6 +198,7 @@ public class StartUITest {
                 .append(System.lineSeparator())
                 .toString()));
     }
+
     @Test
     public void whenFindByNameWithMockito() {
         //создаём StubInput с последовательностью действий(находим заявку по id)

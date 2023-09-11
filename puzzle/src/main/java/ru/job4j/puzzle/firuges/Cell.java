@@ -3,8 +3,8 @@ package ru.job4j.puzzle.firuges;
 import java.util.Objects;
 
 public class Cell {
-    public final int x;
-    public final int y;
+    private final int x;
+    private final int y;
 
     public Cell(int x, int y) {
         this.x = x;
@@ -21,6 +21,14 @@ public class Cell {
         }
         Cell cell = (Cell) o;
         return x == cell.x && y == cell.y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     @Override

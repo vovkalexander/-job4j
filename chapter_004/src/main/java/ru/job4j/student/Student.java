@@ -19,6 +19,7 @@ public class Student implements  Comparable<Student> {
      * @param name имя пользователя.
      * @param score  бал пользователя.
      */
+
     public Student(String name, int score) {
         this.name = name;
         this.score = score;
@@ -27,6 +28,7 @@ public class Student implements  Comparable<Student> {
      * Метод возвращает имя пользователя.
      * @return имя пользователя.
      */
+
     public String getName() {
         return name;
     }
@@ -34,9 +36,11 @@ public class Student implements  Comparable<Student> {
      * Метод возвращает бал пользователя.
      * @return бал пользователя.
      */
+
     public int getScore() {
         return score;
     }
+
     @Override
     public int compareTo(Student one) {
          int rst = Integer.compare(this.score, one.score);
