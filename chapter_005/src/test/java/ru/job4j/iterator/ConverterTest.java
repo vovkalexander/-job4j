@@ -14,7 +14,8 @@ import static org.hamcrest.Matchers.is;
  * @since 0.1
  */
 public class ConverterTest {
-    Iterator<Integer> it;
+    private Iterator<Integer> it;
+
     @Before
     public void setUp() {
         Iterator<Integer> it1 = Arrays.asList(1, 2, 3).iterator();
@@ -24,6 +25,7 @@ public class ConverterTest {
         Converter iteratorofiterators = new Converter();
         it = iteratorofiterators.convert(its);
     }
+
     @Test
     public void hasNextNextSequentialInvocation() {
         assertThat(it.hasNext(), is(true));
@@ -46,6 +48,7 @@ public class ConverterTest {
         assertThat(it.next(), is(9));
         assertThat(it.hasNext(), is(false));
     }
+
     @Test
     public void testsThatNextMethodDoesntDependsOnPriorHasNextInvocation() {
         assertThat(it.next(), is(1));
@@ -58,6 +61,7 @@ public class ConverterTest {
         assertThat(it.next(), is(8));
         assertThat(it.next(), is(9));
     }
+
     @Test
     public void sequentialHasNextInvocationDoesntAffectRetrievalOrder() {
         assertThat(it.hasNext(), is(true));
@@ -72,6 +76,7 @@ public class ConverterTest {
         assertThat(it.next(), is(8));
         assertThat(it.next(), is(9));
     }
+
     @Test
     public void hasNextShouldReturnFalseInCaseOfEmptyIterators() {
         Iterator<Integer> it1 = (new ArrayList<Integer>()).iterator();
@@ -82,6 +87,7 @@ public class ConverterTest {
         it = iteratorofIterators.convert(its);
         assertThat(it.hasNext(), is(false));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void invocationOfNextMethodShouldThrowNoSuchElementException() {
         Iterator<Integer> it1 = Arrays.asList(1, 2, 3).iterator();
@@ -93,6 +99,7 @@ public class ConverterTest {
         assertThat(it.next(), is(3));
         it.next();
     }
+
     @Test
     public void hasNextShouldReturnFalseInCaseOfEmptyIterators2() {
         Iterator<Integer> it1 = (new ArrayList<Integer>()).iterator();

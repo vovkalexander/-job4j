@@ -11,6 +11,7 @@ import static org.junit.Assert.assertThat;
  */
 public class SimpleArrayListTest {
     private SimpleArrayList<Integer> list;
+
     @Before
     public void beforeTest() {
         list = new SimpleArrayList<>();
@@ -18,14 +19,17 @@ public class SimpleArrayListTest {
         list.add(2);
         list.add(3);
     }
+
     @Test
     public void whenAddThreeElementsThenUseGetSizeResultTwo() {
         assertThat(list.getSize(), is(3));
     }
+
     @Test
     public void whenAddThreeElementsThenUseGetOneResultTwo() {
         assertThat(list.get(1), is(2));
     }
+
     @Test
     public void whenDeleteThenFirstElementDeleted() {
         assertThat(list.delete(), is(3));

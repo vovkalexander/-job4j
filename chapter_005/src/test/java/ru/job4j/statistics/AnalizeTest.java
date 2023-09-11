@@ -13,13 +13,15 @@ import static ru.job4j.statistics.Analize.User;
  * @since 0.1
  */
 public class AnalizeTest {
-    List<User> previous;
+  private   List<User> previous;
+
     @Before
     public void setUp() {
         previous = new ArrayList<>();
         previous.add(new User(23, "Jordan"));
         previous.add(new User(33, "Pippen"));
     }
+
     @Test
     public void whenArraysEqualThenStatisticNotChanging() {
         List<User> current = new ArrayList<>();
@@ -29,6 +31,7 @@ public class AnalizeTest {
         Analize.Info expect = new Analize.Info(0, 0, 0);
         assertThat(expect, is(info));
     }
+
     @Test
     public void whenCurrentAddElementThenStatisticAddPosition() {
         List<User> current = new ArrayList<>();
@@ -39,6 +42,7 @@ public class AnalizeTest {
         Analize.Info expect = new Analize.Info(1, 0, 0);
         assertThat(expect, is(info));
     }
+
     @Test
     public void whenCurrentIsChangingThenStatisticChangePosition() {
         List<User> current = new ArrayList<>();
@@ -48,6 +52,7 @@ public class AnalizeTest {
         Analize.Info expect = new Analize.Info(0, 1, 0);
         assertThat(expect, is(info));
     }
+
     @Test
     public void whenCurrentHasLessElementsThenStatisticIncreasesDeletePosition() {
         List<User> current = new ArrayList<>();

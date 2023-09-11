@@ -8,13 +8,16 @@ import java.util.Iterator;
  */
 public class AbstractStore<T extends Base> implements Store<T> {
     private SimpleArray<T> simpleArray;
+
     public AbstractStore(int size) {
         this.simpleArray = new SimpleArray<>(size);
     }
+
     @Override
     public void add(T model) {
         this.simpleArray.add(model);
     }
+
     @Override
     public boolean replace(String id, T model) {
         boolean rst = false;
@@ -29,6 +32,7 @@ public class AbstractStore<T extends Base> implements Store<T> {
         }
         return rst;
     }
+
     @Override
     public boolean delete(String id) {
         boolean rst = false;
@@ -43,6 +47,7 @@ public class AbstractStore<T extends Base> implements Store<T> {
         }
         return rst;
     }
+
     @Override
     public T findById(String id) {
         T rst = null;

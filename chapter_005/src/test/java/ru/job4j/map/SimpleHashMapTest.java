@@ -12,23 +12,27 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class SimpleHashMapTest {
-    SimpleHashMap<Integer, String> map;
+  private   SimpleHashMap<Integer, String> map;
+
     @Before
     public void setUp() {
         map = new SimpleHashMap<>(10);
     }
+
     @Test
     public void whenAddDifferentElementsThenReceiveValue() {
         map.insert(23, "Jordan");
         map.insert(7, "Ronaldo");
         assertThat(map.get(7), is("Ronaldo"));
     }
+
     @Test
     public void whenMapDeletesElementThenTrue() {
         map.insert(23, "Jordan");
         map.insert(7, "Ronaldo");
         assertThat(map.delete(23), is(true));
     }
+
     @Test
     public void whenMapIsAlmostFullThenDoubleSize() {
         map.insert(23, "Jordan");
@@ -41,6 +45,7 @@ public class SimpleHashMapTest {
         map.insert(2, "Jonson");
         assertThat(map.getSize(), is(20));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void when() {
         map.insert(23, "Jordan");
@@ -51,6 +56,7 @@ public class SimpleHashMapTest {
         assertThat(it.next(), is("Jordan"));
         it.next();
     }
+
     @Test
     public void whenElementsHaveTheSameHashCodeThenReplaceValue() {
         assertThat(map.insert(23, "Jordan"), is(true));

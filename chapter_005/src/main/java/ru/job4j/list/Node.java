@@ -13,7 +13,7 @@ public class Node<E> {
     /**
      * Поле - хранит ссылку на  объект следующего объкта.
      */
-    private Node<E> next;
+    private  Node<E> next;
     /**
      * Конструктор для активации поля .
      * @param value - данные.
@@ -42,6 +42,14 @@ public class Node<E> {
             }
         }
         return false;
+    }
+
+    public Node<E> getNext() {
+        return next;
+    }
+
+    public void setNext(Node<E> next) {
+        this.next = next;
     }
 }
 

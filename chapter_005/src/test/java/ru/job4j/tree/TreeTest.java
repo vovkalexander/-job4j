@@ -17,6 +17,7 @@ public class TreeTest {
                 is(true)
         );
     }
+
     @Test
     public void when6ElFindNotExitThenOptionEmpty() {
         Tree<Integer> tree = new Tree<>(1);
@@ -26,6 +27,7 @@ public class TreeTest {
                 is(false)
         );
     }
+
     @Test
     public void whenIterator() {
         Tree<Integer> tree = new Tree<>(1);
@@ -45,6 +47,7 @@ public class TreeTest {
         assertThat(it.next(), is(6));
         assertThat(it.hasNext(), is(false));
     }
+
     @Test
     public void whenTreeHasOneorTwoLeavesthenBinaryTree() {
         Tree<Integer> tree = new Tree<>(1);

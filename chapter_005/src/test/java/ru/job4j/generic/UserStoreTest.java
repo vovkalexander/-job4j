@@ -11,11 +11,13 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class UserStoreTest {
-    UserStore use;
+    private UserStore use;
+
     @Before
     public void setUp() {
         use = new UserStore(3);
     }
+
     @Test
     public void whenFindByIdthenReturnValueById() {
         User user1 = new User("1");
@@ -24,6 +26,7 @@ public class UserStoreTest {
         use.add(user2);
         assertThat(use.findById("2"), is(user2));
     }
+
     @Test
     public void whenReplaceByIdElementThenReturnNewElemet() {
         User user1 = new User("1");
@@ -34,6 +37,7 @@ public class UserStoreTest {
         use.replace("1", user3);
         assertThat(use.findById("3"), is(user3));
     }
+
     @Test
     public void whenDeleteByIdThenElementDoesNotExist() {
         User user1 = new User("1");

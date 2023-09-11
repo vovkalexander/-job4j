@@ -17,6 +17,7 @@ public class DynamicLinkedListTest {
     public void setUp() {
         DynamicLinkedList list = new DynamicLinkedList();
     }
+
     @Test
     public void whenAddElementThenElementAddsAtEndList() {
         DynamicLinkedList list = new DynamicLinkedList();
@@ -24,6 +25,7 @@ public class DynamicLinkedListTest {
         list.add(4);
         assertThat(list.get(1), is(4));
     }
+
     @Test
     public void whenIterateThenListReturnsFinalValue() {
         DynamicLinkedList list = new DynamicLinkedList();
@@ -35,6 +37,7 @@ public class DynamicLinkedListTest {
         assertThat(it.next(), is(4));
         assertThat(it.hasNext(), is(false));
     }
+
     @Test(expected = ConcurrentModificationException.class)
     public void whenIteratorCreatedAndListChangesThenException() {
         DynamicLinkedList list = new DynamicLinkedList();
@@ -45,6 +48,7 @@ public class DynamicLinkedListTest {
         list.add(5);
         assertThat(it.next(), is(5));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void when() {
         DynamicLinkedList list = new DynamicLinkedList();

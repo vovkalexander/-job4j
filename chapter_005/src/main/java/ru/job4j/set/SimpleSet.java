@@ -11,11 +11,12 @@ public class SimpleSet<E> implements Iterable<E> {
     /**
      * Поле - хранит объект класса DynamicList.
      */
-    DynamicList<E> list = new DynamicList<>(10);
+    private DynamicList<E> list = new DynamicList<>(10);
     /**
      * Метод - добавляет уникальный элемент в множества.
      * @param  value значение.
      */
+
     public void add(E value) {
         if (!list.contains(value)) {
             list.add(value);
@@ -24,7 +25,13 @@ public class SimpleSet<E> implements Iterable<E> {
     /**
      * Метод - возвращает итератор .
      */
+
+    public DynamicList<E> getList() {
+        return list;
+    }
+
+    @Override
     public Iterator<E> iterator() {
-        return list.iterator();
+        return null;
     }
 }

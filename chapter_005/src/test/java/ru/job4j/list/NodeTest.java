@@ -11,28 +11,29 @@ import static org.junit.Assert.assertThat;
 public class NodeTest {
     @Test
     public void whenListIsClosedThenHasLoop() {
-        Node first = new Node(1);
-        Node two = new Node(2);
-        Node third = new Node(3);
-        Node four = new Node(4);
-        first.next = two;
-        two.next = third;
-        third.next = four;
-        four.next = first;
+        Node<Integer> first = new Node<>(1);
+        Node<Integer> two = new Node<>(2);
+        Node<Integer> third = new Node<>(3);
+        Node<Integer> four = new Node<>(4);
+        first.setNext(two);
+        two.setNext(third);
+        third.setNext(four);
+        four.setNext(first);
         assertThat(Node.hasCycle(first), is(true));
     }
+
     @Test
     public void whenListIsNotClosedThenHasNotLoop() {
-        Node first = new Node(1);
-        Node two = new Node(2);
-        Node third = new Node(3);
-        Node four = new Node(4);
-        Node five = new Node(5);
-        first.next = two;
-        two.next = third;
-        third.next = four;
-        four.next = five;
-        five.next = null;
+        Node<Integer> first = new Node<>(1);
+        Node<Integer> two = new Node<>(2);
+        Node<Integer> third = new Node<>(3);
+        Node<Integer> four = new Node<>(4);
+        Node<Integer> five = new Node<>(5);
+        first.setNext(two);
+        two.setNext(third);
+        third.setNext(four);
+        four.setNext(five);
+        five.setNext(null);
         assertThat(Node.hasCycle(first), is(false));
     }
 }

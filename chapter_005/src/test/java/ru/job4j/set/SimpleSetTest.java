@@ -13,7 +13,8 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class SimpleSetTest {
-    SimpleSet set;
+  private  SimpleSet set;
+
     @Before
     public void setUp() {
         set = new SimpleSet();
@@ -21,11 +22,13 @@ public class SimpleSetTest {
         set.add(2);
         set.add(1);
     }
+
     @Test
     public void whenSetAddsElementsThenAddUniqueElements() {
-        assertThat(set.list.get(0), is(1));
-        assertNull(set.list.get(2));
+        assertThat(set.getList().get(0), is(1));
+        assertNull(set.getList().get(2));
     }
+
     @Test(expected = NoSuchElementException.class)
     public void whenIteratorReturnsRepeatedElementThenException() {
         Iterator it = set.iterator();
@@ -33,13 +36,14 @@ public class SimpleSetTest {
         assertThat(it.next(), is(2));
         it.next();
     }
+
     @Test
     public void whenSetContainsNullElementThenOnlyOneNullElement() {
         SimpleSet set = new SimpleSet();
         set.add(1);
         set.add(null);
         set.add(2);
-        assertThat(set.list.get(0), is(1));
-        assertThat(set.list.get(2), is(2));
+        assertThat(set.getList().get(0), is(1));
+        assertThat(set.getList().get(2), is(2));
     }
 }

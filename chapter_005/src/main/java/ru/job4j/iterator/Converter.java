@@ -16,7 +16,8 @@ public class Converter {
      */
     Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
         return new Iterator<Integer>() {
-            Iterator<Integer> currentIt;
+          private   Iterator<Integer> currentIt;
+
             @Override
             public boolean hasNext() {
                 while (currentIt == null || !currentIt.hasNext()) {
@@ -27,6 +28,7 @@ public class Converter {
                 }
                 return true;
             }
+
             @Override
             public Integer next() {
 

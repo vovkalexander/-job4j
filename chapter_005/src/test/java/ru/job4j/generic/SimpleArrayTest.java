@@ -15,12 +15,14 @@ public class SimpleArrayTest {
     public void setUp() {
         SimpleArray<Integer> list = new SimpleArray<>(10);
     }
+
     @Test
     public void whenAddValueThanReceiveValue() {
         SimpleArray<Integer> list = new SimpleArray<>(10);
         list.add(1);
         assertThat(list.get(0), is(1));
     }
+
     @Test
     public void whenSetNewValueThanChangeOldToNewValue() {
         SimpleArray<Integer> list = new SimpleArray<>(10);
@@ -29,6 +31,7 @@ public class SimpleArrayTest {
         list.set(1, 3);
         assertThat(list.get(1), is(3));
     }
+
     @Test
     public void whenRemoveValueFromArrayThenArrayBecomeshasNotValue() {
         SimpleArray<Integer> list = new SimpleArray<>(10);
@@ -38,6 +41,7 @@ public class SimpleArrayTest {
         list.remove(1);
         assertThat(list.get(1), is(12));
     }
+
     @Test
     public void whenIteratorNextthenReturnElementOfArray() {
         SimpleArray<Double> list = new SimpleArray<>(10);
@@ -48,6 +52,7 @@ public class SimpleArrayTest {
         assertThat(list.get(0), is(it.next()));
         assertThat(it.next(), is(2d));
     }
+
     @Test
     public void whenIteratorHasNextthenArrayReturnsTrue() {
         SimpleArray<Integer> list = new SimpleArray<>(10);
@@ -58,6 +63,7 @@ public class SimpleArrayTest {
         assertThat(it.hasNext(), is(true));
         assertThat(it.hasNext(), is(true));
     }
+
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void whenIndexOutOfborderThenHapenExeption() {
         SimpleArray<Integer> list = new SimpleArray<>(2);

@@ -13,11 +13,13 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class DynamicListTest {
-    DynamicList<Integer> list;
+    private DynamicList<Integer> list;
+
     @Before
     public void setUp() {
         list = new DynamicList<>(2);
     }
+
     @Test
     public void whenSizeOfArrayFullThenThisSizeRisesDoubly() {
         list.add(3);
@@ -25,6 +27,7 @@ public class DynamicListTest {
         list.add(5);
         assertThat(list.get().length, is(4));
     }
+
     @Test(expected = ConcurrentModificationException.class)
     public void whenIteratorCreatedAndListChangesThenException() {
         list.add(3);
@@ -36,6 +39,7 @@ public class DynamicListTest {
         list.add(5);
         it.hasNext();
     }
+
     @Test(expected = NoSuchElementException.class)
     public void when() {
         list.add(3);
