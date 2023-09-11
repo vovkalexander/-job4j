@@ -19,23 +19,26 @@ public class UserTest {
         EmptyUser user = new EmptyUser();
         assertThat(sizeOf(user), is(16L));
     }
+
     @Test
     public void memoryTest() {
         User user1 = new User();
         User user2 = new User(1, "Carlson");
-        User user3 = new User(1,"Winnie the Pooh", "London");
-        assertThat(sizeOf(user1), is (24L));
-        assertThat(sizeOf(user2), is (72L));
-        assertThat(sizeOf(user3), is (128L));
+        User user3 = new User(1, "Winnie the Pooh", "London");
+        assertThat(sizeOf(user1), is(24L));
+        assertThat(sizeOf(user2), is(72L));
+        assertThat(sizeOf(user3), is(128L));
     }
+
     @Test
     public void whenGCDeleteObjectByItself() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         User user = new User();
         System.setOut(new PrintStream(out));
         user.method(30000);
-        assertThat(out.toString().contains("Object has been destroyed"), is (true));
+        assertThat(out.toString().contains("Object has been destroyed"), is(true));
     }
+
     @Test(expected = OutOfMemoryError.class)
     public void whenHeapIsFull() throws OutOfMemoryError {
         User user = new User();

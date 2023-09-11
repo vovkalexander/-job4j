@@ -15,6 +15,7 @@ import static org.mockito.Mockito.mock;
  */
 class ClientTest {
    private static final String LN = System.getProperty("line.separator");
+
   @Test
     public void  whenSendSmartQuestionThenReceiveResponse() throws IOException {
        Socket socket = mock(Socket.class);

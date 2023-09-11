@@ -15,13 +15,15 @@ import java.util.List;
  * @since 0.1
  */
 public class ConsoleChatTest {
-   String str = System.getProperty("user.dir") + File.separator + "result";
+  private String str = System.getProperty("user.dir") + File.separator + "result";
+
     @Test
     public void whenFinishAtOnceThenEmptyArray() throws IOException {
       ConsoleChat chat = new ConsoleChat("закончить");
        chat.setUp();
        assertThat(chat.getList().size(), is(2));
    }
+
    @Test
    public void whenChatHasTalkThenFieldOfChatEqualsFile() throws IOException {
       ConsoleChat chat = new ConsoleChat("Привет" + "\n" + "какдела" + "\n" + "что?" + "\n" + "стоп" + "\n" + "помолчим" + "\n" + "уговорил" + "\n" + "продолжить" + "\n" + "закончить");

@@ -15,6 +15,7 @@ public class User {
      * Конструктор для активации полей.
      * @param emailAdress - набор emails.
      */
+
     public User(Set<String> emailAdress) {
         this.emailAdress = emailAdress;
     }
@@ -22,6 +23,7 @@ public class User {
      * Метод возвращает набор emails .
      * @return набор emails.
      */
+
     public Set<String> getEmailAdress() {
         return emailAdress;
     }

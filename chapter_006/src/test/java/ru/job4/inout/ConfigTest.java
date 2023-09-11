@@ -11,16 +11,19 @@ import static org.junit.Assert.assertThat;
  */
 
 public class ConfigTest {
-    Config config;
+    private Config config;
+
     @Before
     public void setUp() {
         config = new Config("C:\\projects\\student\\Vovk Alexander\\-job4j\\app.properties");
     }
+
     @Test
     public void whenFileIsReadThenArrayHasSize() {
         config.load();
         assertThat(config.getMap().size(), is(5));
     }
+
     @Test
     public void whenFileIsReadThenArrayCanGetValueByKey() throws ValueNotFoundException {
         config.load();

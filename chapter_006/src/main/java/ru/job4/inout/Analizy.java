@@ -49,6 +49,7 @@ public class Analizy {
             e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         try (PrintWriter out = new PrintWriter(new FileOutputStream("unavailable.csv"))) {
             out.println("15:01:30;15:02:32");

@@ -26,12 +26,14 @@ public class FinderTest {
         int size = 1;
         test(str, size);
     }
+
     @Test
     public void whenChoiceOfRegExpThenSearchByRegExp()  throws IOException {
         String str = "-r";
         int size = 29;
         test(str, size);
     }
+
     @Test
     public void whenChoiceOfMaskThenSearchByMask()  throws IOException {
         String str = "-m";

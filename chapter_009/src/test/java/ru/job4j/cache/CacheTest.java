@@ -1,5 +1,6 @@
-package ru.job4j.Cache;
+package ru.job4j.cache;
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import java.io.IOException;

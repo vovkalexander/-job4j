@@ -17,10 +17,12 @@ import static org.mockito.Mockito.when;
  */
 public class ServerOracleTest {
     private static final String LN = System.getProperty("line.separator");
+
     @Test
   public void whenReceiveExitThenClientAreFailed() throws IOException {
        this.testServerOracle("exit", "");
     }
+
     @Test
     public void whenReceiveQuestionThenSendSmartResponse() throws IOException {
         this.testServerOracle(Joiner.on(LN).join(
@@ -29,12 +31,14 @@ public class ServerOracleTest {
                 "exit"), String.format("Hello, dear friend, I'm a oracle.%s%s%s%s%s", LN, LN,
                 "I'm wise, I can answer everything", LN, LN));
     }
+
     @Test
     public void whenReceiveQuestionThenSendAskMore() throws IOException {
         this.testServerOracle(Joiner.on(LN).join(
                 "unsuppoted ask",
                 "exit"), String.format("ask me something else.%s%s", LN, LN));
     }
+
     private void testServerOracle(String input, String expected) throws IOException {
         Socket socket = mock(Socket.class);
         ByteArrayOutputStream out = new ByteArrayOutputStream();

@@ -15,8 +15,8 @@ public class ZipTest {
  public void archiveInZipTest() {
     String[] args = {"-d", System.getProperty("user.dir"), "-e", ".java", "-o", "..\\test.zip"};
       Zip zip = new Zip(args);
-      List<File> list = zip.seekBy(zip.arg.directory(), zip.arg.exclude());
-     zip.pack(list, new File(zip.arg.output()));
+      List<File> list = zip.seekBy(zip.getArg().directory(), zip.getArg().exclude());
+     zip.pack(list, new File(zip.getArg().output()));
      File file = new File("..\\test.zip");
        assertThat(list.size(), is(40));
        assertThat(file.length(), is(17102L));

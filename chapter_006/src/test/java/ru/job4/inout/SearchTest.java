@@ -13,11 +13,13 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class SearchTest {
-   File files = new File(System.getProperty("java.io.tmpdir"));
+ private   File files = new File(System.getProperty("java.io.tmpdir"));
+
    @Before
    public void setUp() {
        files.mkdirs();
    }
+
    @Test
     public void whenAskSingleExtThenGetArrayOfExtFiles() {
         List<String> ext = new ArrayList<>();
@@ -25,6 +27,7 @@ public class SearchTest {
       Search search = new Search();
       assertThat(search.files(files.getAbsolutePath(), ext).size(), is(9));
     }
+
     @Test
    public void whenAskSomeExtThenGetArrayOfExtFiles() {
        List<String> ext = new ArrayList<>();
