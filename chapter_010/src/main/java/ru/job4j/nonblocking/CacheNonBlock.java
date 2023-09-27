@@ -31,7 +31,7 @@ public class CacheNonBlock {
       }
       value.setVersion(value.getVersion() + 1);
       return value;
-    } );
+    });
 
   }
   /**

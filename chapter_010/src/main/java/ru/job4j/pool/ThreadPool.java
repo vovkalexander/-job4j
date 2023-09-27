@@ -1,5 +1,5 @@
 package ru.job4j.pool;
-import ru.job4j.waitNotifyNotifyALL.SimpleBlockingQueue;
+import ru.job4j.waitnotifynotifyall.SimpleBlockingQueue;
 import java.util.LinkedList;
 import java.util.List;
 /**
@@ -23,7 +23,7 @@ public class ThreadPool {
 
     public ThreadPool() {
         int size = Runtime.getRuntime().availableProcessors();
-        for (int index = 0; index < size; index ++) {
+        for (int index = 0; index < size; index++) {
             threads.add(new Thread(new WorkerThread()));
         }
         for (Thread thread : threads) {

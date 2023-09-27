@@ -7,7 +7,7 @@ package ru.job4j.threading;
  */
 public class Wget {
     public static void main(String[] args) {
-        Thread thread = new Thread (
+        Thread thread = new Thread(
                 () -> {
                     try {
                         for (int index = 0; index <= 100; index++) {

@@ -17,7 +17,6 @@ public class Logic3TTest {
         assertThat(login.isWinnerX(), is(true));
     }
 
-
     @Test
     public void whenNotFill() {
         Figure3T[][] table = {
@@ -73,6 +72,7 @@ public class Logic3TTest {
         Logic3T login = new Logic3T(table);
         assertThat(login.isWinnerO(), is(true));
     }
+
     @Test
     public void whenHasOHorizontalWinner() {
         Figure3T[][] table = {
@@ -83,6 +83,7 @@ public class Logic3TTest {
         Logic3T login = new Logic3T(table);
         assertThat(login.isWinnerO(), is(true));
     }
+
     @Test
     public void whenHasODiagonalWinner() {
         Figure3T[][] table = {
@@ -93,6 +94,7 @@ public class Logic3TTest {
         Logic3T login = new Logic3T(table);
         assertThat(login.isWinnerO(), is(true));
     }
+
     @Test
     public void whenHasGas() {
         Figure3T[][] table = {

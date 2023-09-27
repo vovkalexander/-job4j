@@ -44,7 +44,7 @@ public class SingleLockList<T> implements Iterable<T> {
      * @return  copy.
      */
 
-    public synchronized DynamicList<T> copy( DynamicList<T> array) {
+    public synchronized DynamicList<T> copy(DynamicList<T> array) {
         DynamicList<T> copy = new DynamicList<>(10);
         array.iterator().forEachRemaining(copy::add);
         return copy;

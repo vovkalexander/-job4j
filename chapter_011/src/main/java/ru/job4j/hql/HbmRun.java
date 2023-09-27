@@ -13,8 +13,6 @@ public class HbmRun {
 
         SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 
-
-
         try {
             Session session = sf.openSession();
             session.beginTransaction();

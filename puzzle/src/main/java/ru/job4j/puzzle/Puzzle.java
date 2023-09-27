@@ -144,8 +144,8 @@ public class Puzzle extends Application {
         Cell position = figure.position();
         grid.getChildren().add(
                 this.buildFigure(
-                        position.x * 40 + 5,
-                        position.y * 40 + 5,
+                        position.getX() * 40 + 5,
+                        position.getY() * 40 + 5,
                         30,
                         figure.icon()
                 )

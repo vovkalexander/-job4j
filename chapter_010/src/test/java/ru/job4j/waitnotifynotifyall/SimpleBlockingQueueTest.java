@@ -1,6 +1,6 @@
-package ru.job4j.waitNotifyNotifyAll;
+package ru.job4j.waitnotifynotifyall;
 import org.junit.Test;
-import ru.job4j.waitNotifyNotifyALL.SimpleBlockingQueue;
+
 import java.util.Arrays;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
@@ -72,6 +72,7 @@ public class SimpleBlockingQueueTest {
         consumer.join();
         assertThat(queue.getQueueSize(), is(2));
     }
+
     @Test
     public void whenFetchAllThenGetIt() throws InterruptedException {
         final CopyOnWriteArrayList<Integer> buffer = new CopyOnWriteArrayList<>();

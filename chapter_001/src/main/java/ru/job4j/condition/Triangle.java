@@ -76,6 +76,5 @@ public class Triangle {
 
         return ab + bc > ac && ab + ac > bc && ac + bc > ab;
 
-
     }
 }

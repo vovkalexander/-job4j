@@ -1,6 +1,4 @@
-package ru.job4j.emailNotification;
-
-import net.jcip.annotations.ThreadSafe;
+package ru.job4j.emailnotification;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -107,6 +107,5 @@ public  class Arg {
                 System.out.println("Choose category: -f, -m, -r.");
             }  while (in.hasNext() && !scan .equals("finish"));
 
-
     }
 }

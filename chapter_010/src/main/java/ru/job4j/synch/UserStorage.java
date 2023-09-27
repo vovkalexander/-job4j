@@ -18,7 +18,7 @@ public class UserStorage {
      * @param user new user.
      */
 
-    public synchronized   boolean  add (User user) {
+    public synchronized   boolean  add(User user) {
         boolean result = false;
         if (user != null) {
             result = list.add(user);

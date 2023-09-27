@@ -1,4 +1,4 @@
-package ru.job4j.waitNotifyNotifyALL;
+package ru.job4j.waitnotifynotifyall;
 /**
  * ParallelSearch.
  * @author Vovk Alexander  vovk.ag747@gmail.com

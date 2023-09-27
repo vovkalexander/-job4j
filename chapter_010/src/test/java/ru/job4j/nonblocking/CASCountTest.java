@@ -12,21 +12,21 @@ public class CASCountTest {
     @Test
     public void incrementWithTwoThreads() throws InterruptedException {
         CASCount<Integer> count = new CASCount<>();
-        Thread thread1 = new Thread( () -> {
+        Thread thread1 = new Thread(() -> {
             for (int i = 0; i < 10; i++)  {
               count.increment();
             }
         });
         thread1.start();
-        Thread thread2 = new Thread( () -> {
+        Thread thread2 = new Thread(() -> {
             for (int i = 0; i < 10; i++)  {
                 count.increment();
             }
         });
         thread1.join();
-        assertThat(count.get(), is (10));
+        assertThat(count.get(), is(10));
         thread2.start();
         thread2.join();
-        assertThat(count.get(), is (20));
+        assertThat(count.get(), is(20));
     }
 }

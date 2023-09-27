@@ -21,7 +21,7 @@ public class CASCount<T> {
         int current;
         do {
             current = count.get();
-        } while ( !count.compareAndSet(current, current + 1));
+        } while (!count.compareAndSet(current, current + 1));
 
     }
     /**
