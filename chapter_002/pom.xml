@@ -10,6 +10,7 @@
     <packaging>jar</packaging>
     <version>2.0</version>
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>chapter_002</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -25,7 +26,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <artifactId>chapter_002</artifactId>
     <build>
         <plugins>
             <plugin>
