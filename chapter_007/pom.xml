@@ -55,11 +55,6 @@
             <artifactId>javax.activation-api</artifactId>
             <version>1.2.0</version>
         </dependency>
-        <dependency>
-            <groupId>ru.job4j</groupId>
-            <artifactId>chapter_002</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
