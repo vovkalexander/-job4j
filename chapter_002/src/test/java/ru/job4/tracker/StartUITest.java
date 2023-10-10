@@ -71,33 +71,25 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();     // создаём Tracker
-        Input input = new StubInput(Arrays.asList("0", "test name", "desc", "6"));   //создаём StubInput с последовательностью действий
-        new StartUI(input, tracker, output).init();     //   создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(Arrays.asList("0", "test name", "desc", "6"));
+        new StartUI(input, tracker, output).init();
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        // создаём Tracker
         Tracker tracker = new Tracker();
-        //Напрямую добавляем заявку
         Item item = tracker.add(new Item("test name", "desc"));
-        //создаём StubInput с последовательностью действий(производим замену заявки)
         Input input = new StubInput(Arrays.asList("2", item.getId(), "test replace", "заменили заявку", "6"));
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, output).init();
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
 
     @Test
     public void whenDeleteThenTrackerHasDeletedValue() {
-        //создаём StubInput с последовательностью действий(удаляем заявку)
         Input input = new StubInput(Arrays.asList("3", item.getId(), "6"));
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).init();
-        //// проверяем, что нулевой элемент массива в трекере удален, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
                 .append("---------Removing  -------")
@@ -110,11 +102,8 @@ public class StartUITest {
 
     @Test
     public void whenFindByIdThenTrackerHasFoundByIdValue() {
-        //создаём StubInput с последовательностью действий(находим заявку по id)
         Input input = new StubInput(Arrays.asList("4", item.getId(), "6"));
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).init();
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
                 .append("---------Finding item by ID -------")
@@ -127,11 +116,8 @@ public class StartUITest {
 
     @Test
     public void whenFindByNameThenTrackerHasFoundByNameValue() {
-        //создаём StubInput с последовательностью действий(находим заявку по имени)
         Input input = new StubInput(Arrays.asList("5", item.getName(), "6"));
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).init();
-        //// // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
                 .append("---------Finding item by Name -------")
@@ -144,15 +130,10 @@ public class StartUITest {
 
     @Test
     public void whenShowAllItemsThenTrackerHasShowedAllItemsValue() {
-        //Напрямую добавляем первую заявку
         Item item1 = tracker.add(new Item("test name1", "desc1"));
-        //Напрямую добавляем вторую заявку
         Item item2 = tracker.add(new Item("test name2", "desc2"));
-        //создаём StubInput с последовательностью действий(находим все заявки)
         Input input = new StubInput(Arrays.asList("1", "6"));
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).init();
-        //// // проверяем, что заявки находяться в массиве, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append(menu)
                 .append("------------ All Items --------------")
@@ -169,12 +150,9 @@ public class StartUITest {
 
     @Test
     public void whenDeleteWithMockito() {
-        //создаём StubInput с последовательностью действий(удаляем заявку)
         Input input = mock(Input.class);
         when(input.ask(anyString())).thenReturn(item.getId());
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).removeItem();
-        //// проверяем, что нулевой элемент массива в трекере удален, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append("---------Удаление  -------")
                 .append(System.lineSeparator())
@@ -185,12 +163,9 @@ public class StartUITest {
 
     @Test
     public void whenFindByIdWithMockito() {
-        //создаём StubInput с последовательностью действий(находим заявку по id)
         Input input = mock(Input.class);
         when(input.ask(any(String.class))).thenReturn(item.getId());
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).findById();
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append("---------Нахождение заявки по ID -------")
                 .append(System.lineSeparator())
@@ -201,12 +176,9 @@ public class StartUITest {
 
     @Test
     public void whenFindByNameWithMockito() {
-        //создаём StubInput с последовательностью действий(находим заявку по id)
         Input input = mock(Input.class);
         when(input.ask(any(String.class))).thenReturn(item.getName());
-        // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker, System.out::println).findByName();
-        //// // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(this.output.toString(), is(new StringBuilder()
                 .append("---------Нахождение заявки по Имени -------")
                 .append(System.lineSeparator())

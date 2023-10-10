@@ -1,5 +1,5 @@
 package ru.job4j.concurrent;
-//import ru.job4j.concurrent.simpleconcurrent.User;
+
 
 import java.util.ArrayList;
 import java.util.List;

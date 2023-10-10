@@ -61,6 +61,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
     }
     /**
      * Метод получения размера коллекции.
+     * @return возвращает размер коллекции.
      */
 
     public int getSize() {

@@ -12,11 +12,11 @@ import static org.hamcrest.Matchers.is;
  * @since 0.1
  */
 public class StreamapiTest {
-   // @Test
-  //  public void whenListConvertIntoOneElement() {
-     //   List<Integer> lists = Arrays.asList(3, 4, 5, 7, 8, 10, 11);
-      //  Streamapi api = new Streamapi();
-       // Optional<Integer> result = api.stream(lists);
-       // assertThat(result.get(), is(180));
-//    }
+    @Test
+    public void whenListConvertIntoOneElement() {
+        List<Integer> lists = Arrays.asList(3, 4, 5, 7, 8, 10, 11);
+        Streamapi api = new Streamapi();
+        Optional<Integer> result = api.stream(lists);
+        assertThat(result.get(), is(180));
+    }
 }
