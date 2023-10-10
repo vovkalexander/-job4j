@@ -52,7 +52,7 @@ public class Triangle {
      */
 
     public double area() {
-        double rsl = -1; // мы устанавливаем значение -1, так как может быть что треугольника нет. Это значение говорит о том. что треугольника нет.
+        double rsl = -1;
         double ab = this.a.distanceTo(this.b);
         double ac = this.a.distanceTo(this.c);
         double bc = this.b.distanceTo(this.c);

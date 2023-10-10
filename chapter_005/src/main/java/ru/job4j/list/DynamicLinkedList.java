@@ -74,7 +74,7 @@ public class DynamicLinkedList<E> implements Iterable<E> {
 
     public E deleteFirst() {
         E temp = first.data;
-        if (first.next == null) { // Если только один элемент
+        if (first.next == null) {
             first = null;
         } else {
             first.next.previous = null;
