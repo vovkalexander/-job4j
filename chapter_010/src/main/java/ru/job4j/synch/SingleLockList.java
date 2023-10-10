@@ -1,5 +1,5 @@
 package ru.job4j.synch;
-import ru.job4j.list.DynamicList;
+import ru.job4j.synch.DynamicList;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 import java.util.Iterator;

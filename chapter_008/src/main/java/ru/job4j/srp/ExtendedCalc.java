@@ -1,5 +1,5 @@
 package ru.job4j.srp;
-import ru.job4j.calculator.Calculator;
+import ru.job4j.srp.Calculator;
 /**
  * ExtendedCalc.
  * @author Vovk Alexander  vovk.ag747@gmail.com

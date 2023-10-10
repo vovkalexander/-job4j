@@ -1,7 +1,7 @@
 package ru.job4j.di;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import ru.job4j.tracker.MenuOutException;
+import ru.job4j.di.MenuOutException;
 import java.util.List;
 import java.util.Scanner;
 

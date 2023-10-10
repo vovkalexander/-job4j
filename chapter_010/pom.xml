@@ -12,14 +12,4 @@
 
     <artifactId>chapter_010</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>ru.job4j</groupId>
-            <artifactId>chapter_005</artifactId>
-            <version>2.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-
-
 </project>
