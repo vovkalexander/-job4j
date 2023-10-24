@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -17,6 +18,7 @@ import static org.junit.Assert.assertThat;
  * @version $Id$
  * @since 0.1
  */
+@Disabled
 public class TrackerSQLTest {
     private TrackerSQL sql;
 

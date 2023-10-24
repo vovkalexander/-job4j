@@ -35,7 +35,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
      */
 
     public boolean init() {
-        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("db/liquibase.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
