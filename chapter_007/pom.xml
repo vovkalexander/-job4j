@@ -76,6 +76,7 @@
                     <driver>${db.driver}</driver>
                     <username>${db.username}</username>
                     <password>${db.password}</password>-->
+                    <password>password</password>
                 </configuration>
                 <executions>
                     <execution>
