@@ -1,7 +1,6 @@
 package ru.job4j.streamapi;
 
 import java.util.List;
-
 public class StreamUsage {
     public static class Task {
         private final String name;
